@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>the house in the trees — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
+.top-right{display:flex;align-items:center;gap:16px}.gallery-link{opacity:.38}.gallery-link:hover{opacity:.8}.viewer{position:absolute;inset:24px 0 0;background:#fff}
+.art{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;max-width:96vw;max-height:92vh;width:auto;height:auto;opacity:0;transition:opacity 80ms linear;user-select:none}.art.active{opacity:1}
+.zone{position:fixed;z-index:30;top:24px;bottom:0;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
+.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
+.arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.18;pointer-events:none}
+.arrow.left{left:12px}.arrow.right{right:12px}
+.counter{position:fixed;z-index:45;left:50%;bottom:12px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
+.caption{position:fixed;z-index:45;left:15px;bottom:11px;line-height:1.3;pointer-events:none}
+.caption-title{font-size:11px;opacity:.58}.caption-meta{margin-top:2px;font-size:9px;opacity:.34}
+@media(max-width:700px){
+ .top{height:24px;padding:0 11px}.viewer{inset:24px 0 0}.zone{top:24px}
+ .art{max-width:97vw;max-height:90vh}
+ .caption{left:11px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+<a href="index.html">← works</a>
+<div class="top-right"><span>the house in the trees</span><a class="gallery-link" href="https://kiangmalingue.com/exhibitions/kyung-me-the-house-in-the-trees/" target="_blank" rel="noopener">exhibition</a></div>
+</header>
+<main class="viewer"><img id="art-a" class="art active" src="01_The Mask.jpg" alt="The Mask" aria-hidden="false"><img id="art-b" class="art" src="" alt="" aria-hidden="true"></main>
+<button class="zone prev" id="prev" aria-label="previous image"></button>
+<button class="zone next" id="next" aria-label="next image"></button>
+<div class="arrow left">←</div><div class="arrow right">→</div>
+<div class="counter" id="counter">1 / 8</div>
+<div class="caption"><div class="caption-title" id="title">The Mask</div><div class="caption-meta" id="meta">16 × 24 in., ink and charcoal on paper</div></div>
+<script>
+const works=[
+ ['01_The Mask.jpg','The Mask',1,''],
+ ['01_closeup.jpg','The Mask',1,'detail'],
+ ['02_The Doll.jpg','The Doll',2,''],
+ ['02_closeupjpg.jpg','The Doll',2,'detail 1 / 2'],
+ ['02_closeup2.jpg','The Doll',2,'detail 2 / 2'],
+ ['03_The Bonsai.jpg','The Bonsai',3,''],
+ ['04_The Shrine.jpg','The Shrine',4,''],
+ ['04_closeup.jpg','The Shrine',4,'detail'],
+ ['05_The Corridor.jpg','The Corridor',5,''],
+ ['05_closeup.jpg','The Corridor',5,'detail'],
+ ['06_The Slumber.jpg','The Slumber',6,''],
+ ['07_The Clocktower.jpg','The Clocktower',7,''],
+ ['08_closep.jpg','The Dollhouse',8,'detail'],
+ ['08_The Dollhouse.jpg','The Dollhouse',8,'']
+];
+const artworkCount=8;
+const dimensions={1:'16 × 24 in.',2:'16 × 24 in.',3:'16 × 24 in.',4:'16 × 24 in.',5:'12 × 18 in.',6:'12 × 18 in.',7:'12 × 18 in.',8:'16 × 24 in.'};
+let i=0, transitionToken=0;
+let front=document.getElementById('art-a'), back=document.getElementById('art-b');
+const counter=document.getElementById('counter'), title=document.getElementById('title'), meta=document.getElementById('meta');
+works.forEach(work=>{const image=new Image();image.src=work[0]});
+function show(n){
+ i=(n+works.length)%works.length;
+ const work=works[i], token=++transitionToken;
+ back.onload=()=>{
+  if(token!==transitionToken)return;
+  back.alt=work[1];
+  back.setAttribute('aria-hidden','false');
+  front.setAttribute('aria-hidden','true');
+  back.classList.add('active');
+  front.classList.remove('active');
+  [front,back]=[back,front];
+  counter.textContent=work[2]+' / '+artworkCount+(work[3]?' · '+work[3]:'');
+  title.textContent=work[1];
+  meta.textContent=dimensions[work[2]]+', ink and charcoal on paper';
+ };
+ back.src=work[0];
+}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight')show(i+1);
+ if(e.key==='ArrowLeft')show(i-1);
+});
+</script>
+</body>
+</html>

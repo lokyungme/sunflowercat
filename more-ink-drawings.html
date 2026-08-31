@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>more ink drawings — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;background:#fff;font-size:11px}
+.year{margin-left:12px;opacity:.38}
+.viewer{position:absolute;inset:24px 0 0;background:#fff}
+.art{position:absolute;top:calc(50% - 12px);left:50%;transform:translate(-50%,-50%);display:block;max-width:96vw;max-height:92vh;width:auto;height:auto;opacity:0;transition:opacity 80ms linear;user-select:none;-webkit-user-drag:none}
+.art.active{opacity:1}
+.zone{position:fixed;z-index:30;top:24px;bottom:0;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
+.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
+.arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.14;pointer-events:none}
+.arrow.left{left:12px}.arrow.right{right:12px}
+.caption{position:fixed;z-index:45;left:15px;bottom:10px;font-size:9px;opacity:.4;pointer-events:none}
+.counter{position:fixed;z-index:45;left:50%;bottom:10px;transform:translateX(-50%);font-size:9px;opacity:.3;letter-spacing:.04em;pointer-events:none}
+@media(max-width:700px){
+ .top{padding:0 11px}
+ .art{max-width:98vw;max-height:92vh}
+ .caption{left:11px}
+}
+@media(prefers-reduced-motion:reduce){.art{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+ <a href="index.html">← works</a>
+ <div>more ink drawings <span class="year">2024</span></div>
+</header>
+<main class="viewer">
+ <img id="art-a" class="art active" src="01_The House Cat.jpg" alt="The House Cat" aria-hidden="false">
+ <img id="art-b" class="art" src="" alt="" aria-hidden="true">
+</main>
+<button class="zone prev" id="prev" aria-label="previous image"></button>
+<button class="zone next" id="next" aria-label="next image"></button>
+<div class="arrow left">←</div><div class="arrow right">→</div>
+<div class="caption" id="caption">The House Cat</div>
+<div class="counter" id="counter">1 / 9</div>
+<script>
+const works=[
+ ['01_The House Cat.jpg','The House Cat'],
+ ['02_The Clock.jpg','The Clock'],
+ ['03_The Study.jpg','The Study'],
+ ['04_The Hunt.jpg','The Hunt'],
+ ['05_The Actor.jpg','The Actor'],
+ ['06_Mary.jpg','Mary'],
+ ['07_The Monarch.jpg','The Monarch'],
+ ['08_Ghost.jpg','Ghost'],
+ ['09_the gate.jpg','The Gate']
+];
+let i=0,transitionToken=0;
+let front=document.getElementById('art-a'),back=document.getElementById('art-b');
+const counter=document.getElementById('counter'),caption=document.getElementById('caption');
+works.forEach(work=>{const image=new Image();image.src=work[0]});
+function show(n){
+ i=(n+works.length)%works.length;
+ const work=works[i],token=++transitionToken;
+ back.onload=()=>{
+  if(token!==transitionToken)return;
+  back.alt=work[1];
+  back.setAttribute('aria-hidden','false');
+  front.setAttribute('aria-hidden','true');
+  back.classList.add('active');
+  front.classList.remove('active');
+  [front,back]=[back,front];
+  caption.textContent=work[1];
+  counter.textContent=(i+1)+' / '+works.length;
+ };
+ back.src=work[0];
+}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',event=>{
+ if(event.key==='ArrowRight')show(i+1);
+ if(event.key==='ArrowLeft')show(i-1);
+});
+</script>
+</body>
+</html>

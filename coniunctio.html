@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>coniunctio — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;z-index:40;top:0;left:0;right:0;height:28px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
+.viewer{position:absolute;inset:28px 0 28px;background:#fff}
+#art{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;max-width:96vw;max-height:calc(100vh - 66px);width:auto;height:auto;user-select:none}
+.zone{position:fixed;z-index:30;top:28px;bottom:28px;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
+.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
+.arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.16;pointer-events:none}
+.arrow.left{left:12px}.arrow.right{right:12px}
+.bottom{position:fixed;z-index:45;left:0;right:0;bottom:0;height:28px;padding:0 10px;display:flex;align-items:center;justify-content:flex-end;background:#fff}
+.press{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px}
+.press-toggle{border:0;background:transparent;color:inherit;font:inherit;padding:0;cursor:pointer;opacity:1}
+.press-toggle:hover{text-decoration:underline;text-underline-offset:2px}
+.press-menu{position:absolute;left:0;bottom:17px;min-width:150px;padding:7px 9px;background:#fff;border:1px solid rgba(0,0,0,.1);text-align:left}
+.press-menu a{display:block;line-height:1.7;white-space:nowrap}
+.press-menu a:hover{text-decoration:underline;text-underline-offset:2px}
+.counter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;opacity:1;letter-spacing:.04em}
+.meta{text-align:right;font-size:11px;line-height:1;opacity:1;white-space:nowrap}
+.meta-medium::before{content:" · "}
+@media(max-width:700px){
+ .top{height:28px;padding:0 9px}.viewer{inset:28px 0 40px}.zone{top:28px;bottom:40px}
+ #art{max-width:97vw;max-height:calc(100vh - 76px)}
+ .bottom{height:40px;padding:0 9px}
+ .press{left:9px}.press-menu{bottom:23px}
+ .counter{left:58px;transform:translateY(-50%)}
+ .meta{font-size:11px;line-height:1.3}
+ .meta-medium{display:block}.meta-medium::before{content:""}
+}
+</style>
+</head>
+<body>
+<header class="top">
+<a href="index.html">← works</a>
+<a href="https://bureau-inc.com/exhibitions/coniunctio" target="_blank" rel="noopener">coniunctio</a>
+</header>
+<main class="viewer"><img id="art" src="Coniunctio/01.jpg" alt="coniunctio, image 1"></main>
+<button class="zone prev" id="prev" aria-label="previous image"></button>
+<button class="zone next" id="next" aria-label="next image"></button>
+<div class="arrow left">←</div><div class="arrow right">→</div>
+<footer class="bottom">
+ <div class="press">
+  <button class="press-toggle" id="press-toggle" type="button" aria-expanded="false">press +</button>
+  <div class="press-menu" id="press-menu" hidden>
+   <a href="https://assets.ctfassets.net/hp42m99tzs4o/7qmBjk3U6IIDjY7UzsFK93/f145df1c36a9117fb9bfc34bf63ee6ac/HGH_2019.12_Artforum.caption.pdf" target="_blank" rel="noopener">artforum.com</a>
+   <a href="https://assets.ctfassets.net/hp42m99tzs4o/43Dx7O0YWrA0Ybc00Y04Yv/db7d51896dbde68b121c121b2d6118e6/KM_2020.01_NewYorker.caption.pdf" target="_blank" rel="noopener">the new yorker</a>
+   <a href="https://assets.ctfassets.net/hp42m99tzs4o/10zChZgZx8BGJTQs19LEVw/adc0e9aa3895f7dfa8fb46c8ac655594/KM_2020.01_TheOffing.caption.pdf" target="_blank" rel="noopener">the offing</a>
+   <a href="https://assets.ctfassets.net/hp42m99tzs4o/2efShVhe1gsxmEdHQ2nrwt/ece46b1ddc94c3cec3f78b7b90ab2cef/KM_2020.01_EditorialMagazine.caption.pdf" target="_blank" rel="noopener">editorial magazine</a>
+  </div>
+ </div>
+ <div class="counter" id="counter">1 / 7</div>
+ <div class="meta">
+  <span>2019, ink + charcoal on paper, 36 × 24 in.</span>
+ </div>
+</footer>
+<script>
+const works=[
+ ['Coniunctio/01.jpg',1,''],
+ ['Coniunctio/01_crop1.jpg',1,'detail'],
+ ['Coniunctio/02.jpg',2,''],
+ ['Coniunctio/02_crop1.jpg',2,'detail 1 / 2'],
+ ['Coniunctio/02_crop2.jpg',2,'detail 2 / 2'],
+ ['Coniunctio/03.jpg',3,''],
+ ['Coniunctio/03_crop1.jpg',3,'detail 1 / 2'],
+ ['Coniunctio/03_crop2.jpg',3,'detail 2 / 2'],
+ ['Coniunctio/04.jpg',4,''],
+ ['Coniunctio/04_crop1.jpg',4,'detail 1 / 2'],
+ ['Coniunctio/04_crop2.jpg',4,'detail 2 / 2'],
+ ['Coniunctio/05.jpg',5,''],
+ ['Coniunctio/05_crop1.jpg',5,'detail 1 / 2'],
+ ['Coniunctio/05_crop2.jpg',5,'detail 2 / 2'],
+ ['Coniunctio/06.jpg',6,''],
+ ['Coniunctio/06_crop1.jpg',6,'detail'],
+ ['Coniunctio/07.jpg',7,''],
+ ['Coniunctio/07_crop1.jpg',7,'detail']
+];
+const artworkCount=7;
+let i=0;
+const art=document.getElementById('art'), counter=document.getElementById('counter');
+const pressToggle=document.getElementById('press-toggle'), pressMenu=document.getElementById('press-menu');
+works.forEach(work=>{const image=new Image();image.src=work[0]});
+function show(n){
+ i=(n+works.length)%works.length;
+ const work=works[i];
+ art.src=work[0];
+ art.alt=`coniunctio, artwork ${work[1]}${work[2]?', '+work[2]:''}`;
+ counter.textContent=work[1]+' / '+artworkCount+(work[2]?' · '+work[2]:'');
+}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+function setPress(open){
+ pressMenu.hidden=!open;
+ pressToggle.textContent=open?'press −':'press +';
+ pressToggle.setAttribute('aria-expanded',String(open));
+}
+pressToggle.addEventListener('click',e=>{
+ e.stopPropagation();
+ setPress(pressMenu.hidden);
+});
+document.addEventListener('click',e=>{
+ if(!e.target.closest('.press'))setPress(false);
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight')show(i+1);
+ if(e.key==='ArrowLeft')show(i-1);
+ if(e.key==='Escape')setPress(false);
+});
+</script>
+</body>
+</html>

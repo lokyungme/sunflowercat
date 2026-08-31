@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>half mourning — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{
+  position:fixed;z-index:30;top:0;left:0;right:0;height:42px;
+  padding:0 18px;display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;background:#fff;border-bottom:1px solid rgba(0,0,0,.035)
+}
+.top-right{display:flex;align-items:center;gap:17px}
+.rooms{display:flex;gap:10px;font-size:10px;letter-spacing:.06em}
+.rooms button{
+  border:0;background:none;padding:2px 1px;font:inherit;color:inherit;
+  cursor:pointer;opacity:.28
+}
+.rooms button.active{opacity:.9;text-decoration:underline;text-underline-offset:4px}
+#viewer{
+  position:absolute;inset:42px 0 0;overflow:hidden;cursor:grab;
+  touch-action:none;background:#fff
+}
+#viewer.drag{cursor:grabbing}
+#art{
+  position:absolute;left:0;top:0;display:block;max-width:none;
+  user-select:none;pointer-events:none;transform-origin:0 0;
+  will-change:transform
+}
+.controls{
+  position:fixed;z-index:40;right:15px;bottom:14px;display:flex;
+  gap:10px;align-items:center;font-size:10px;opacity:.45
+}
+.controls button{
+  border:0;background:none;font:inherit;color:inherit;cursor:pointer;padding:2px
+}
+.controls button:first-child,.controls button:nth-child(2){font-size:15px}
+.hint{
+  position:fixed;z-index:35;left:15px;bottom:15px;
+  font-size:9px;opacity:.22;pointer-events:none
+}
+.loading{
+  position:fixed;z-index:25;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:9px;opacity:.25;display:none
+}
+@media(max-width:700px){
+  .top{height:40px;padding:0 12px}
+  .top-right{gap:11px}.rooms{gap:8px}
+  #viewer{inset:40px 0 0}
+  .hint{display:none}
+  .controls{right:9px;bottom:9px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="index.html">← works</a>
+  <div class="top-right">
+    <span>half mourning</span>
+    <div class="rooms" aria-label="Half Mourning works">
+      <button class="active" data-work="0">I</button>
+      <button data-work="1">II</button>
+      <button data-work="2">III</button>
+      <button data-work="3">IV</button>
+    </div>
+  </div>
+</header>
+
+<div id="viewer">
+  <img id="art" src="half-mourning-1.jpg" alt="Half Mourning I">
+</div>
+
+<div class="loading" id="loading">loading</div>
+<div class="hint">drag to explore · scroll / pinch to zoom</div>
+
+<div class="controls">
+  <button id="minus" aria-label="zoom out">−</button>
+  <button id="plus" aria-label="zoom in">+</button>
+  <button id="whole">see whole</button>
+</div>
+
+<script>
+const files=[
+  'half-mourning-1.jpg',
+  'half-mourning-2.jpg',
+  'half-mourning-3.jpg',
+  'half-mourning-4.jpg'
+];
+const numerals=['I','II','III','IV'];
+const viewer=document.getElementById('viewer');
+const art=document.getElementById('art');
+const loading=document.getElementById('loading');
+const roomButtons=[...document.querySelectorAll('.rooms button')];
+
+let current=0;
+let scale=1,x=0,y=0;
+let dragging=false,lx=0,ly=0;
+
+function fitScale(){
+  if(!art.naturalWidth) return 1;
+  return Math.min(
+    viewer.clientWidth/art.naturalWidth,
+    viewer.clientHeight/art.naturalHeight
+  )*.94;
+}
+
+function clamp(){
+  const sw=art.naturalWidth*scale;
+  const sh=art.naturalHeight*scale;
+  const vw=viewer.clientWidth;
+  const vh=viewer.clientHeight;
+  x=sw<=vw ? (vw-sw)/2 : Math.min(0,Math.max(vw-sw,x));
+  y=sh<=vh ? (vh-sh)/2 : Math.min(0,Math.max(vh-sh,y));
+}
+
+function render(){
+  if(!art.naturalWidth) return;
+  clamp();
+  art.style.transform=`translate(${x}px,${y}px) scale(${scale})`;
+}
+
+function seeWhole(){
+  if(!art.naturalWidth) return;
+  scale=fitScale();
+  x=(viewer.clientWidth-art.naturalWidth*scale)/2;
+  y=(viewer.clientHeight-art.naturalHeight*scale)/2;
+  render();
+}
+
+function zoomAt(cx,cy,mult){
+  if(!art.naturalWidth) return;
+  const old=scale;
+  const min=fitScale();
+  const max=2.0;
+  const next=Math.max(min,Math.min(max,old*mult));
+  const wx=(cx-x)/old;
+  const wy=(cy-y)/old;
+  scale=next;
+  x=cx-wx*next;
+  y=cy-wy*next;
+  render();
+}
+
+function switchWork(index){
+  if(index===current) return;
+  current=index;
+  roomButtons.forEach((b,i)=>b.classList.toggle('active',i===index));
+  loading.style.display='block';
+  art.style.visibility='hidden';
+  art.src=files[index];
+  art.alt=`Half Mourning ${numerals[index]}`;
+}
+
+art.addEventListener('load',()=>{
+  loading.style.display='none';
+  art.style.visibility='visible';
+  seeWhole();
+});
+
+viewer.addEventListener('pointerdown',e=>{
+  dragging=true;
+  viewer.classList.add('drag');
+  lx=e.clientX;
+  ly=e.clientY;
+  viewer.setPointerCapture(e.pointerId);
+});
+viewer.addEventListener('pointermove',e=>{
+  if(!dragging) return;
+  x+=e.clientX-lx;
+  y+=e.clientY-ly;
+  lx=e.clientX;
+  ly=e.clientY;
+  render();
+});
+function stopDrag(){
+  dragging=false;
+  viewer.classList.remove('drag');
+}
+viewer.addEventListener('pointerup',stopDrag);
+viewer.addEventListener('pointercancel',stopDrag);
+
+viewer.addEventListener('dblclick',e=>{
+  const r=viewer.getBoundingClientRect();
+  zoomAt(e.clientX-r.left,e.clientY-r.top,1.7);
+});
+
+viewer.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const r=viewer.getBoundingClientRect();
+  const cx=e.clientX-r.left;
+  const cy=e.clientY-r.top;
+  zoomAt(cx,cy,Math.exp(-e.deltaY*.0015));
+},{passive:false});
+
+roomButtons.forEach((b,i)=>b.addEventListener('click',()=>switchWork(i)));
+document.getElementById('plus').addEventListener('click',()=>{
+  zoomAt(viewer.clientWidth/2,viewer.clientHeight/2,1.45);
+});
+document.getElementById('minus').addEventListener('click',()=>{
+  zoomAt(viewer.clientWidth/2,viewer.clientHeight/2,1/1.45);
+});
+document.getElementById('whole').addEventListener('click',seeWhole);
+
+window.addEventListener('resize',seeWhole);
+if(art.complete) seeWhole();
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>copy kitty — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+body{overflow:hidden}
+a{color:inherit;text-decoration:none}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;font-size:11px;letter-spacing:.16em;background:rgba(255,255,255,.92)}
+.back{letter-spacing:0;font-size:12px}.meta{display:flex;gap:28px}
+.stage{position:fixed;inset:58px 0 0;display:flex;align-items:center;justify-content:center;padding:10px 22px 18px;background:#fff}
+.page-button{border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:e-resize;max-width:100%;max-height:100%}
+.page-image{display:block;max-width:97vw;max-height:calc(100vh - 82px);width:auto;height:auto;object-fit:contain;box-shadow:0 12px 34px rgba(0,0,0,.045)}
+.endcard{display:none;text-align:center;font-size:11px}.endcard.open{display:block}.endcard nav{display:flex;flex-direction:column;align-items:center;gap:16px}.endcard a:hover{text-decoration:underline;text-underline-offset:3px}
+.page-button.hidden{display:none}.hint{position:fixed;z-index:20;bottom:17px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.12em;opacity:.26;pointer-events:none}
+@media(max-width:700px){.topbar{height:50px;padding:0 16px}.meta{gap:14px}.stage{inset:50px 0 0;padding:6px 8px 14px}.page-image{max-width:98vw;max-height:calc(100vh - 64px)}}
+.page-nav{
+ position:fixed;z-index:30;top:50%;transform:translateY(-50%);
+ border:0;background:transparent;color:#111;font:inherit;font-size:18px;
+ padding:22px 15px;cursor:pointer;opacity:.22;transition:opacity .15s ease
+}
+.page-nav:hover{opacity:.9}
+.page-prev{left:5px}.page-next{right:5px}
+@media(max-width:700px){.page-nav{font-size:16px;padding:18px 8px}.page-prev{left:0}.page-next{right:0}}
+
+.page-image,
+.endcard{
+  transition:transform .28s ease, opacity .28s ease;
+}
+.page-image.slide-left,
+.endcard.slide-left{
+  transform:translateX(-70px);
+  opacity:0;
+}
+.page-image.slide-right,
+.endcard.slide-right{
+  transform:translateX(70px);
+  opacity:0;
+}
+.page-image.enter-from-right,
+.endcard.enter-from-right{
+  animation:ckEnterRight .28s ease;
+}
+.page-image.enter-from-left,
+.endcard.enter-from-left{
+  animation:ckEnterLeft .28s ease;
+}
+@keyframes ckEnterRight{
+  from{transform:translateX(70px);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+@keyframes ckEnterLeft{
+  from{transform:translateX(-70px);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+.buy-book-link{
+  position:fixed;
+  left:18px;
+  bottom:17px;
+  z-index:80;
+  font-size:10px;
+  letter-spacing:.03em;
+  color:#111;
+  text-decoration:none;
+  opacity:.34;
+  transition:opacity .15s ease;
+}
+.buy-book-link:hover{
+  opacity:1;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+@media(max-width:700px){
+  .buy-book-link{left:12px;bottom:12px;font-size:9px}
+}
+</style>
+</head>
+<body>
+<a class="buy-book-link" href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">buy book</a>
+<header class="topbar"><a class="back" href="index.html">← works</a><div class="meta"><span>copy kitty</span><span>2016–2017</span></div></header>
+<button class="page-nav page-prev" id="page-prev" type="button" aria-label="previous page">←</button>
+<button class="page-nav page-next" id="page-next" type="button" aria-label="next page">→</button>
+<main class="stage">
+  <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
+  <section class="endcard" id="endcard">
+    <nav>
+      <a href="https://www.mutualart.com/Exhibition/Kyung-Me--Copy-Kitty/23D3733C11117A56" target="_blank" rel="noopener">about +</a>
+      <a href="https://kiangmalingue.com/artists/kyung-me/" target="_blank" rel="noopener">press +</a>
+      <a href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">book +</a>
+      <a href="index.html">← back to works</a>
+    </nav>
+  </section>
+</main>
+<div class="hint" id="hint">click to turn page</div>
+<script>
+const pages=[
+  {src:'copy-kitty-cover-front.png',alt:'Copy Kitty front cover'},
+  ...Array.from({length:30},(_,i)=>i+1)
+    .filter(n=>![18,19,20].includes(n))
+    .map(n=>({src:`ck-${String(n).padStart(3,'0')}.jpg`,alt:`Copy Kitty drawing ${n}`})),
+  {src:'copy-kitty-cover-back.png',alt:'Copy Kitty back cover'}
+];
+
+const FINAL = pages.length;
+
+pages.forEach(page=>{
+  const preloader = new Image();
+  preloader.src = page.src;
+});
+
+let current=0;
+
+const button=document.getElementById('page-button');
+const image=document.getElementById('page-image');
+const endcard=document.getElementById('endcard');
+const hint=document.getElementById('hint');
+const prevBtn=document.getElementById('page-prev');
+const nextBtn=document.getElementById('page-next');
+
+function render(){
+  image.classList.remove('slide-left','slide-right','enter-from-right','enter-from-left');
+  endcard.classList.remove('slide-left','slide-right','enter-from-right','enter-from-left');
+
+  if(current===FINAL){
+    button.classList.add('hidden');
+    endcard.classList.add('open');
+    hint.textContent='click anywhere to begin again';
+    return;
+  }
+
+  endcard.classList.remove('open');
+  button.classList.remove('hidden');
+  image.src=pages[current].src;
+  image.alt=pages[current].alt;
+  hint.textContent=current===pages.length-1?'click to finish':'click to turn page';
+}
+
+function next(){
+  current = current===FINAL ? 0 : current+1;
+  render();
+}
+
+function prev(){
+  current = current===0 ? FINAL : current-1;
+  render();
+}
+
+button.addEventListener('click',next);
+nextBtn.addEventListener('click',next);
+prevBtn.addEventListener('click',prev);
+
+// On the final links slide, clicking empty space restarts at the cover.
+endcard.addEventListener('click',e=>{
+  if(!e.target.closest('a')) next();
+});
+
+// Trackpad / Magic Mouse horizontal navigation.
+// Treat each gesture as one physical page turn: require a more deliberate
+// swipe, then lock navigation until that gesture has fully settled.
+let wheelAccum=0;
+let wheelLocked=false;
+let settleTimer=null;
+
+document.addEventListener('wheel',e=>{
+  if(Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+  e.preventDefault();
+
+  clearTimeout(settleTimer);
+
+  // Momentum events from the same swipe are ignored after one page turn.
+  if(!wheelLocked){
+    wheelAccum += e.deltaX;
+
+    // Higher threshold gives the page a little resistance.
+    if(Math.abs(wheelAccum) >= 115){
+      wheelLocked=true;
+      const dir = wheelAccum > 0 ? 1 : -1;
+      wheelAccum=0;
+
+      if(dir>0) next();
+      else prev();
+    }
+  }
+
+  // Only unlock after the trackpad/mouse gesture and its momentum stop.
+  settleTimer=setTimeout(()=>{
+    wheelLocked=false;
+    wheelAccum=0;
+  },320);
+},{passive:false});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){
+    e.preventDefault();
+    next();
+  }
+  if(e.key==='ArrowLeft'){
+    e.preventDefault();
+    prev();
+  }
+});
+
+render();
+</script>
+</body>
+</html>

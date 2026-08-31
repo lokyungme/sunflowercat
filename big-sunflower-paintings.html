@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>large sunflower paintings — kyung-me</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: #fff;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .back {
+      position: fixed;
+      z-index: 2;
+      top: 16px;
+      left: 18px;
+      color: inherit;
+      font-size: 11px;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .back:hover { text-decoration: underline; }
+
+    main {
+      padding: 42px 24px 70px;
+    }
+
+    figure {
+      display: flex;
+      justify-content: center;
+      margin: 0 0 clamp(90px, 14vh, 150px);
+    }
+
+    figure:last-child { margin-bottom: 0; }
+
+    img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 48px);
+      max-height: calc(100svh - 58px);
+    }
+
+    @media (max-width: 700px) {
+      .back { top: 14px; left: 14px; }
+      main { padding: 40px 14px 55px; }
+      figure { margin-bottom: 85px; }
+      img {
+        max-width: calc(100vw - 28px);
+        max-height: calc(100svh - 54px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="sunflower.html">← i, sunflower</a>
+  <main>
+    <figure><img src="big sf paintings/01_the fall.png" width="2351" height="4140" alt="Large sunflower painting by Kyung-Me"></figure>
+    <figure><img src="big sf paintings/02_exp.png" width="2110" height="4087" alt="Large sunflower painting by Kyung-Me" loading="lazy"></figure>
+    <figure><img src="big sf paintings/03_redfall.png" width="2305" height="4101" alt="Large sunflower painting by Kyung-Me" loading="lazy"></figure>
+    <figure><img src="big sf paintings/04yellow.png" width="2235" height="4069" alt="Large sunflower painting by Kyung-Me" loading="lazy"></figure>
+    <figure><img src="big sf paintings/05_rainbow.png" width="2193" height="3582" alt="Large sunflower painting by Kyung-Me" loading="lazy"></figure>
+  </main>
+</body>
+</html>

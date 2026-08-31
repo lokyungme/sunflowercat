@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>labyrinths — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.pan{position:fixed;inset:0;overflow:auto;background:#111;overscroll-behavior:none;scrollbar-width:none;cursor:pointer}
+.pan::-webkit-scrollbar{display:none}
+#art{display:block;max-width:none;max-height:none;width:auto;height:auto;user-select:none;pointer-events:none}
+.corner,.status{position:fixed;z-index:50;line-height:1;background:rgba(255,255,255,.78);text-shadow:0 0 5px #fff,0 0 5px #fff}
+.corner{font-size:13px}.status{font-size:11px}
+.corner{top:9px}.works{left:10px}.title{right:10px}
+.status{left:50%;bottom:9px;transform:translateX(-50%);white-space:nowrap}
+@media(max-width:700px){
+ .corner{top:8px}.works{left:9px}.title{right:9px}
+ .status{bottom:8px;font-size:10px}
+}
+</style>
+</head>
+<body>
+<main class="pan" id="pan" aria-label="click for next image">
+ <img id="art" src="Labyrinths/rc_fullsize.jpg" alt="rabbit canal, full image" draggable="false">
+</main>
+<a class="corner works" href="index.html">← works</a>
+<span class="corner title">labyrinths</span>
+<div class="status" id="status">rabbit canal · full image</div>
+<script>
+const slides=[
+ ['Labyrinths/rc_fullsize.jpg','rabbit canal','full image'],
+ ['Labyrinths/rc_02.jpg','rabbit canal','detail 1 / 3'],
+ ['Labyrinths/rc_03.jpg','rabbit canal','detail 2 / 3'],
+ ['Labyrinths/rc_04.jpg','rabbit canal','detail 3 / 3'],
+ ['Labyrinths/sf_fullsize.jpg','sens fortress','full image'],
+ ['Labyrinths/sf_01.jpg','sens fortress','detail']
+];
+const scale=1.35;
+let i=0;
+const pan=document.getElementById('pan'), art=document.getElementById('art'), status=document.getElementById('status');
+slides.forEach(slide=>{const image=new Image();image.src=slide[0]});
+function sizeAndCenter(){
+ if(!art.naturalWidth||!art.naturalHeight)return;
+ const cover=Math.max(window.innerWidth/art.naturalWidth,window.innerHeight/art.naturalHeight);
+ art.style.width=Math.ceil(art.naturalWidth*cover*scale)+'px';
+ art.style.height=Math.ceil(art.naturalHeight*cover*scale)+'px';
+ requestAnimationFrame(()=>{
+  pan.scrollLeft=(pan.scrollWidth-pan.clientWidth)/2;
+  pan.scrollTop=(pan.scrollHeight-pan.clientHeight)/2;
+ });
+}
+function show(index){
+ i=(index+slides.length)%slides.length;
+ const slide=slides[i];
+ art.onload=sizeAndCenter;
+ art.src=slide[0];
+ art.alt=`${slide[1]}, ${slide[2]}`;
+ status.textContent=`${slide[1]} · ${slide[2]}`;
+ if(art.complete)requestAnimationFrame(sizeAndCenter);
+}
+pan.addEventListener('click',()=>show(i+1));
+document.addEventListener('keydown',event=>{
+ if(event.key==='ArrowRight')show(i+1);
+ if(event.key==='ArrowLeft')show(i-1);
+});
+window.addEventListener('resize',sizeAndCenter);
+if(art.complete)sizeAndCenter();
+else art.addEventListener('load',sizeAndCenter,{once:true});
+</script>
+</body>
+</html>

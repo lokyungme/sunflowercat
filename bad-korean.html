@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bad korean — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;z-index:30;top:0;left:0;right:0;height:42px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
+.viewer{position:absolute;inset:42px 0 0;display:flex;align-items:flex-start;justify-content:center}
+.art-wrap{position:relative;width:100%;height:100%;padding-top:10px;display:flex;align-items:flex-start;justify-content:center}
+#art{display:block;max-height:84vh;max-width:90vw;width:auto;height:auto;user-select:none}
+.zone{position:fixed;z-index:20;top:42px;bottom:0;width:50%;border:0;background:transparent;padding:0}
+.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
+.arrow{position:fixed;z-index:25;top:50%;transform:translateY(-50%);font-size:13px;opacity:.14;pointer-events:none}
+.arrow.left{left:13px}.arrow.right{right:13px}
+.caption{position:fixed;z-index:30;left:50%;bottom:40px;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 32px);font-size:11px;line-height:1.2;text-align:center;white-space:normal}.counter{position:fixed;z-index:30;left:50%;bottom:14px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
+.about{position:fixed;z-index:30;right:16px;bottom:13px;font-size:9px;opacity:.32}
+@media(max-width:700px){
+ .top{height:40px;padding:0 11px}.viewer{inset:40px 0 0}.art-wrap{padding-top:8px}.zone{top:40px}
+ #art{max-height:80vh;max-width:95vw}
+}
+</style>
+</head>
+<body>
+<header class="top"><a href="index.html">← works</a><span>bad korean</span></header>
+<main class="viewer"><div class="art-wrap"><img id="art" src="bad-korean/00_front-cover.jpg" alt=""><div class="caption" id="caption"></div></div></main>
+<button class="zone prev" id="prev" aria-label="previous"></button>
+<button class="zone next" id="next" aria-label="next"></button>
+<div class="arrow left">←</div><div class="arrow right">→</div>
+<div class="counter" id="counter">1 / 52</div>
+<script>
+const works=[
+["bad-korean/00_front-cover.jpg", ""],
+["bad-korean/01_youdonthavetobe.jpg", "you don't have to be such an asshole all the time"],
+["bad-korean/03_nowornever.jpg", "how are you still alive?"],
+["bad-korean/04_icantwait.jpg", "i can't wait to get away from you"],
+["bad-korean/05_whereami.jpg", "where am i?"],
+["bad-korean/06_DIY.jpg", "DIY abortion"],
+["bad-korean/07_health.jpg", "health! positivity! you are great"],
+["bad-korean/08_hihowwasyourweekend.jpg", "Hi how was your weekend? Good thanks relaxing but nice and yours? Great! Thanks"],
+["bad-korean/09_nomorerompers.jpg", "no more rompers while binge drinking"],
+["bad-korean/10_verizon.jpg", "on the phone with verizon"],
+["bad-korean/11_youarepretty.jpg", "you are pretty you are pretty ok you are truly ok"],
+["bad-korean/12_notreallythinking.jpg", "not really thinking about the movie lolll"],
+["bad-korean/13_iamgoodgirl.jpg", "i am good girl"],
+["bad-korean/14_theend.jpg", "the end"],
+["bad-korean/15_loveyatill.jpg", "love ya till i don't xo"],
+["bad-korean/16_onlyfriend.jpg", "i want to be your only friend"],
+["bad-korean/17_onlyfriend 1.jpg", "i want to be your only friend"],
+["bad-korean/18_itsmink.jpg", "it's mink bitches"],
+["bad-korean/19_onlyfriend 2.jpg", "i want to be your only friend"],
+["bad-korean/20_cutie.jpg", "cutie"],
+["bad-korean/21_fucktheworld.jpg", "fuck the world don't ask me for shit"],
+["bad-korean/22_iwanttobeyour_tub.jpg", "i want to be your only friend"],
+["bad-korean/23_onlyfriend 3.jpg", "i want to be your only friend"],
+["bad-korean/24_sephora.jpg", "when will i become sephora vib rouge"],
+["bad-korean/25_younever.jpg", "i want to be your only friend"],
+["bad-korean/26_younever 1.jpg", "you never pay attention to me"],
+["bad-korean/27_you always get your way.jpg", "you never pay attention to me"],
+["bad-korean/28_areyoutout.jpg", "are you out in love with me"],
+["bad-korean/29_areyoutout 1.jpg", "are you out in love with me"],
+["bad-korean/30_areyouout.jpg", "are you out in love with me"],
+["bad-korean/31_sorry.jpg", "sorry"],
+["bad-korean/32_sorry 1.jpg", "sorry"],
+["bad-korean/33_sorry_beach.jpg", "sorry"],
+["bad-korean/34_sorry.jpg", "sorry"],
+["bad-korean/35_my mom.jpg", "my mom was right"],
+["bad-korean/36_amile.jpg", "a mile and half on the bus takes a long time"],
+["bad-korean/37_new_itsjustbody.jpg", "it's just body parts"],
+["bad-korean/38_ilostthescarf.jpg", "i lost the scarf my mom bought for me"],
+["bad-korean/39_killing.jpg", "in a killing mood tonight"],
+["bad-korean/40_igetbored 1.jpg", "i get bored as i get older"],
+["bad-korean/41_i get bored.jpg", "i get bored as i get older"],
+["bad-korean/42_i get bored as i get older.jpg", "i get bored as i get older"],
+["bad-korean/43_i get bored as i get older.jpg", "i get bored as i get older"],
+["bad-korean/44_fuck it.jpg", "fuck it im high"],
+["bad-korean/45_i get bored as i get older.jpg", "i get bored as i get older"],
+["bad-korean/46_i get bored as i get older.jpg", "i get bored as i get older"],
+["bad-korean/48_it could have been worse.jpg", "it could've been worse"],
+["bad-korean/49.jpg", "."],
+["bad-korean/50.jpg", ""],
+["bad-korean/52.jpg", "i miss my dad"],
+["bad-korean/54.jpg", "it doesn't always have to be bad"],
+["bad-korean/99_back-cover.jpg", ""]
+];
+let i=0;
+const art=document.getElementById('art'), counter=document.getElementById('counter'), caption=document.getElementById('caption');
+function show(n){
+ i=(n+works.length)%works.length;
+ art.src=works[i][0];
+ art.alt=works[i][1];
+ caption.textContent=works[i][1]||'';
+ counter.textContent=(i+1)+' / '+works.length;
+}
+show(0);
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight')show(i+1);
+ if(e.key==='ArrowLeft')show(i-1);
+});
+</script>
+</body></html>
