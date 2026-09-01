@@ -7,6 +7,33 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .cover{max-height:calc(100vh - 82px)}
+
+  @media (max-width:720px){
+    .landing-content{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      width:100%;
+    }
+    .cover-wrap,
+    .cover-link{
+      display:block;
+      width:100%;
+      max-width:100%;
+    }
+    .cover{
+      display:block;
+      width:100%;
+      max-width:100%;
+      max-height:none;
+      height:auto;
+    }
+    .letter{
+      width:100%;
+      max-width:none;
+      margin-top:30px;
+    }
+  }
 </style>
 </head>
 <body>
