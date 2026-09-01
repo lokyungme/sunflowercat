@@ -8,6 +8,7 @@
 <meta property="og:type" content="profile" />
 <meta property="og:title" content="Kyung-Me — artist and educator" />
 <meta property="og:description" content="Kyung-Me is an artist and educator based in Queens, New York." />
+<meta property="og:image" content="https://sunflowercat.com/kyung-me-artist-portrait.jpg" />
 <meta property="og:url" content="https://sunflowercat.com/about.html" />
 <link rel="canonical" href="https://sunflowercat.com/about.html" />
 <link rel="stylesheet" href="style.css" />
@@ -19,11 +20,13 @@
   "mainEntity": {
     "@type": "Person",
     "name": "Kyung-Me",
+    "birthDate": "1991",
     "jobTitle": "Artist and educator",
     "homeLocation": {
       "@type": "Place",
       "name": "Queens, New York"
     },
+    "image": "https://sunflowercat.com/kyung-me-artist-portrait.jpg",
     "url": "https://sunflowercat.com/",
     "sameAs": [
       "https://www.instagram.com/beebieta/"
@@ -39,7 +42,11 @@
   }
 
   .about-layout{
-    width:min(470px,100%);
+    width:min(980px,100%);
+    display:grid;
+    grid-template-columns:minmax(220px,330px) minmax(280px,470px);
+    gap:clamp(60px,10vw,150px);
+    align-items:start;
   }
 
   .about-text{
@@ -68,6 +75,12 @@
   .about-text a:hover,
   .instagram-link:hover{opacity:.55}
 
+  .about-portrait{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+
   .instagram-link{
     display:inline-flex;
     width:16px;
@@ -86,8 +99,17 @@
       padding:34px 18px 60px;
     }
 
+    .about-layout{
+      grid-template-columns:1fr;
+      gap:48px;
+    }
+
     .about-text{
       max-width:330px;
+    }
+
+    .about-portrait{
+      width:min(100%,470px);
     }
   }
 </style>
@@ -149,6 +171,8 @@
             </svg>
           </a>
         </section>
+
+        <img class="about-portrait" src="kyung-me-artist-portrait.jpg" alt="Kyung-Me, artist and educator based in Queens, New York" width="1537" height="2048" />
       </div>
     </main>
   </div>

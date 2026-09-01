@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>more ink drawings — kyung-me</title>
+<title>ghost — kyung-me</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
@@ -30,29 +30,24 @@ a{color:inherit;text-decoration:none}
 <body>
 <header class="top">
  <a href="index.html">← works</a>
- <div>more ink drawings <span class="year">2024</span></div>
+ <div>ghost <span class="year">2024</span></div>
 </header>
 <main class="viewer">
- <img id="art-a" class="art active" src="01_The House Cat.jpg" alt="The House Cat" aria-hidden="false">
+ <img id="art-a" class="art active" src="ghost/a1.jpg" alt="Ghost I" aria-hidden="false">
  <img id="art-b" class="art" src="" alt="" aria-hidden="true">
 </main>
 <button class="zone prev" id="prev" aria-label="previous image"></button>
 <button class="zone next" id="next" aria-label="next image"></button>
 <div class="arrow left">←</div><div class="arrow right">→</div>
-<div class="caption" id="caption">The House Cat</div>
-<div class="counter" id="counter">1 / 10</div>
+<div class="caption" id="caption">Ghost I</div>
+<div class="counter" id="counter">1 / 5</div>
 <script>
 const works=[
- ['01_The House Cat.jpg','The House Cat'],
- ['02_The Clock.jpg','The Clock'],
- ['03_The Study.jpg','The Study'],
- ['04_The Hunt.jpg','The Hunt'],
- ['04a_The Vault.jpg','The Vault'],
- ['05_The Actor.jpg','The Actor'],
- ['06_Mary.jpg','Mary'],
- ['07_The Monarch.jpg','The Monarch'],
- ['08_Ghost.jpg','Ghost'],
- ['09_the gate.jpg','The Gate']
+ ['ghost/a1.jpg','Ghost I'],
+ ['ghost/a2.jpg','Ghost II'],
+ ['ghost/a3.jpg','Ghost III'],
+ ['ghost/a4.jpg','Ghost IV'],
+ ['ghost/a5.jpg','Ghost V']
 ];
 let i=0,transitionToken=0;
 let front=document.getElementById('art-a'),back=document.getElementById('art-b');
