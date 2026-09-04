@@ -8,9 +8,9 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
-.top-right{display:flex;align-items:center;gap:16px}.gallery-link{opacity:.38}.gallery-link:hover{opacity:.8}.viewer{position:absolute;inset:24px 0 0;background:#fff}
-.art{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;max-width:96vw;max-height:92vh;width:auto;height:auto;opacity:0;transition:opacity 80ms linear;user-select:none}.art.active{opacity:1}
+.top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
+.top-right{display:flex;align-items:center;gap:17px}.gallery-link{opacity:.38}.gallery-link:hover{opacity:.8}.viewer{position:absolute;inset:24px 0 0;background:#fff}
+.art{position:absolute;top:0;left:50%;transform:translateX(-50%);display:block;max-width:100vw;max-height:calc(100vh - 42px);width:auto;height:auto;opacity:0;transition:opacity 80ms linear;user-select:none}.art.active{opacity:1}
 .zone{position:fixed;z-index:30;top:24px;bottom:0;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
 .prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
 .arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.18;pointer-events:none}
@@ -19,8 +19,8 @@ a{color:inherit;text-decoration:none}
 .caption{position:fixed;z-index:45;left:15px;bottom:11px;line-height:1.3;pointer-events:none}
 .caption-title{font-size:11px;opacity:.58}.caption-meta{margin-top:2px;font-size:9px;opacity:.34}
 @media(max-width:700px){
- .top{height:24px;padding:0 11px}.viewer{inset:24px 0 0}.zone{top:24px}
- .art{max-width:97vw;max-height:90vh}
+ .top{height:22px;padding:0 8px}.viewer{inset:22px 0 0}.zone{top:22px}
+ .art{max-width:100vw;max-height:calc(100vh - 36px)}
  .caption{left:11px}
 }
 </style>

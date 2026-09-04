@@ -9,14 +9,14 @@
 html,body{margin:0;width:100%;height:100%;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 body{overflow:hidden}
 a{color:inherit;text-decoration:none}
-.topbar{position:fixed;z-index:20;top:0;left:0;right:0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;font-size:11px;letter-spacing:.16em;background:rgba(255,255,255,.92)}
-.back{letter-spacing:0;font-size:12px}.meta{display:flex;gap:28px}
-.stage{position:fixed;inset:58px 0 0;display:flex;align-items:center;justify-content:center;padding:10px 22px 18px;background:#fff}
-.page-button{border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;cursor:e-resize;max-width:100%;max-height:100%}
-.page-image{display:block;max-width:97vw;max-height:calc(100vh - 82px);width:auto;height:auto;object-fit:contain;box-shadow:0 12px 34px rgba(0,0,0,.045)}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;background:#fff}
+.back{font-size:11px}.meta{display:flex;gap:17px}
+.stage{position:fixed;inset:24px 0 0;display:flex;align-items:flex-start;justify-content:center;padding:0 0 18px;background:#fff}
+.page-button{border:0;background:none;padding:0;display:flex;align-items:flex-start;justify-content:center;cursor:e-resize;max-width:100%;max-height:100%}
+.page-image{display:block;max-width:100vw;max-height:calc(100vh - 42px);width:auto;height:auto;object-fit:contain;box-shadow:0 12px 34px rgba(0,0,0,.045)}
 .endcard{display:none;text-align:center;font-size:11px}.endcard.open{display:block}.endcard nav{display:flex;flex-direction:column;align-items:center;gap:16px}.endcard a:hover{text-decoration:underline;text-underline-offset:3px}
 .page-button.hidden{display:none}.hint{position:fixed;z-index:20;bottom:17px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.12em;opacity:.26;pointer-events:none}
-@media(max-width:700px){.topbar{height:50px;padding:0 16px}.meta{gap:14px}.stage{inset:50px 0 0;padding:6px 8px 14px}.page-image{max-width:98vw;max-height:calc(100vh - 64px)}}
+@media(max-width:700px){.topbar{height:22px;padding:0 8px}.meta{gap:11px}.stage{inset:22px 0 0;padding:0 0 14px}.page-image{max-width:100vw;max-height:calc(100vh - 36px)}}
 .page-nav{
  position:fixed;z-index:30;top:50%;transform:translateY(-50%);
  border:0;background:transparent;color:#111;font:inherit;font-size:18px;
@@ -87,10 +87,8 @@ a{color:inherit;text-decoration:none}
   <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
   <section class="endcard" id="endcard">
     <nav>
-      <a href="https://www.mutualart.com/Exhibition/Kyung-Me--Copy-Kitty/23D3733C11117A56" target="_blank" rel="noopener">about +</a>
-      <a href="https://kiangmalingue.com/artists/kyung-me/" target="_blank" rel="noopener">press +</a>
-      <a href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">book +</a>
-      <a href="/">← back to works</a>
+      <a href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">buy book</a>
+      <a href="#" id="start-over">start over</a>
     </nav>
   </section>
 </main>
@@ -119,6 +117,7 @@ const endcard=document.getElementById('endcard');
 const hint=document.getElementById('hint');
 const prevBtn=document.getElementById('page-prev');
 const nextBtn=document.getElementById('page-next');
+const startOver=document.getElementById('start-over');
 
 function render(){
   image.classList.remove('slide-left','slide-right','enter-from-right','enter-from-left');
@@ -151,6 +150,11 @@ function prev(){
 button.addEventListener('click',next);
 nextBtn.addEventListener('click',next);
 prevBtn.addEventListener('click',prev);
+startOver.addEventListener('click',e=>{
+  e.preventDefault();
+  current=0;
+  render();
+});
 
 // On the final links slide, clicking empty space restarts at the cover.
 endcard.addEventListener('click',e=>{

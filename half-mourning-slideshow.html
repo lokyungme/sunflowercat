@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>half mourning — kyung-me</title>
+<style>
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+  background:#fff;
+  color:#111;
+  font-family:Arial,Helvetica,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+
+.top{
+  position:fixed;
+  z-index:30;
+  top:0;left:0;right:0;
+  height:26px;
+  padding:0 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:11px;
+  background:#fff;
+}
+.top-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.counter{
+  font-size:11px;
+  opacity:.42;
+  min-width:34px;
+  text-align:right;
+}
+
+.viewer{
+  position:fixed;
+  inset:26px 0 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#fff;
+  cursor:e-resize;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.viewer img{
+  display:block;
+  max-width:100vw;
+  max-height:calc(100vh - 26px);
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+.medium,
+.year{
+  position:fixed;
+  z-index:20;
+  bottom:8px;
+  padding:3px 5px;
+  font-size:10px;
+  line-height:1.2;
+  opacity:.55;
+  background:rgba(255,255,255,.88);
+  pointer-events:none;
+}
+.medium{left:10px}
+.year{right:10px}
+
+.click-zone{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  border:0;
+  background:transparent;
+  cursor:e-resize;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.loading{
+  position:fixed;
+  z-index:25;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-size:12px;
+  opacity:.25;
+  display:none;
+  pointer-events:none;
+}
+
+@media(max-width:700px){
+  .top{
+    height:24px;
+    padding:0 8px;
+    font-size:11px;
+  }
+  .top-right{gap:7px}
+  .viewer{inset:24px 0 0}
+  .viewer img{
+    max-width:100vw;
+    max-height:calc(100vh - 24px);
+  }
+  .medium,
+  .year{
+    bottom:6px;
+    font-size:10px;
+  }
+  .medium{left:7px}
+  .year{right:7px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="/">← works</a>
+  <div class="top-right">
+    <span>half mourning</span>
+    <span class="counter" id="counter">1 / 16</span>
+  </div>
+</header>
+
+<main class="viewer" id="viewer">
+  <img id="art" src="Half Mourning/hm1.jpg" alt="Half Mourning">
+  <button class="click-zone" id="next" aria-label="Next image"></button>
+</main>
+
+<div class="medium">ink + charcoal on paper, 24 × 18 in</div>
+<div class="year">2018</div>
+
+<div class="loading" id="loading">loading</div>
+
+<script>
+const slides = [
+  "Half Mourning/hm1.jpg",
+  "Half Mourning/hm1_detail1.jpg",
+  "Half Mourning/hm1_detail2.jpg",
+  "Half Mourning/hm1_detail3.jpg",
+  "Half Mourning/hm2.jpg",
+  "Half Mourning/hm2_detail1.jpg",
+  "Half Mourning/hm2_detail2.jpg",
+  "Half Mourning/hm3.jpg",
+  "Half Mourning/hm3_detail.jpg",
+  "Half Mourning/hm3_detail3.jpg",
+  "Half Mourning/hm3_detail4.jpg",
+  "Half Mourning/hm3_detail5.jpg",
+  "Half Mourning/hm4.jpg",
+  "Half Mourning/hm4_detail1.jpg",
+  "Half Mourning/hm4_detail2.jpg",
+  "Half Mourning/hm4_detail3.jpg"
+];
+
+const art = document.getElementById('art');
+const counter = document.getElementById('counter');
+const nextButton = document.getElementById('next');
+const loading = document.getElementById('loading');
+
+let current = 0;
+
+function preload(index){
+  const img = new Image();
+  img.src = slides[index];
+}
+
+function show(index){
+  current = (index + slides.length) % slides.length;
+  loading.style.display = 'block';
+  art.style.visibility = 'hidden';
+  art.src = slides[current];
+  art.alt = `Half Mourning ${current + 1} of ${slides.length}`;
+  counter.textContent = `${current + 1} / ${slides.length}`;
+}
+
+function next(){
+  show(current + 1);
+}
+
+function previous(){
+  show(current - 1);
+}
+
+art.addEventListener('load', () => {
+  loading.style.display = 'none';
+  art.style.visibility = 'visible';
+  preload((current + 1) % slides.length);
+});
+
+nextButton.addEventListener('click', next);
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    next();
+  }
+  if(e.key === 'ArrowLeft') {
+    e.preventDefault();
+    previous();
+  }
+});
+
+preload(1);
+</script>
+</body>
+</html>

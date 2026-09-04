@@ -6,28 +6,40 @@
 <title>sister — kyung-me</title>
 <link rel="stylesheet" href="style.css">
 <style>
-html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important}
-.site{display:block!important;min-height:100vh}
+html,body{height:100%!important;overflow:hidden!important}
+.site{display:block!important;height:100vh;overflow:hidden}
 .sister-works-bar{position:fixed;z-index:100;top:0;left:0;right:0;height:24px;padding:0 10px;display:flex;align-items:center;background:#fff;font-size:11px}
 .sister-works-bar a{color:inherit;text-decoration:none}
-.sister-main{width:100%!important;max-width:none!important;margin:0!important;padding:24px 16px 48px!important}
+.sister-main{position:fixed;inset:24px 0 0;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden}
 .sister-header{position:fixed;z-index:101;top:0;right:10px;width:auto;height:24px;margin:0;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
 .sister-title{margin:0;font-size:11px;font-weight:400;line-height:1}
-.sister-meta-corner{position:fixed;z-index:90;right:15px;bottom:12px;text-align:right;font-size:9px;line-height:1.45;opacity:.32}
-.sister-meta-corner:hover{opacity:.72}
-.sister-meta-corner a{color:inherit;text-decoration:none}
+.sister-meta-corner{display:none}
 .sister-intro{display:none}
-.sister-viewer{width:min(90vw,1200px)!important;max-width:none!important;margin:0 auto!important}
-.sister-image-link{display:block;width:100%}
-.sister-image{display:block;width:100%!important;max-width:none!important;max-height:none!important;height:auto!important}
-.sister-caption-row,.sister-pair,.sister-count,.sister-detail-meta,.sister-collection{width:100%}
-.sister-archive{width:min(72vw,760px);margin:52px auto 0}
+.sister-viewer{position:relative;width:100%!important;max-width:none!important;height:100%;margin:0!important;overflow:hidden}
+.sister-image-link{display:flex;width:100%;height:calc(100% - 42px);align-items:flex-start;justify-content:center}
+.sister-image{display:block;width:auto!important;max-width:100vw!important;max-height:100%!important;height:auto!important;object-fit:contain}
+.sister-bottom{position:fixed;z-index:20;left:10px;right:10px;bottom:7px;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:16px;font-size:9px;line-height:1.35}
+.sister-caption-row,.sister-pair,.sister-count,.sister-detail-meta,.sister-collection{width:auto}
+.sister-pair{text-align:center}
+.sister-bottom-right{text-align:right}
+.sister-endcard{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px 18px 48px;background:#fff}
+.sister-endcard[hidden],.sister-bottom[hidden],.sister-image-link[hidden]{display:none!important}
+.sister-endcard-inner{width:min(86vw,720px);font-size:11px;line-height:1.55}
+.sister-endcard-meta{margin-bottom:28px}
+.sister-archive{width:100%;margin:0}
+.sister-start-over{margin-top:30px;padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer}
 @media(max-width:700px){
  .sister-works-bar{height:22px;padding:0 8px}
- .sister-main{padding:22px 11px 38px!important}
+ .sister-main{inset:22px 0 0}
  .sister-header{right:8px;height:22px}
- .sister-meta-corner{right:10px;bottom:8px;font-size:8px}
- .sister-viewer,.sister-archive{width:100%!important}
+ .sister-viewer{width:100%!important}
+ .sister-image-link{height:calc(100% - 54px)}
+ .sister-bottom{left:8px;right:8px;bottom:6px;grid-template-columns:1fr auto;gap:6px;font-size:8px}
+ .sister-pair{display:none}
+ .sister-endcard{padding:24px 16px 42px}
+ .sister-endcard-inner{width:100%;font-size:10px}
+ .sister-endcard-meta{margin-bottom:22px}
+ .sister-start-over{margin-top:24px}
 }
 </style>
 </head>
@@ -49,30 +61,42 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
         <a class="sister-image-link" href="#" aria-label="next drawing">
           <img class="sister-image" id="sister-image" src="the-marriage.jpg" alt="the marriage">
         </a>
-        <div class="sister-caption-row">
-          <div class="sister-caption" id="sister-caption">the marriage</div>
-          <button class="sister-detail-toggle" id="sister-detail-toggle" type="button">details +</button>
+        <div class="sister-bottom" id="sister-bottom">
+          <div class="sister-caption-row">
+            <div class="sister-caption" id="sister-caption">the marriage</div>
+            <button class="sister-detail-toggle" id="sister-detail-toggle" type="button">details +</button>
+          </div>
+          <div class="sister-pair" id="sister-pair"><span>the marriage</span> ↔ <span class="inactive">the mother</span></div>
+          <div class="sister-bottom-right">
+            <div class="sister-count" id="sister-count">1 / 8</div>
+            <div class="sister-detail-meta" id="sister-detail-meta" hidden></div>
+            <div class="sister-collection" id="sister-collection"></div>
+          </div>
         </div>
-        <div class="sister-pair" id="sister-pair"><span>the marriage</span> ↔ <span class="inactive">the mother</span></div>
-        <div class="sister-count" id="sister-count">1 / 8</div>
-        <div class="sister-detail-meta" id="sister-detail-meta" hidden></div>
-        <div class="sister-collection" id="sister-collection"></div>
+        <section class="sister-endcard" id="sister-endcard" hidden aria-label="sister exhibition and press">
+          <div class="sister-endcard-inner">
+            <div class="sister-endcard-meta">
+              <div>sister, 2022</div>
+              <div>pen and charcoal on paper, 48 × 32 in.</div>
+            </div>
+            <div class="sister-archive">
+              <div class="sister-archive-row"><span class="sister-archive-label">exhibition</span><a href="https://bureau-inc.com/exhibitions/sister" target="_blank" rel="noopener">bureau</a></div>
+              <div class="sister-archive-row">
+                <span class="sister-archive-label">press / features</span>
+                <span class="sister-links">
+                  <a href="https://assets.ctfassets.net/hp42m99tzs4o/1l8mv91WMJ3Y15TLao8Bz0/5cab16f4ea936802fb0e9ebff2a82598/KM.2022.12_ArtinAmerica.caption.pdf" target="_blank" rel="noopener">art in america</a>
+                  <a href="https://hyperallergic.com/780238/expressionism-turned-inside-out/" target="_blank" rel="noopener">hyperallergic</a>
+                  <a href="https://downloads.ctfassets.net/hp42m99tzs4o/6c7OmX9By7qLxiRGwUG0eE/a7509dd4a51c96700657d2c02df694ee/KM.2022.12_TheAmp.caption.pdf" target="_blank" rel="noopener">the amp</a>
+                  <a href="https://www.contemporaryartdaily.com/project/kyung-me-at-bureau-new-york-26026" target="_blank" rel="noopener">contemporary art daily</a>
+                  <a href="https://artviewer.org/kyung-me-at-bureau/" target="_blank" rel="noopener">art viewer</a>
+                  <a href="http://the-editorialmagazine.com/kyung-me-sister/" target="_blank" rel="noopener">the editorial magazine</a>
+                </span>
+              </div>
+            </div>
+            <button class="sister-start-over" id="sister-start-over" type="button">start over</button>
+          </div>
+        </section>
       </div>
-
-      <footer class="sister-archive">
-        <div class="sister-archive-row"><span class="sister-archive-label">exhibition</span><a href="https://bureau-inc.com/exhibitions/sister" target="_blank" rel="noopener">bureau</a></div>
-        <div class="sister-archive-row">
-          <span class="sister-archive-label">press / features</span>
-          <span class="sister-links">
-            <a href="https://assets.ctfassets.net/hp42m99tzs4o/1l8mv91WMJ3Y15TLao8Bz0/5cab16f4ea936802fb0e9ebff2a82598/KM.2022.12_ArtinAmerica.caption.pdf" target="_blank" rel="noopener">art in america</a>
-            <a href="https://hyperallergic.com/780238/expressionism-turned-inside-out/" target="_blank" rel="noopener">hyperallergic</a>
-            <a href="https://downloads.ctfassets.net/hp42m99tzs4o/6c7OmX9By7qLxiRGwUG0eE/a7509dd4a51c96700657d2c02df694ee/KM.2022.12_TheAmp.caption.pdf" target="_blank" rel="noopener">the amp</a>
-            <a href="https://www.contemporaryartdaily.com/project/kyung-me-at-bureau-new-york-26026" target="_blank" rel="noopener">contemporary art daily</a>
-            <a href="https://artviewer.org/kyung-me-at-bureau/" target="_blank" rel="noopener">art viewer</a>
-            <a href="http://the-editorialmagazine.com/kyung-me-sister/" target="_blank" rel="noopener">the editorial magazine</a>
-          </span>
-        </div>
-      </footer>
     </main>
   </div>
 
@@ -126,6 +150,9 @@ const sisterDetailMeta = document.getElementById("sister-detail-meta");
 const sisterDetailToggle = document.getElementById("sister-detail-toggle");
 const sisterCollection = document.getElementById("sister-collection");
 const sisterLink = document.querySelector(".sister-image-link");
+const sisterBottom = document.getElementById("sister-bottom");
+const sisterEndcard = document.getElementById("sister-endcard");
+const sisterStartOver = document.getElementById("sister-start-over");
 
 function renderPair(slide){
   const aActive = slide.title === slide.pair[0];
@@ -135,10 +162,17 @@ function renderPair(slide){
 }
 
 function renderFull(){
+  if (sisterIndex === sisterSlides.length) {
+    renderEndcard();
+    return;
+  }
   detailMode = false;
   detailIndex = 0;
   const slide = sisterSlides[sisterIndex];
 
+  sisterEndcard.hidden = true;
+  sisterLink.hidden = false;
+  sisterBottom.hidden = false;
   sisterViewer.classList.remove("detail-mode");
   sisterLink.style.width = "";
   sisterImage.style.width = "";
@@ -159,6 +193,15 @@ function renderFull(){
     sisterCollection.textContent = "";
   }
   renderPair(slide);
+}
+
+function renderEndcard(){
+  detailMode = false;
+  detailIndex = 0;
+  sisterViewer.classList.remove("detail-mode");
+  sisterLink.hidden = true;
+  sisterBottom.hidden = true;
+  sisterEndcard.hidden = false;
 }
 
 function renderDetail(){
@@ -194,7 +237,8 @@ function renderDetail(){
 }
 
 function nextWork(delta){
-  sisterIndex = (sisterIndex + delta + sisterSlides.length) % sisterSlides.length;
+  const totalSlides = sisterSlides.length + 1;
+  sisterIndex = (sisterIndex + delta + totalSlides) % totalSlides;
   renderFull();
 }
 
@@ -216,6 +260,11 @@ sisterDetailToggle.addEventListener("click", () => {
     detailIndex = 0;
     renderDetail();
   }
+});
+
+sisterStartOver.addEventListener("click", () => {
+  sisterIndex = 0;
+  renderFull();
 });
 
 document.addEventListener("keydown", e => {
