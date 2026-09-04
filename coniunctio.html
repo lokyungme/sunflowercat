@@ -8,10 +8,10 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.top{position:fixed;z-index:40;top:0;left:0;right:0;height:28px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
-.viewer{position:absolute;inset:28px 0 28px;background:#fff}
-#art{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:block;max-width:96vw;max-height:calc(100vh - 66px);width:auto;height:auto;user-select:none}
-.zone{position:fixed;z-index:30;top:28px;bottom:28px;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
+.top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
+.viewer{position:absolute;inset:24px 0 28px;background:#fff}
+#art{position:absolute;top:0;left:50%;transform:translateX(-50%);display:block;max-width:96vw;max-height:100%;width:auto;height:auto;user-select:none}
+.zone{position:fixed;z-index:30;top:24px;bottom:28px;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
 .prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
 .arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.16;pointer-events:none}
 .arrow.left{left:12px}.arrow.right{right:12px}
@@ -26,8 +26,8 @@ a{color:inherit;text-decoration:none}
 .meta{text-align:right;font-size:11px;line-height:1;opacity:1;white-space:nowrap}
 .meta-medium::before{content:" · "}
 @media(max-width:700px){
- .top{height:28px;padding:0 9px}.viewer{inset:28px 0 40px}.zone{top:28px;bottom:40px}
- #art{max-width:97vw;max-height:calc(100vh - 76px)}
+ .top{height:22px;padding:0 8px}.viewer{inset:22px 0 40px}.zone{top:22px;bottom:40px}
+ #art{max-width:97vw;max-height:100%}
  .bottom{height:40px;padding:0 9px}
  .press{left:9px}.press-menu{bottom:23px}
  .counter{left:58px;transform:translateY(-50%)}
