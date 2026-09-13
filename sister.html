@@ -8,10 +8,10 @@
 <style>
 html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important}
 .site{display:block!important;min-height:100vh}
-.sister-works-bar{position:fixed;z-index:100;top:0;left:0;right:0;height:24px;padding:0 10px;display:flex;align-items:center;background:#fff;font-size:11px}
+.sister-works-bar{position:fixed;z-index:100;top:0;left:0;right:0;height:20px;padding:0 10px;display:flex;align-items:center;background:#fff;font-size:11px}
 .sister-works-bar a{color:inherit;text-decoration:none}
-.sister-main{width:100%!important;max-width:none!important;margin:0!important;padding:24px 16px 48px!important}
-.sister-header{position:fixed;z-index:101;top:0;right:10px;width:auto;height:24px;margin:0;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
+.sister-main{width:100%!important;max-width:none!important;margin:0!important;padding:20px 16px 48px!important}
+.sister-header{position:fixed;z-index:101;top:0;right:10px;width:auto;height:20px;margin:0;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
 .sister-title{margin:0;font-size:11px;font-weight:400;line-height:1}
 .sister-title a{color:inherit;text-decoration:none}
 .sister-meta-corner{position:fixed;z-index:90;right:15px;bottom:12px;text-align:right;font-size:9px;line-height:1.45;opacity:.32}
@@ -21,12 +21,12 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
 .sister-viewer{width:min(90vw,1200px)!important;max-width:none!important;margin:0 auto!important}
 .sister-image-link{display:block;width:100%}
 .sister-image{display:block;width:100%!important;max-width:none!important;max-height:none!important;height:auto!important}
-.sister-caption-row,.sister-pair,.sister-count,.sister-detail-meta,.sister-collection{width:100%}
+.sister-caption-row,.sister-detail-meta,.sister-collection{width:100%}
 .sister-archive{width:min(72vw,760px);margin:52px auto 0}
 @media(max-width:700px){
- .sister-works-bar{height:22px;padding:0 8px}
- .sister-main{padding:22px 11px 38px!important}
- .sister-header{right:8px;height:22px}
+ .sister-works-bar{height:20px;padding:0 8px}
+ .sister-main{padding:20px 11px 38px!important}
+ .sister-header{right:8px;height:20px}
  .sister-meta-corner{right:10px;bottom:8px;font-size:8px}
  .sister-viewer,.sister-archive{width:100%!important}
 }
@@ -47,14 +47,12 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
 
       <div class="sister-viewer">
         <a class="sister-image-link" href="#" aria-label="next drawing">
-          <img class="sister-image" id="sister-image" src="the-marriage.jpg" alt="the marriage">
+          <img class="sister-image" id="sister-image" src="sister/the-marriage.jpg" alt="the marriage">
         </a>
         <div class="sister-caption-row">
           <div class="sister-caption" id="sister-caption">the marriage</div>
           <button class="sister-detail-toggle" id="sister-detail-toggle" type="button">details +</button>
         </div>
-        <div class="sister-pair" id="sister-pair"><span>the marriage</span> ↔ <span class="inactive">the mother</span></div>
-        <div class="sister-count" id="sister-count">1 / 8</div>
         <div class="sister-detail-meta" id="sister-detail-meta" hidden></div>
         <div class="sister-collection" id="sister-collection"></div>
       </div>
@@ -79,36 +77,36 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
 <script>
 const sisterSlides = [
   {
-    src:"the-marriage.jpg", title:"the marriage", pair:["the marriage","the mother"], collection:"baltimore museum of art",
-    details:["marriage-detail-1.jpg","marriage-detail-2.jpg","marriage-detail-3.jpg"]
+    src:"sister/the-marriage.jpg", title:"the marriage", pair:["the marriage","the mother"], collection:"baltimore museum of art",
+    details:["sister/marriage-detail-1.jpg","sister/marriage-detail-2.jpg","sister/marriage-detail-3.jpg"]
   },
   {
-    src:"the-mother.jpg", title:"the mother", pair:["the marriage","the mother"], collection:"baltimore museum of art",
-    details:["mother-detail-1.jpg","mother-detail-2.jpg","mother-detail-3.jpg","mother-detail-4.jpg"]
+    src:"sister/the-mother.jpg", title:"the mother", pair:["the marriage","the mother"], collection:"baltimore museum of art",
+    details:["sister/mother-detail-1.jpg","sister/mother-detail-2.jpg","sister/mother-detail-3.jpg","sister/mother-detail-4.jpg"]
   },
   {
-    src:"the-prostration.jpg", title:"the prostration", pair:["the prostration","the resurrection"], collection:"whitney museum of american art", collectionUrl:"https://whitney.org/collection/works/68060",
-    details:["prostration-detail-1.jpg","prostration-detail-2.jpg","prostration-detail-3.jpg"]
+    src:"sister/the-prostration.jpg", title:"the prostration", pair:["the prostration","the resurrection"], collection:"whitney museum of american art", collectionUrl:"https://whitney.org/collection/works/68060",
+    details:["sister/prostration-detail-1.jpg","sister/prostration-detail-2.jpg","sister/prostration-detail-3.jpg"]
   },
   {
-    src:"the-resurrection.jpg", title:"the resurrection", pair:["the prostration","the resurrection"],
-    details:["resurrection-detail-1.jpg","resurrection-detail-2.jpg","resurrection-detail-3.jpg","resurrection-detail-4.jpg"]
+    src:"sister/the-resurrection.jpg", title:"the resurrection", pair:["the prostration","the resurrection"],
+    details:["sister/resurrection-detail-1.jpg","sister/resurrection-detail-2.jpg","sister/resurrection-detail-3.jpg","sister/resurrection-detail-4.jpg"]
   },
   {
-    src:"the-confession.jpg", title:"the confession", pair:["the confession","the profession"],
-    details:["confession-detail-1.jpg","confession-detail-2.jpg","confession-detail-3.jpg"]
+    src:"sister/the-confession.jpg", title:"the confession", pair:["the confession","the profession"],
+    details:["sister/confession-detail-1.jpg","sister/confession-detail-2.jpg","sister/confession-detail-3.jpg"]
   },
   {
-    src:"the-profession.jpg", title:"the profession", pair:["the confession","the profession"],
-    details:["profession-detail-1.jpg","profession-detail-2.jpg"]
+    src:"sister/the-profession.jpg", title:"the profession", pair:["the confession","the profession"],
+    details:["sister/profession-detail-1.jpg","sister/profession-detail-2.jpg"]
   },
   {
-    src:"the-vessel.jpg", title:"the vessel", pair:["the organ","the vessel"],
-    details:["vessel-detail-1.jpg"]
+    src:"sister/the-vessel.jpg", title:"the vessel", pair:["the organ","the vessel"],
+    details:["sister/vessel-detail-1.jpg"]
   },
   {
-    src:"the-organ.jpg", title:"the organ", pair:["the organ","the vessel"],
-    details:["organ-detail-1.jpg","organ-detail-2.jpg"]
+    src:"sister/the-organ.jpg", title:"the organ", pair:["the organ","the vessel"],
+    details:["sister/organ-detail-1.jpg","sister/organ-detail-2.jpg"]
   }
 ];
 
@@ -120,19 +118,10 @@ let fullImageDisplayWidth = null;
 const sisterViewer = document.querySelector(".sister-viewer");
 const sisterImage = document.getElementById("sister-image");
 const sisterCaption = document.getElementById("sister-caption");
-const sisterPair = document.getElementById("sister-pair");
-const sisterCount = document.getElementById("sister-count");
 const sisterDetailMeta = document.getElementById("sister-detail-meta");
 const sisterDetailToggle = document.getElementById("sister-detail-toggle");
 const sisterCollection = document.getElementById("sister-collection");
 const sisterLink = document.querySelector(".sister-image-link");
-
-function renderPair(slide){
-  const aActive = slide.title === slide.pair[0];
-  sisterPair.innerHTML =
-    `<span class="${aActive ? "" : "inactive"}">${slide.pair[0]}</span> ↔ ` +
-    `<span class="${aActive ? "inactive" : ""}">${slide.pair[1]}</span>`;
-}
 
 function renderFull(){
   detailMode = false;
@@ -146,7 +135,6 @@ function renderFull(){
   sisterImage.src = slide.src;
   sisterImage.alt = slide.title;
   sisterCaption.textContent = slide.title;
-  sisterCount.textContent = `${sisterIndex + 1} / ${sisterSlides.length}`;
   sisterDetailToggle.textContent = slide.details.length ? "details +" : "";
   sisterDetailToggle.hidden = !slide.details.length;
   sisterDetailMeta.hidden = true;
@@ -158,7 +146,6 @@ function renderFull(){
   } else {
     sisterCollection.textContent = "";
   }
-  renderPair(slide);
 }
 
 function renderDetail(){
@@ -178,7 +165,6 @@ function renderDetail(){
   sisterImage.src = slide.details[detailIndex];
   sisterImage.alt = `${slide.title}, detail ${detailIndex + 1}`;
   sisterCaption.textContent = slide.title;
-  sisterCount.textContent = `${sisterIndex + 1} / ${sisterSlides.length}`;
   sisterDetailToggle.hidden = false;
   sisterDetailToggle.textContent = "full image";
   sisterDetailMeta.hidden = false;
@@ -190,7 +176,6 @@ function renderDetail(){
   } else {
     sisterCollection.textContent = "";
   }
-  renderPair(slide);
 }
 
 function nextWork(delta){
