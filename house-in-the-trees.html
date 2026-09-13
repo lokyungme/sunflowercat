@@ -9,7 +9,7 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
 .top{position:fixed;z-index:40;top:0;left:0;right:0;height:24px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
-.top-right{display:flex;align-items:center;gap:17px}.gallery-link{opacity:.38}.gallery-link:hover{opacity:.8}.viewer{position:absolute;inset:24px 0 0;background:#fff}
+.top-right{display:flex;align-items:center;gap:17px}.gallery-link:hover{opacity:.6}.viewer{position:absolute;inset:24px 0 0;background:#fff}
 .art{position:absolute;top:0;left:50%;transform:translateX(-50%);display:block;max-width:100vw;max-height:calc(100vh - 42px);width:auto;height:auto;opacity:0;transition:opacity 80ms linear;user-select:none}.art.active{opacity:1}
 .zone{position:fixed;z-index:30;top:24px;bottom:0;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
 .prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
@@ -18,46 +18,49 @@ a{color:inherit;text-decoration:none}
 .counter{position:fixed;z-index:45;left:50%;bottom:12px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
 .caption{position:fixed;z-index:45;left:15px;bottom:11px;line-height:1.3;pointer-events:none}
 .caption-title{font-size:11px;opacity:.58}.caption-meta{margin-top:2px;font-size:9px;opacity:.34}
+.details{position:fixed;z-index:45;right:15px;bottom:10px;text-align:right;line-height:1.35;font-size:9px;opacity:.34;pointer-events:none}
 @media(max-width:700px){
  .top{height:22px;padding:0 8px}.viewer{inset:22px 0 0}.zone{top:22px}
  .art{max-width:100vw;max-height:calc(100vh - 36px)}
  .caption{left:11px}
+ .details{right:11px}
 }
 </style>
 </head>
 <body>
 <header class="top">
 <a href="/">← works</a>
-<div class="top-right"><span>the house in the trees</span><a class="gallery-link" href="https://kiangmalingue.com/exhibitions/kyung-me-the-house-in-the-trees/" target="_blank" rel="noopener">exhibition</a></div>
+<div class="top-right"><a class="gallery-link" href="https://kiangmalingue.com/exhibitions/kyung-me-the-house-in-the-trees/" target="_blank" rel="noopener">house in the trees</a></div>
 </header>
-<main class="viewer"><img id="art-a" class="art active" src="01_The Mask.jpg" alt="The Mask" aria-hidden="false"><img id="art-b" class="art" src="" alt="" aria-hidden="true"></main>
+<main class="viewer"><img id="art-a" class="art active" src="House%20in%20the%20trees/01_The%20Mask.jpg" alt="The Mask" aria-hidden="false"><img id="art-b" class="art" src="" alt="" aria-hidden="true"></main>
 <button class="zone prev" id="prev" aria-label="previous image"></button>
 <button class="zone next" id="next" aria-label="next image"></button>
 <div class="arrow left">←</div><div class="arrow right">→</div>
 <div class="counter" id="counter">1 / 8</div>
-<div class="caption"><div class="caption-title" id="title">The Mask</div><div class="caption-meta" id="meta">16 × 24 in., ink and charcoal on paper</div></div>
+<div class="caption"><div class="caption-title" id="title">The Mask</div></div>
+<div class="details"><div id="dimensions">16 × 24 in.</div><div>ink and charcoal on paper</div></div>
 <script>
 const works=[
- ['01_The Mask.jpg','The Mask',1,''],
- ['01_closeup.jpg','The Mask',1,'detail'],
- ['02_The Doll.jpg','The Doll',2,''],
- ['02_closeupjpg.jpg','The Doll',2,'detail 1 / 2'],
- ['02_closeup2.jpg','The Doll',2,'detail 2 / 2'],
- ['03_The Bonsai.jpg','The Bonsai',3,''],
- ['04_The Shrine.jpg','The Shrine',4,''],
- ['04_closeup.jpg','The Shrine',4,'detail'],
- ['05_The Corridor.jpg','The Corridor',5,''],
- ['05_closeup.jpg','The Corridor',5,'detail'],
- ['06_The Slumber.jpg','The Slumber',6,''],
- ['07_The Clocktower.jpg','The Clocktower',7,''],
- ['08_closep.jpg','The Dollhouse',8,'detail'],
- ['08_The Dollhouse.jpg','The Dollhouse',8,'']
+ ['House%20in%20the%20trees/01_The%20Mask.jpg','The Mask',1,''],
+ ['House%20in%20the%20trees/01_closeup.jpg','The Mask',1,'detail'],
+ ['House%20in%20the%20trees/02_The%20Doll.jpg','The Doll',2,''],
+ ['House%20in%20the%20trees/02_closeupjpg.jpg','The Doll',2,'detail 1 / 2'],
+ ['House%20in%20the%20trees/02_closeup2.jpg','The Doll',2,'detail 2 / 2'],
+ ['House%20in%20the%20trees/03_The%20Bonsai.jpg','The Bonsai',3,''],
+ ['House%20in%20the%20trees/04_The%20Shrine.jpg','The Shrine',4,''],
+ ['House%20in%20the%20trees/04_closeup.jpg','The Shrine',4,'detail'],
+ ['House%20in%20the%20trees/05_The%20Corridor.jpg','The Corridor',5,''],
+ ['House%20in%20the%20trees/05_closeup.jpg','The Corridor',5,'detail'],
+ ['House%20in%20the%20trees/06_The%20Slumber.jpg','The Slumber',6,''],
+ ['House%20in%20the%20trees/07_The%20Clocktower.jpg','The Clocktower',7,''],
+ ['House%20in%20the%20trees/08_closep.jpg','The Dollhouse',8,'detail'],
+ ['House%20in%20the%20trees/08_The%20Dollhouse.jpg','The Dollhouse',8,'']
 ];
 const artworkCount=8;
 const dimensions={1:'16 × 24 in.',2:'16 × 24 in.',3:'16 × 24 in.',4:'16 × 24 in.',5:'12 × 18 in.',6:'12 × 18 in.',7:'12 × 18 in.',8:'16 × 24 in.'};
 let i=0, transitionToken=0;
 let front=document.getElementById('art-a'), back=document.getElementById('art-b');
-const counter=document.getElementById('counter'), title=document.getElementById('title'), meta=document.getElementById('meta');
+const counter=document.getElementById('counter'), title=document.getElementById('title'), dimensionText=document.getElementById('dimensions');
 works.forEach(work=>{const image=new Image();image.src=work[0]});
 function show(n){
  i=(n+works.length)%works.length;
@@ -72,7 +75,7 @@ function show(n){
   [front,back]=[back,front];
   counter.textContent=work[2]+' / '+artworkCount+(work[3]?' · '+work[3]:'');
   title.textContent=work[1];
-  meta.textContent=dimensions[work[2]]+', ink and charcoal on paper';
+  dimensionText.textContent=dimensions[work[2]];
  };
  back.src=work[0];
 }
