@@ -84,7 +84,7 @@ a{color:inherit;text-decoration:none}
 <button class="page-nav page-prev" id="page-prev" type="button" aria-label="previous page">←</button>
 <button class="page-nav page-next" id="page-next" type="button" aria-label="next page">→</button>
 <main class="stage">
-  <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
+  <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy%20kitty/copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
   <section class="endcard" id="endcard">
     <nav>
       <a href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">buy book</a>
@@ -95,11 +95,11 @@ a{color:inherit;text-decoration:none}
 <div class="hint" id="hint">click to turn page</div>
 <script>
 const pages=[
-  {src:'copy-kitty-cover-front.png',alt:'Copy Kitty front cover'},
+  {src:'copy%20kitty/copy-kitty-cover-front.png',alt:'Copy Kitty front cover'},
   ...Array.from({length:30},(_,i)=>i+1)
     .filter(n=>![18,19,20].includes(n))
-    .map(n=>({src:`ck-${String(n).padStart(3,'0')}.jpg`,alt:`Copy Kitty drawing ${n}`})),
-  {src:'copy-kitty-cover-back.png',alt:'Copy Kitty back cover'}
+    .map(n=>({src:`copy%20kitty/ck-${String(n).padStart(3,'0')}.jpg`,alt:`Copy Kitty drawing ${n}`})),
+  {src:'copy%20kitty/copy-kitty-cover-back.png',alt:'Copy Kitty back cover'}
 ];
 
 const FINAL = pages.length;
