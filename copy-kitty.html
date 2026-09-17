@@ -14,8 +14,7 @@ a{color:inherit;text-decoration:none}
 .stage{position:fixed;inset:24px 0 0;display:flex;align-items:flex-start;justify-content:center;padding:0 0 18px;background:#fff}
 .page-button{border:0;background:none;padding:0;display:flex;align-items:flex-start;justify-content:center;cursor:e-resize;max-width:100%;max-height:100%}
 .page-image{display:block;max-width:100vw;max-height:calc(100vh - 42px);width:auto;height:auto;object-fit:contain;box-shadow:0 12px 34px rgba(0,0,0,.045)}
-.endcard{display:none;text-align:center;font-size:11px}.endcard.open{display:block}.endcard nav{display:flex;flex-direction:column;align-items:center;gap:16px}.endcard a:hover{text-decoration:underline;text-underline-offset:3px}
-.page-button.hidden{display:none}.hint{position:fixed;z-index:20;bottom:17px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.12em;opacity:.26;pointer-events:none}
+.hint{position:fixed;z-index:20;bottom:17px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.12em;opacity:.26;pointer-events:none}
 @media(max-width:700px){.topbar{height:22px;padding:0 8px}.meta{gap:11px}.stage{inset:22px 0 0;padding:0 0 14px}.page-image{max-width:100vw;max-height:calc(100vh - 36px)}}
 .page-nav{
  position:fixed;z-index:30;top:50%;transform:translateY(-50%);
@@ -26,26 +25,21 @@ a{color:inherit;text-decoration:none}
 .page-prev{left:5px}.page-next{right:5px}
 @media(max-width:700px){.page-nav{font-size:16px;padding:18px 8px}.page-prev{left:0}.page-next{right:0}}
 
-.page-image,
-.endcard{
+.page-image{
   transition:transform .28s ease, opacity .28s ease;
 }
-.page-image.slide-left,
-.endcard.slide-left{
+.page-image.slide-left{
   transform:translateX(-70px);
   opacity:0;
 }
-.page-image.slide-right,
-.endcard.slide-right{
+.page-image.slide-right{
   transform:translateX(70px);
   opacity:0;
 }
-.page-image.enter-from-right,
-.endcard.enter-from-right{
+.page-image.enter-from-right{
   animation:ckEnterRight .28s ease;
 }
-.page-image.enter-from-left,
-.endcard.enter-from-left{
+.page-image.enter-from-left{
   animation:ckEnterLeft .28s ease;
 }
 @keyframes ckEnterRight{
@@ -85,12 +79,6 @@ a{color:inherit;text-decoration:none}
 <button class="page-nav page-next" id="page-next" type="button" aria-label="next page">→</button>
 <main class="stage">
   <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy%20kitty/copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
-  <section class="endcard" id="endcard">
-    <nav>
-      <a href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">buy book</a>
-      <a href="#" id="start-over">start over</a>
-    </nav>
-  </section>
 </main>
 <div class="hint" id="hint">click to turn page</div>
 <script>
@@ -102,8 +90,6 @@ const pages=[
   {src:'copy%20kitty/copy-kitty-cover-back.png',alt:'Copy Kitty back cover'}
 ];
 
-const FINAL = pages.length;
-
 pages.forEach(page=>{
   const preloader = new Image();
   preloader.src = page.src;
@@ -113,53 +99,30 @@ let current=0;
 
 const button=document.getElementById('page-button');
 const image=document.getElementById('page-image');
-const endcard=document.getElementById('endcard');
 const hint=document.getElementById('hint');
 const prevBtn=document.getElementById('page-prev');
 const nextBtn=document.getElementById('page-next');
-const startOver=document.getElementById('start-over');
 
 function render(){
   image.classList.remove('slide-left','slide-right','enter-from-right','enter-from-left');
-  endcard.classList.remove('slide-left','slide-right','enter-from-right','enter-from-left');
-
-  if(current===FINAL){
-    button.classList.add('hidden');
-    endcard.classList.add('open');
-    hint.textContent='click anywhere to begin again';
-    return;
-  }
-
-  endcard.classList.remove('open');
-  button.classList.remove('hidden');
   image.src=pages[current].src;
   image.alt=pages[current].alt;
-  hint.textContent=current===pages.length-1?'click to finish':'click to turn page';
+  hint.textContent='click to turn page';
 }
 
 function next(){
-  current = current===FINAL ? 0 : current+1;
+  current = (current+1)%pages.length;
   render();
 }
 
 function prev(){
-  current = current===0 ? FINAL : current-1;
+  current = (current-1+pages.length)%pages.length;
   render();
 }
 
 button.addEventListener('click',next);
 nextBtn.addEventListener('click',next);
 prevBtn.addEventListener('click',prev);
-startOver.addEventListener('click',e=>{
-  e.preventDefault();
-  current=0;
-  render();
-});
-
-// On the final links slide, clicking empty space restarts at the cover.
-endcard.addEventListener('click',e=>{
-  if(!e.target.closest('a')) next();
-});
 
 // Trackpad / Magic Mouse horizontal navigation.
 // Treat each gesture as one physical page turn: require a more deliberate

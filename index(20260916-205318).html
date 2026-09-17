@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>kyung-me</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero-main{
+    justify-content:center;
+    position:relative;
+  }
+  .hero-link{
+    display:block;
+    width:100%;
+    max-width:1500px;
+    transform:translateX(-36px);
+  }
+  .hero-image{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:calc(100vh - 90px);
+    object-fit:contain;
+  }
+  .years a,
+  .topnav a{
+    transition:opacity .25s ease,color .25s ease;
+  }
+  .years a.is-viewed,
+  .topnav a.is-viewed{
+    opacity:.38;
+  }
+  .name{
+    position:relative;
+  }
+  .stamp-home{
+    position:relative;
+    z-index:2;
+    display:inline-block;
+  }
+  .stamp-trace{
+    position:absolute;
+    z-index:1;
+    width:100%;
+    height:auto;
+    left:0;
+    top:0;
+    opacity:.08;
+    pointer-events:none;
+  }
+  .continue-link{
+    position:absolute;
+    left:24px;
+    bottom:10px;
+    display:none;
+    font-size:10px;
+    color:#999;
+  }
+  .continue-link.visible{display:block;}
+  .continue-link:hover{color:#111;}
+  @media(max-width:720px){
+    .topbar{
+      position:absolute;
+      top:20px;
+      left:96px;
+      right:16px;
+      min-height:58px;
+      height:auto;
+      padding:0;
+      border:0;
+      background:transparent;
+      justify-content:flex-end;
+      z-index:4;
+    }
+    .topnav{
+      justify-content:flex-end;
+      gap:7px 14px;
+      white-space:normal;
+      line-height:1.35;
+    }
+    .hero-main{padding:24px 16px 52px;}
+    .hero-link{transform:none;}
+    .hero-image{max-height:none;}
+  }
+  @media(max-width:420px){
+    .topnav{gap:6px 10px;}
+    .topnav a{font-size:9px;}
+  }
+</style>
+</head>
+<body>
+  <div class="site">
+    <aside class="sidebar">
+      <h1 class="name" id="stamp-memory"><span class="stamp-home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp" /></span></h1>
+      <section>
+<nav class="years" aria-label="work by chapter">
+          <a href="sunflower"><span class="year-label">2026</span><span class="chapter-label">i, sunflower</span></a>
+    
+          <a href="more-ink-drawings"><span class="year-label">2024</span><span class="chapter-label">more ink drawings</span></a>
+          <a href="house-in-the-trees"><span class="year-label">2023</span><span class="chapter-label">the house in the trees</span></a>
+          <a href="sister"><span class="year-label">2022</span><span class="chapter-label">sister</span></a>
+          <a href="coniunctio"><span class="year-label">2019</span><span class="chapter-label">coniunctio</span></a>
+          <a href="half-mourning"><span class="year-label">2018</span><span class="chapter-label">half mourning</span></a>
+          <a href="copy-kitty"><span class="year-label">2017</span><span class="chapter-label">copy kitty</span></a>
+          <a href="ghost"><span class="year-label">2016</span><span class="chapter-label">ghost</span></a>
+          <a href="labyrinths"><span class="year-label">2015</span><span class="chapter-label">labyrinths</span></a>
+          <a href="bad-korean"><span class="year-label">2014</span><span class="chapter-label">bad korean</span></a>
+        </nav>
+      </section>
+    </aside>
+
+    <header class="topbar">
+      <nav class="topnav" aria-label="main navigation">
+        <a href="pkan">paintings for pkan</a>
+        <a href="teaching">teaching</a>
+        <a href="cv">cv</a>
+        <a href="about">about</a>
+      </nav>
+    </header>
+
+    <main class="main hero-main">
+      <a class="hero-link" href="sunflower" aria-label="view i, sunflower">
+        <img class="hero-image" src="i-sunflower-install/02.jpg" alt="installation view of i, sunflower" />
+      </a>
+      <a class="continue-link" id="continue-link" href="#">continue wandering →</a>
+    </main>
+  </div>
+
+<script>
+(() => {
+  const key='sunflowercat-journey-v1';
+  const projects={
+    sunflower:{title:'i, sunflower',image:'i-sunflower-install/02.jpg'},
+    'more-ink-drawings':{title:'more ink drawings',image:'more%20ink%20drawings/01_The%20House%20Cat.jpg'},
+    'house-in-the-trees':{title:'the house in the trees',image:'House%20in%20the%20trees/01_The%20Mask.jpg'},
+    sister:{title:'sister',image:'sister/the-marriage.jpg'},
+    coniunctio:{title:'coniunctio',image:'Coniunctio/01.jpg'},
+    'half-mourning':{title:'half mourning',image:'Half%20Mourning/half-mourning-1.jpg'},
+    'copy-kitty':{title:'copy kitty',image:'copy%20kitty/copy-kitty-cover-front.png'},
+    ghost:{title:'ghost',image:'Ghost/ghost%201.jpg'},
+    labyrinths:{title:'labyrinths',image:'Labyrinths/rc_fullsize.jpg'},
+    'bad-korean':{title:'bad korean',image:'bad-korean/00_front-cover.jpg'},
+    pkan:{title:'paintings for pkan',image:'sunflower-cover.jpg'}
+  };
+  let journey={viewed:[],last:null};
+  try{journey=JSON.parse(localStorage.getItem(key))||journey}catch(e){}
+  if(!Array.isArray(journey.viewed))journey.viewed=[];
+
+  const normalize=href=>(href||'').replace(/^\.\//,'').replace(/\.html$/,'').replace(/\/$/,'');
+  const tracked=[...document.querySelectorAll('.years a,.topnav a,.hero-link')]
+    .filter(link=>projects[normalize(link.getAttribute('href'))]);
+
+  tracked.forEach(link=>{
+    const slug=normalize(link.getAttribute('href'));
+    if(journey.viewed.includes(slug))link.classList.add('is-viewed');
+    link.addEventListener('click',()=>{
+      if(!journey.viewed.includes(slug))journey.viewed.push(slug);
+      journey.last=slug;
+      localStorage.setItem(key,JSON.stringify(journey));
+    });
+  });
+
+  const stamp=document.getElementById('stamp-memory');
+  const stampSrc=stamp.querySelector('.stamp').src;
+  journey.viewed.slice(0,8).forEach((slug,index)=>{
+    const trace=document.createElement('img');
+    trace.className='stamp-trace';
+    trace.src=stampSrc;
+    const angle=((index%5)-2)*3;
+    const x=((index*7)%9)-4;
+    const y=((index*11)%9)-4;
+    trace.style.transform=`translate(${x}px,${y}px) rotate(${angle}deg)`;
+    trace.style.opacity=String(.045+(index*.012));
+    stamp.appendChild(trace);
+  });
+
+  if(journey.last&&projects[journey.last]){
+    const last=projects[journey.last];
+    const hero=document.querySelector('.hero-link');
+    const image=hero.querySelector('.hero-image');
+    hero.href=journey.last;
+    hero.setAttribute('aria-label','return to '+last.title);
+    image.src=last.image;
+    image.alt=last.title;
+    const keepGoing=document.getElementById('continue-link');
+    keepGoing.href=journey.last;
+    keepGoing.textContent='continue wandering → '+last.title;
+    keepGoing.classList.add('visible');
+    keepGoing.addEventListener('click',()=>{
+      localStorage.setItem(key,JSON.stringify(journey));
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
