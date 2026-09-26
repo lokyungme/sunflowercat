@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>paintings for pkan — experiment</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+  body{min-height:100vh}
+  .site{display:block!important;min-height:100vh}
+  .sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px!important;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+  .name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important}
+  .name a,.stamp{display:block;width:100%;height:auto}
+  .side-top{margin:0 0 22px!important}
+  .studio-note{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;align-items:baseline!important;margin:0!important;font-size:12px!important;line-height:1.25!important}
+  .studio-now{color:#999;font-size:10px!important;line-height:1.5!important}
+  .studio-note a{color:inherit;text-decoration:none}
+  .projects{display:flex!important;flex-direction:column;gap:11px!important}
+  .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:inherit;text-decoration:none}
+  .project-year{color:#999;font-size:10px!important;line-height:1.5!important}
+  .projects a:hover .project-name,.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+  .menu-secondary{display:flex!important;align-items:center!important;gap:12px!important;margin-top:auto!important;padding-top:42px!important}
+  .menu-secondary a{color:#999!important;text-decoration:none!important;font-size:10px!important;line-height:1.25!important}
+  .menu-secondary a:hover{text-decoration:underline!important;text-underline-offset:3px}
+
+  .field-page{width:calc(100% - 270px);margin-left:270px;min-height:100vh;padding:22px}
+  .field-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin:0 0 22px;font-size:12px;line-height:1.3}
+  .field-head h1{margin:0;font:inherit;font-weight:400}
+  .field-count{color:#999;white-space:nowrap}
+  .painting-field{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;align-items:start}
+  .painting{position:relative;display:block;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;line-height:0;z-index:1}
+  .painting img{display:block;width:100%;height:auto;background:#f7f7f7;transition:transform 90ms linear;transform-origin:center;box-shadow:0 0 0 1px rgba(0,0,0,.025)}
+  @media (hover:hover){
+    .painting:hover{z-index:20}
+    .painting:hover img{transform:scale(1.65);box-shadow:0 2px 14px rgba(0,0,0,.18)}
+  }
+  .field-note{max-width:520px;margin:54px 0 42px;font-size:12px;line-height:1.45}
+  .field-note p{margin:0 0 14px}
+  .field-note a{color:inherit;text-underline-offset:2px}
+
+  .lightbox{position:fixed;z-index:500;inset:0;background:rgba(255,255,255,.96);display:none;align-items:center;justify-content:center;padding:26px;cursor:zoom-out}
+  .lightbox.is-open{display:flex}
+  .lightbox img{display:block;max-width:92vw;max-height:92vh;width:auto;height:auto}
+  .lightbox-label{position:absolute;left:18px;bottom:14px;font-size:10px;color:#999}
+
+  @media(max-width:1000px){.painting-field{grid-template-columns:repeat(7,minmax(0,1fr))}}
+  @media(max-width:700px){
+    .sidebar{width:148px!important;padding:16px 13px 22px!important}
+    .name{width:58px!important;margin-bottom:24px!important}
+    .projects{gap:10px!important}
+    .projects a{display:block!important;font-size:12px!important}
+    .project-year{display:block!important;font-size:10px!important;margin-bottom:1px!important}
+    .menu-secondary{gap:9px!important;padding-top:32px!important}
+    .menu-secondary a{font-size:9px!important}
+    .side-top{margin-bottom:20px!important}
+    .field-page{width:calc(100% - 148px);margin-left:148px;padding:13px 7px 20px}
+    .field-head{display:block;margin-bottom:12px;padding:0 3px}
+    .field-count{display:block;margin-top:3px}
+    .painting-field{grid-template-columns:repeat(4,minmax(0,1fr));gap:2px}
+    .field-note{padding:0 3px;margin-top:34px}
+  }
+</style>
+</head>
+<body>
+<div class="site">
+  <aside class="sidebar">
+    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan" aria-current="page">paintings for pkan</a></p></div>
+    <nav class="projects" aria-label="projects">
+      <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+    </nav>
+    <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  </aside>
+
+  <main class="field-page">
+    <header class="field-head">
+      <h1>one sunflower at a time</h1>
+      <span class="field-count"><span id="painting-count">110</span> paintings</span>
+    </header>
+    <div class="painting-field" id="painting-field" aria-label="Paintings for PKAN"></div>
+    <section class="field-note">
+      <p>in july 2026, my beautiful two-year-old niece, <a href="https://dreamsfordiana.com/" target="_blank" rel="noopener"><strong>diana</strong></a>, was diagnosed with pkan, an ultra-rare neurodegenerative disease.</p>
+      <p>to raise funds for <a href="https://givebutter.com/dreams-for-diana" target="_blank" rel="noopener">loving loic</a>, a foundation working towards a cure for pkan, i am selling <strong>original sunflower paintings for $100 each.</strong> all proceeds go towards pkan research.</p>
+      <p><a href="https://dreamsfordiana.com/" target="_blank" rel="noopener">read our story →</a><br><a href="https://paintingsforpkan.com/" target="_blank" rel="noopener">view available paintings →</a></p>
+    </section>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="painting preview">
+  <img id="lightbox-image" src="" alt="">
+  <span class="lightbox-label" id="lightbox-label"></span>
+</div>
+
+<script>
+  const files = [
+    '001.jpg','002.jpg','003.jpg','004.jpg','005.jpg','006.jpg','007.jpg','024.jpg','52.jpg','63.jpg','89.jpg','93.jpg','97.jpg','103.jpg','123.jpg','124.jpg','153.jpg','154.jpg','160.jpg','163.jpg','167.jpg','176.jpg','179.jpg','186.jpg','187.jpg','189.jpg','192.jpg','195.jpg','196.jpg','197.jpg','198.jpg','199.jpg','208.jpg','230.jpg','253.jpg','255.jpg','256.jpg','257.jpg','258.jpg','259.jpg','260.jpg','261.jpg','261 copy.jpg','262.jpg','263.jpg','264.jpg','266.jpg','267.jpg','276.jpg','281.jpg','282.jpg','283.jpg','285.jpg','288.jpg','294.jpg','298.jpg','299 .jpg','300.jpg','301 mom.jpg','316.jpg','322.jpg','323.jpg','330.jpg','333.jpg','334.jpg','338.jpg','340.jpg','341 copy.jpg','342.jpg','343.jpg','344.jpg','345.jpg','346.jpg','347.jpg','348.jpg','349.jpg','350.jpg','351.jpg','352.jpg','353.jpg','354.jpg','373.jpg','378.jpg','381.jpg','386.jpg','393.jpg','396.jpg','397.jpg','405.jpg','411.jpg','413.jpg','425.jpg','426.jpg','427.jpg','428.jpg','429.jpg','430.jpg','431.jpg','432.jpg','436.jpg','440.jpg','443.jpg','444.jpg','446.jpg','453.jpg','454.jpg','457.jpg','461.jpg','471.jpg','Mom.jpg'
+  ];
+
+  const field = document.getElementById('painting-field');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxLabel = document.getElementById('lightbox-label');
+  document.getElementById('painting-count').textContent = files.length;
+
+  files.forEach((file, index) => {
+    const button = document.createElement('button');
+    button.className = 'painting';
+    button.type = 'button';
+    button.setAttribute('aria-label', `open painting ${index + 1}`);
+    const image = document.createElement('img');
+    image.src = `pkan/${encodeURIComponent(file)}`;
+    image.alt = `sunflower painting ${index + 1}`;
+    image.loading = index < 24 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    button.appendChild(image);
+    button.addEventListener('click', () => {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxLabel.textContent = `${index + 1} / ${files.length}`;
+      lightbox.classList.add('is-open');
+    });
+    field.appendChild(button);
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove('is-open');
+    lightboxImage.src = '';
+  }
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>

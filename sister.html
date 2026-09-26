@@ -171,13 +171,16 @@ function showDetail(figure, detailIndex){
   const index = Number(figure.querySelector(".sister-full-button").dataset.work);
   const slide = sisterSlides[index];
   if (!slide.details.length) return;
-  const next = (detailIndex + slide.details.length) % slide.details.length;
+  if (detailIndex < 0 || detailIndex >= slide.details.length) {
+    showFull(figure);
+    return;
+  }
   const image = figure.querySelector(".sister-full-image");
-  figure.dataset.detailIndex = String(next);
-  image.src = slide.details[next];
-  image.alt = `${slide.title}, detail ${next + 1}`;
+  figure.dataset.detailIndex = String(detailIndex);
+  image.src = slide.details[detailIndex];
+  image.alt = `${slide.title}, detail ${detailIndex + 1}`;
   figure.querySelector(".sister-detail-controls").hidden = false;
-  figure.querySelector(".sister-detail-count").textContent = `detail ${next + 1} / ${slide.details.length}`;
+  figure.querySelector(".sister-detail-count").textContent = `detail ${detailIndex + 1} / ${slide.details.length}`;
   activeFigure = figure;
 }
 
@@ -191,7 +194,10 @@ series.addEventListener("click", event => {
   if (imageButton) {
     const figure = imageButton.closest(".sister-work");
     const current = Number(figure.dataset.detailIndex ?? -1);
-    showDetail(figure,current + 1);
+    const index = Number(imageButton.dataset.work);
+    const slide = sisterSlides[index];
+    if (current >= slide.details.length - 1) showFull(figure);
+    else showDetail(figure,current + 1);
   }
 });
 
@@ -200,11 +206,15 @@ document.addEventListener("keydown", event => {
   const current = Number(activeFigure.dataset.detailIndex);
   if (event.key === "ArrowRight" || event.key === " ") {
     event.preventDefault();
-    showDetail(activeFigure,current + 1);
+    const index = Number(activeFigure.querySelector(".sister-full-button").dataset.work);
+    const slide = sisterSlides[index];
+    if (current >= slide.details.length - 1) showFull(activeFigure);
+    else showDetail(activeFigure,current + 1);
   }
   if (event.key === "ArrowLeft") {
     event.preventDefault();
-    showDetail(activeFigure,current - 1);
+    if (current <= 0) showFull(activeFigure);
+    else showDetail(activeFigure,current - 1);
   }
   if (event.key === "Escape") showFull(activeFigure);
 });
