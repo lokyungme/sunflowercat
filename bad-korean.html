@@ -7,24 +7,44 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.top{position:fixed;z-index:30;top:0;left:0;right:0;height:42px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
-.viewer{position:absolute;inset:42px 0 0;display:flex;align-items:flex-start;justify-content:center}
+.top{position:fixed;z-index:30;top:0;left:270px;right:0;height:42px;padding:0 18px;display:flex;align-items:center;justify-content:flex-end;font-size:11px;background:#fff}
+.viewer{position:absolute;inset:42px 0 0 270px;display:flex;align-items:flex-start;justify-content:center}
 .art-wrap{position:relative;width:100%;height:100%;padding-top:10px;display:flex;align-items:flex-start;justify-content:center}
-#art{display:block;max-height:84vh;max-width:90vw;width:auto;height:auto;user-select:none}
-.zone{position:fixed;z-index:20;top:42px;bottom:0;width:50%;border:0;background:transparent;padding:0}
-.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
+#art{display:block;max-height:84vh;max-width:calc(100vw - 302px);width:auto;height:auto;user-select:none}
+.zone{position:fixed;z-index:20;top:42px;bottom:0;width:calc((100% - 270px)/2);border:0;background:transparent;padding:0}
+.prev{left:270px;cursor:w-resize}.next{right:0;cursor:e-resize}
 .arrow{position:fixed;z-index:25;top:50%;transform:translateY(-50%);font-size:13px;opacity:.14;pointer-events:none}
-.arrow.left{left:13px}.arrow.right{right:13px}
-.caption{position:fixed;z-index:30;left:50%;bottom:40px;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 32px);font-size:11px;line-height:1.2;text-align:center;white-space:normal}.counter{position:fixed;z-index:30;left:50%;bottom:14px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
+.arrow.left{left:283px}.arrow.right{right:13px}
+.caption{position:fixed;z-index:30;left:calc(50% + 135px);bottom:40px;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 302px);font-size:11px;line-height:1.2;text-align:center;white-space:normal}.counter{position:fixed;z-index:30;left:calc(50% + 135px);bottom:14px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
 .about{position:fixed;z-index:30;right:16px;bottom:13px;font-size:9px;opacity:.32}
 @media(max-width:700px){
- .top{height:40px;padding:0 11px}.viewer{inset:40px 0 0}.art-wrap{padding-top:8px}.zone{top:40px}
- #art{max-height:80vh;max-width:95vw}
+ .top{left:148px;height:40px;padding:0 11px}.viewer{inset:40px 0 0 148px}.art-wrap{padding-top:8px}.zone{top:40px;width:calc((100% - 148px)/2)}.prev{left:148px}
+ #art{max-height:80vh;max-width:calc(100vw - 164px)}
+ .arrow.left{left:156px}.caption,.counter{left:calc(50% + 74px);max-width:calc(100vw - 164px)}
 }
+.sidebar{position:fixed;z-index:110;inset:0 auto 0 0;width:270px;padding:22px 22px 28px;background:#fff;display:flex;flex-direction:column;overflow-y:auto}.name{margin:0 0 30px;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}.projects{display:flex;flex-direction:column;align-items:stretch;gap:11px}.projects a{display:grid;grid-template-columns:43px minmax(0,1fr);width:auto;font-size:12px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.project-year{color:#999;font-size:10px;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}.menu-secondary a{color:#999;font-size:10px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}.side-top{margin:0 0 22px}.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-size:12px;font-weight:400;line-height:1.25;color:#111;letter-spacing:0;text-transform:none}.studio-now{color:#999;font-size:10px;line-height:1.5}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.sidebar{width:148px;padding:16px 13px 22px}.name{width:58px;margin-bottom:24px}.projects{gap:10px}.projects a{display:block;font-size:12px}.project-year{display:block;font-size:10px;margin-bottom:1px}.menu-secondary{gap:9px;margin-top:auto;padding-top:32px}.menu-secondary a{font-size:9px}.side-top{margin-bottom:20px}}
 </style>
 </head>
 <body>
-<header class="top"><a href="/">← works</a><span>bad korean</span></header>
+<aside class="sidebar">
+  <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+  <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+  <nav class="projects" aria-label="projects">
+    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+    <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+    <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+    <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+    <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+    <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+    <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+    <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+    <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+    <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+  </nav>
+  <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+</aside>
+<header class="top"><span>bad korean</span></header>
 <main class="viewer"><div class="art-wrap"><img id="art" src="bad-korean/00_front-cover.jpg" alt=""><div class="caption" id="caption"></div></div></main>
 <button class="zone prev" id="prev" aria-label="previous"></button>
 <button class="zone next" id="next" aria-label="next"></button>

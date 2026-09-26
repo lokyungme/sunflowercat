@@ -16,20 +16,9 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .back {
-      position: fixed;
-      z-index: 2;
-      top: 4px;
-      left: 10px;
-      color: inherit;
-      font-size: 11px;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    .back:hover { text-decoration: underline; }
-
     main {
+      width: calc(100% - 270px);
+      margin-left: 270px;
       padding: 0;
     }
 
@@ -49,22 +38,62 @@
       display: block;
       width: auto;
       height: auto;
-      max-width: 100vw;
+      max-width: 100%;
       max-height: calc(100svh - 18px);
     }
 
+    a { color: inherit; text-decoration: none; }
+    .sidebar { position: fixed; z-index: 110; inset: 0 auto 0 0; width: 270px; padding: 22px 22px 28px; background: #fff; display: flex; flex-direction: column; overflow-y: auto; }
+    .name { margin: 0 0 30px; width: 72px; font-size: 0; line-height: 0; }
+    .name a, .stamp { display: block; width: 100%; height: auto; }
+    .projects { display: flex; flex-direction: column; align-items: stretch; gap: 11px; }
+    .projects a { display: grid; grid-template-columns: 43px minmax(0, 1fr); width: auto; font-size: 12px; font-weight: 400; line-height: 1.25; letter-spacing: 0; text-transform: none; }
+    .project-year { color: #999; font-size: 10px; line-height: 1.5; }
+    .projects a:hover .project-name { text-decoration: underline; text-underline-offset: 3px; }
+    .menu-secondary { display: flex; flex-direction: row; align-items: center; gap: 12px; margin-top: auto; padding-top: 42px; }
+    .menu-secondary a { color: #999; font-size: 10px; font-weight: 400; line-height: 1.25; letter-spacing: 0; text-transform: none; }
+    .menu-secondary a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .side-top { margin: 0 0 22px; }
+    .studio-note { display: grid; grid-template-columns: 43px minmax(0, 1fr); align-items: baseline; margin: 0; max-width: none; font-size: 12px; font-weight: 400; line-height: 1.25; color: #111; letter-spacing: 0; text-transform: none; }
+    .studio-now { color: #999; font-size: 10px; line-height: 1.5; }
+    .studio-note a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
     @media (max-width: 700px) {
-      .back { top: 4px; left: 8px; font-size: 10px; }
+      .sidebar { width: 148px; padding: 16px 13px 22px; }
+      .name { width: 58px; margin-bottom: 24px; }
+      .projects { gap: 10px; }
+      .projects a { display: block; font-size: 12px; }
+      .project-year { display: block; font-size: 10px; margin-bottom: 1px; }
+      .menu-secondary { gap: 9px; margin-top: auto; padding-top: 32px; }
+      .menu-secondary a { font-size: 9px; }
+      .side-top { margin-bottom: 20px; }
+      main { width: calc(100% - 148px); margin-left: 148px; }
       figure { margin-bottom: 72px; padding-top: 18px; }
       img {
-        max-width: 100vw;
+        max-width: 100%;
         max-height: calc(100svh - 18px);
       }
     }
   </style>
 </head>
 <body>
-  <a class="back" href="sunflower">← i, sunflower</a>
+  <aside class="sidebar">
+    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+    <nav class="projects" aria-label="projects">
+      <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+    </nav>
+    <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  </aside>
   <main>
     <figure><img src="big sf paintings/01_the fall.png" width="2351" height="4140" alt="Large sunflower painting by Kyung-Me"></figure>
     <figure><img src="big sf paintings/02_exp.png" width="2110" height="4087" alt="Large sunflower painting by Kyung-Me" loading="lazy"></figure>

@@ -8,33 +8,71 @@
 <style>
 html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important}
 .site{display:block!important;min-height:100vh}
-.sister-works-bar{position:fixed;z-index:100;top:0;left:0;right:0;height:20px;padding:0 10px;display:flex;align-items:center;background:#fff;font-size:11px}
-.sister-works-bar a{color:inherit;text-decoration:none}
-.sister-main{width:100%!important;max-width:none!important;margin:0!important;padding:20px 16px 48px!important}
+.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+.name{margin:0 0 30px!important;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
+.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+.project-year{color:#999;font-size:10px!important;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}
+.menu-secondary a{color:#999;text-decoration:none;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
+.side-top{margin:0 0 22px}
+.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:#111;letter-spacing:0!important;text-transform:none!important}
+.studio-now{color:#999;font-size:10px!important;line-height:1.5}.studio-note a{color:inherit;text-decoration:none;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+.sister-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important;padding:20px 16px 48px!important}
 .sister-header{position:fixed;z-index:101;top:0;right:10px;width:auto;height:20px;margin:0;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
 .sister-title{margin:0;font-size:11px;font-weight:400;line-height:1}
 .sister-title a{color:inherit;text-decoration:none}
 .sister-meta-corner{position:fixed;z-index:90;right:15px;bottom:12px;text-align:right;font-size:9px;line-height:1.45;opacity:.32}
 .sister-meta-corner:hover{opacity:.72}
 .sister-meta-corner a{color:inherit;text-decoration:none}
-.sister-intro{display:none}
-.sister-viewer{width:min(90vw,1200px)!important;max-width:none!important;margin:0 auto!important}
-.sister-image-link{display:block;width:100%}
-.sister-image{display:block;width:100%!important;max-width:none!important;max-height:none!important;height:auto!important}
-.sister-caption-row,.sister-detail-meta,.sister-collection{width:100%}
-.sister-archive{width:min(72vw,760px);margin:52px auto 0}
+.sister-series{width:min(calc(100vw - 302px),1400px);margin:0 auto;display:flex;flex-direction:column;gap:110px}
+.sister-work{margin:0}
+.sister-full-button{display:block;width:100%;margin:0;padding:0;border:0;background:none;cursor:pointer;text-align:left}
+.sister-full-image{display:block;width:100%;height:auto}
+.sister-work-caption{display:flex;justify-content:space-between;gap:18px;margin-top:8px;font-size:11px;line-height:1.35}
+.sister-work-caption span:last-child{color:#999;text-align:right}
+.sister-detail-controls{display:flex;gap:14px;margin-top:5px;font-size:10px;color:#999}
+.sister-detail-controls[hidden]{display:none}
+.sister-full-return{padding:0;border:0;background:none;color:#111;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.sister-archive{width:min(calc(100vw - 302px),760px);margin:80px auto 0}
 @media(max-width:700px){
- .sister-works-bar{height:20px;padding:0 8px}
- .sister-main{padding:20px 11px 38px!important}
+ .sidebar{width:148px!important;padding:16px 13px 22px}
+ .name{width:58px;margin-bottom:24px!important}
+ .projects{gap:10px!important}
+ .projects a{display:block!important;font-size:12px!important}
+ .project-year{display:block;font-size:10px!important;margin-bottom:1px}
+ .menu-secondary{gap:9px;margin-top:auto;padding-top:32px}.menu-secondary a{font-size:9px!important}.side-top{margin-bottom:20px}
+ .sister-main{width:calc(100% - 148px)!important;margin-left:148px!important;padding:20px 8px 38px!important}
  .sister-header{right:8px;height:20px}
  .sister-meta-corner{right:10px;bottom:8px;font-size:8px}
- .sister-viewer,.sister-archive{width:100%!important}
+ .sister-series,.sister-archive{width:100%!important}
+ .sister-series{gap:58px}
+ .sister-work-caption{display:block;font-size:9px}
+ .sister-work-caption span{display:block}
+ .sister-work-caption span:last-child{text-align:left;margin-top:2px}
 }
 </style>
 </head>
 <body>
   <div class="site">
-    <header class="sister-works-bar"><a href="/">← works</a></header>
+    <aside class="sidebar">
+      <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+      <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+      <nav class="projects" aria-label="projects">
+        <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+        <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+        <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+        <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+        <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+        <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+        <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+        <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+        <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+        <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+      </nav>
+      <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+    </aside>
 
     <main class="main sister-main">
       <div class="sister-header">
@@ -45,17 +83,7 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
         <div>pen and charcoal on paper, 48 × 32 in.</div>
       </div>
 
-      <div class="sister-viewer">
-        <a class="sister-image-link" href="#" aria-label="next drawing">
-          <img class="sister-image" id="sister-image" src="sister/the-marriage.jpg" alt="the marriage">
-        </a>
-        <div class="sister-caption-row">
-          <div class="sister-caption" id="sister-caption">the marriage</div>
-          <button class="sister-detail-toggle" id="sister-detail-toggle" type="button">details +</button>
-        </div>
-        <div class="sister-detail-meta" id="sister-detail-meta" hidden></div>
-        <div class="sister-collection" id="sister-collection"></div>
-      </div>
+      <div class="sister-series" id="sister-series"></div>
 
       <footer class="sister-archive">
         <div class="sister-archive-row"><span class="sister-archive-label">exhibition</span><a href="https://bureau-inc.com/exhibitions/sister" target="_blank" rel="noopener">bureau</a></div>
@@ -72,6 +100,7 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
         </div>
       </footer>
     </main>
+
   </div>
 
 <script>
@@ -110,116 +139,75 @@ const sisterSlides = [
   }
 ];
 
-let sisterIndex = 0;
-let detailMode = false;
-let detailIndex = 0;
-let fullImageDisplayWidth = null;
+const series = document.getElementById("sister-series");
+let activeFigure = null;
 
-const sisterViewer = document.querySelector(".sister-viewer");
-const sisterImage = document.getElementById("sister-image");
-const sisterCaption = document.getElementById("sister-caption");
-const sisterDetailMeta = document.getElementById("sister-detail-meta");
-const sisterDetailToggle = document.getElementById("sister-detail-toggle");
-const sisterCollection = document.getElementById("sister-collection");
-const sisterLink = document.querySelector(".sister-image-link");
+series.innerHTML = sisterSlides.map((slide,index) => {
+  const collection = slide.collection || "";
+  return `<figure class="sister-work">
+    <button class="sister-full-button" type="button" data-work="${index}" aria-label="view details of ${slide.title}">
+      <img class="sister-full-image" src="${slide.src}" alt="${slide.title}">
+    </button>
+    <figcaption class="sister-work-caption"><span>${slide.title}</span><span>${collection}</span></figcaption>
+    <div class="sister-detail-controls" hidden>
+      <button class="sister-full-return" type="button">full image</button>
+      <span class="sister-detail-count"></span>
+    </div>
+  </figure>`;
+}).join("");
 
-function renderFull(){
-  detailMode = false;
-  detailIndex = 0;
-  const slide = sisterSlides[sisterIndex];
-
-  sisterViewer.classList.remove("detail-mode");
-  sisterLink.style.width = "";
-  sisterImage.style.width = "";
-  fullImageDisplayWidth = null;
-  sisterImage.src = slide.src;
-  sisterImage.alt = slide.title;
-  sisterCaption.textContent = slide.title;
-  sisterDetailToggle.textContent = slide.details.length ? "details +" : "";
-  sisterDetailToggle.hidden = !slide.details.length;
-  sisterDetailMeta.hidden = true;
-  sisterDetailMeta.textContent = "";
-  if (slide.collection) {
-    sisterCollection.innerHTML = slide.collectionUrl
-      ? `<a href="${slide.collectionUrl}" target="_blank" rel="noopener">${slide.collection}</a>`
-      : slide.collection;
-  } else {
-    sisterCollection.textContent = "";
-  }
+function showFull(figure){
+  const index = Number(figure.querySelector(".sister-full-button").dataset.work);
+  const slide = sisterSlides[index];
+  const image = figure.querySelector(".sister-full-image");
+  figure.dataset.detailIndex = "-1";
+  image.src = slide.src;
+  image.alt = slide.title;
+  figure.querySelector(".sister-detail-controls").hidden = true;
+  if (activeFigure === figure) activeFigure = null;
 }
 
-function renderDetail(){
-  const slide = sisterSlides[sisterIndex];
+function showDetail(figure, detailIndex){
+  const index = Number(figure.querySelector(".sister-full-button").dataset.work);
+  const slide = sisterSlides[index];
   if (!slide.details.length) return;
-
-  if (!detailMode) {
-    fullImageDisplayWidth = sisterImage.getBoundingClientRect().width;
-  }
-
-  detailMode = true;
-  sisterViewer.classList.add("detail-mode");
-  if (fullImageDisplayWidth) {
-    sisterLink.style.width = `${fullImageDisplayWidth}px`;
-    sisterImage.style.width = `${fullImageDisplayWidth}px`;
-  }
-  sisterImage.src = slide.details[detailIndex];
-  sisterImage.alt = `${slide.title}, detail ${detailIndex + 1}`;
-  sisterCaption.textContent = slide.title;
-  sisterDetailToggle.hidden = false;
-  sisterDetailToggle.textContent = "full image";
-  sisterDetailMeta.hidden = false;
-  sisterDetailMeta.textContent = `detail ${detailIndex + 1} / ${slide.details.length}`;
-  if (slide.collection) {
-    sisterCollection.innerHTML = slide.collectionUrl
-      ? `<a href="${slide.collectionUrl}" target="_blank" rel="noopener">${slide.collection}</a>`
-      : slide.collection;
-  } else {
-    sisterCollection.textContent = "";
-  }
+  const next = (detailIndex + slide.details.length) % slide.details.length;
+  const image = figure.querySelector(".sister-full-image");
+  figure.dataset.detailIndex = String(next);
+  image.src = slide.details[next];
+  image.alt = `${slide.title}, detail ${next + 1}`;
+  figure.querySelector(".sister-detail-controls").hidden = false;
+  figure.querySelector(".sister-detail-count").textContent = `detail ${next + 1} / ${slide.details.length}`;
+  activeFigure = figure;
 }
 
-function nextWork(delta){
-  sisterIndex = (sisterIndex + delta + sisterSlides.length) % sisterSlides.length;
-  renderFull();
-}
-
-function nextDetail(delta){
-  const details = sisterSlides[sisterIndex].details;
-  detailIndex = (detailIndex + delta + details.length) % details.length;
-  renderDetail();
-}
-
-sisterLink.addEventListener("click", e => {
-  e.preventDefault();
-  if (detailMode) nextDetail(1);
-  else nextWork(1);
-});
-
-sisterDetailToggle.addEventListener("click", () => {
-  if (detailMode) renderFull();
-  else {
-    detailIndex = 0;
-    renderDetail();
+series.addEventListener("click", event => {
+  const returnButton = event.target.closest(".sister-full-return");
+  if (returnButton) {
+    showFull(returnButton.closest(".sister-work"));
+    return;
+  }
+  const imageButton = event.target.closest(".sister-full-button");
+  if (imageButton) {
+    const figure = imageButton.closest(".sister-work");
+    const current = Number(figure.dataset.detailIndex ?? -1);
+    showDetail(figure,current + 1);
   }
 });
 
-document.addEventListener("keydown", e => {
-  if (e.key === "ArrowRight" || e.key === " ") {
-    e.preventDefault();
-    if (detailMode) nextDetail(1);
-    else nextWork(1);
+document.addEventListener("keydown", event => {
+  if (!activeFigure) return;
+  const current = Number(activeFigure.dataset.detailIndex);
+  if (event.key === "ArrowRight" || event.key === " ") {
+    event.preventDefault();
+    showDetail(activeFigure,current + 1);
   }
-  if (e.key === "ArrowLeft") {
-    e.preventDefault();
-    if (detailMode) nextDetail(-1);
-    else nextWork(-1);
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    showDetail(activeFigure,current - 1);
   }
-  if (e.key === "Escape" && detailMode) {
-    renderFull();
-  }
+  if (event.key === "Escape") showFull(activeFigure);
 });
-
-renderFull();
 </script>
 </body>
 </html>

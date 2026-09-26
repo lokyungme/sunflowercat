@@ -4,114 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>coniunctio — kyung-me</title>
+<link rel="stylesheet" href="style.css">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
-a{color:inherit;text-decoration:none}
-.top{position:fixed;z-index:40;top:0;left:0;right:0;height:20px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;font-size:11px;background:#fff}
-.viewer{position:absolute;inset:20px 0 28px;background:#fff}
-#art{position:absolute;top:0;left:50%;transform:translateX(-50%);display:block;max-width:96vw;max-height:100%;width:auto;height:auto;user-select:none}
-.zone{position:fixed;z-index:30;top:20px;bottom:28px;width:50%;border:0;background:transparent;padding:0;cursor:pointer}
-.prev{left:0;cursor:w-resize}.next{right:0;cursor:e-resize}
-.arrow{position:fixed;z-index:35;top:50%;transform:translateY(-50%);font-size:14px;opacity:.16;pointer-events:none}
-.arrow.left{left:12px}.arrow.right{right:12px}
-.bottom{position:fixed;z-index:45;left:0;right:0;bottom:0;height:28px;padding:0 10px;display:flex;align-items:center;justify-content:flex-end;background:#fff}
-.press{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px}
-.press-toggle{border:0;background:transparent;color:inherit;font:inherit;padding:0;cursor:pointer;opacity:1}
-.press-toggle:hover{text-decoration:underline;text-underline-offset:2px}
-.press-menu{position:absolute;left:0;bottom:17px;min-width:150px;padding:7px 9px;background:#fff;border:1px solid rgba(0,0,0,.1);text-align:left}
-.press-menu a{display:block;line-height:1.7;white-space:nowrap}
-.press-menu a:hover{text-decoration:underline;text-underline-offset:2px}
-.counter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;opacity:1;letter-spacing:.04em}
-.meta{text-align:right;font-size:11px;line-height:1;opacity:1;white-space:nowrap}
-.meta-medium::before{content:" · "}
+html,body{margin:0;min-height:100%;overflow-x:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}.site{display:block!important;min-height:100vh}
+.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+.name{margin:0 0 30px!important;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
+.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+.project-year{color:#999;font-size:10px!important;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}
+.menu-secondary a{color:#999;text-decoration:none;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
+.side-top{margin:0 0 22px}
+.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:#111;letter-spacing:0!important;text-transform:none!important}
+.studio-now{color:#999;font-size:10px!important;line-height:1.5}.studio-note a{color:inherit;text-decoration:none;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+.coniunctio-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important;padding:20px 16px 80px!important}
+.coniunctio-header{position:fixed;z-index:101;top:0;right:10px;height:20px;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}.coniunctio-header a:hover{opacity:.6}
+.coniunctio-series{width:min(calc(100vw - 302px),1400px);margin:0 auto;display:flex;flex-direction:column;gap:110px}.coniunctio-work{margin:0}
+.coniunctio-image-button{display:block;width:100%;margin:0;padding:0;border:0;background:none;cursor:pointer;text-align:left}.coniunctio-image{display:block;width:100%;height:auto}
+.coniunctio-caption{display:flex;justify-content:space-between;gap:18px;margin-top:8px;font-size:11px;line-height:1.35}.coniunctio-caption span:last-child{color:#999;text-align:right}
+.coniunctio-detail-controls{display:flex;gap:14px;margin-top:5px;font-size:10px;color:#999}.coniunctio-detail-controls[hidden]{display:none}
+.coniunctio-full-return{padding:0;border:0;background:none;color:#111;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.coniunctio-archive{width:min(calc(100vw - 302px),760px);margin:90px auto 0;padding-top:18px;border-top:1px solid #ddd;font-size:11px;line-height:1.5}
+.archive-row{display:grid;grid-template-columns:125px 1fr;gap:18px;margin:5px 0}.archive-label{color:#999}.archive-links{display:flex;flex-wrap:wrap;gap:5px 22px}.archive-row a:hover{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){
- .top{height:20px;padding:0 8px}.viewer{inset:20px 0 40px}.zone{top:20px;bottom:40px}
- #art{max-width:97vw;max-height:100%}
- .bottom{height:40px;padding:0 9px}
- .press{left:9px}.press-menu{bottom:23px}
- .counter{left:58px;transform:translateY(-50%)}
- .meta{font-size:11px;line-height:1.3}
- .meta-medium{display:block}.meta-medium::before{content:""}
+ .sidebar{width:148px!important;padding:16px 13px 22px}.name{width:58px;margin-bottom:24px!important}.projects{gap:10px!important}
+ .projects a{display:block!important;font-size:12px!important}.project-year{display:block;font-size:10px!important;margin-bottom:1px}.menu-secondary{gap:9px;margin-top:auto;padding-top:32px}.menu-secondary a{font-size:9px!important}.side-top{margin-bottom:20px}
+ .coniunctio-main{width:calc(100% - 148px)!important;margin-left:148px!important;padding:20px 8px 50px!important}.coniunctio-header{right:8px;height:20px}
+ .coniunctio-series,.coniunctio-archive{width:100%!important}.coniunctio-series{gap:58px}.coniunctio-caption{display:block;font-size:9px}.coniunctio-caption span{display:block}.coniunctio-caption span:last-child{text-align:left;margin-top:2px}
+ .coniunctio-archive{margin-top:58px;font-size:9px}.archive-row{display:block}.archive-label{display:block;margin-bottom:3px}.archive-links{display:block}.archive-links a{display:block;margin:2px 0}
 }
 </style>
 </head>
 <body>
-<header class="top">
-<a href="/">← works</a>
-<a href="https://bureau-inc.com/exhibitions/coniunctio" target="_blank" rel="noopener">coniunctio</a>
-</header>
-<main class="viewer"><img id="art" src="Coniunctio/01.jpg" alt="coniunctio, image 1"></main>
-<button class="zone prev" id="prev" aria-label="previous image"></button>
-<button class="zone next" id="next" aria-label="next image"></button>
-<div class="arrow left">←</div><div class="arrow right">→</div>
-<footer class="bottom">
- <div class="press">
-  <button class="press-toggle" id="press-toggle" type="button" aria-expanded="false">press +</button>
-  <div class="press-menu" id="press-menu" hidden>
-   <a href="https://assets.ctfassets.net/hp42m99tzs4o/7qmBjk3U6IIDjY7UzsFK93/f145df1c36a9117fb9bfc34bf63ee6ac/HGH_2019.12_Artforum.caption.pdf" target="_blank" rel="noopener">artforum</a>
-   <a href="https://assets.ctfassets.net/hp42m99tzs4o/43Dx7O0YWrA0Ybc00Y04Yv/db7d51896dbde68b121c121b2d6118e6/KM_2020.01_NewYorker.caption.pdf" target="_blank" rel="noopener">the new yorker</a>
-   <a href="https://assets.ctfassets.net/hp42m99tzs4o/10zChZgZx8BGJTQs19LEVw/adc0e9aa3895f7dfa8fb46c8ac655594/KM_2020.01_TheOffing.caption.pdf" target="_blank" rel="noopener">the offing</a>
-   <a href="https://assets.ctfassets.net/hp42m99tzs4o/2efShVhe1gsxmEdHQ2nrwt/ece46b1ddc94c3cec3f78b7b90ab2cef/KM_2020.01_EditorialMagazine.caption.pdf" target="_blank" rel="noopener">editorial magazine</a>
-  </div>
- </div>
- <div class="counter" id="counter">1 / 7</div>
- <div class="meta">
-  <span>ink + charcoal on paper, 36 × 24 in.</span>
- </div>
-</footer>
+<div class="site">
+  <aside class="sidebar">
+    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+    <nav class="projects" aria-label="projects">
+      <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+    </nav>
+    <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  </aside>
+  <main class="coniunctio-main">
+    <div class="coniunctio-header"><a href="https://bureau-inc.com/exhibitions/coniunctio" target="_blank" rel="noopener">coniunctio</a></div>
+    <div class="coniunctio-series" id="coniunctio-series"></div>
+    <footer class="coniunctio-archive">
+      <div class="archive-row"><span class="archive-label">exhibition</span><a href="https://bureau-inc.com/exhibitions/coniunctio" target="_blank" rel="noopener">bureau</a></div>
+      <div class="archive-row"><span class="archive-label">press / features</span><span class="archive-links">
+        <a href="https://assets.ctfassets.net/hp42m99tzs4o/7qmBjk3U6IIDjY7UzsFK93/f145df1c36a9117fb9bfc34bf63ee6ac/HGH_2019.12_Artforum.caption.pdf" target="_blank" rel="noopener">artforum</a>
+        <a href="https://assets.ctfassets.net/hp42m99tzs4o/43Dx7O0YWrA0Ybc00Y04Yv/db7d51896dbde68b121c121b2d6118e6/KM_2020.01_NewYorker.caption.pdf" target="_blank" rel="noopener">the new yorker</a>
+        <a href="https://assets.ctfassets.net/hp42m99tzs4o/10zChZgZx8BGJTQs19LEVw/adc0e9aa3895f7dfa8fb46c8ac655594/KM_2020.01_TheOffing.caption.pdf" target="_blank" rel="noopener">the offing</a>
+        <a href="https://assets.ctfassets.net/hp42m99tzs4o/2efShVhe1gsxmEdHQ2nrwt/ece46b1ddc94c3cec3f78b7b90ab2cef/KM_2020.01_EditorialMagazine.caption.pdf" target="_blank" rel="noopener">editorial magazine</a>
+      </span></div>
+    </footer>
+  </main>
+</div>
 <script>
-const works=[
- ['Coniunctio/01.jpg',1,''],
- ['Coniunctio/01_crop1.jpg',1,'detail'],
- ['Coniunctio/02.jpg',2,''],
- ['Coniunctio/02_crop1.jpg',2,'detail 1 / 2'],
- ['Coniunctio/02_crop2.jpg',2,'detail 2 / 2'],
- ['Coniunctio/03.jpg',3,''],
- ['Coniunctio/03_crop1.jpg',3,'detail 1 / 2'],
- ['Coniunctio/03_crop2.jpg',3,'detail 2 / 2'],
- ['Coniunctio/04.jpg',4,''],
- ['Coniunctio/04_crop1.jpg',4,'detail 1 / 2'],
- ['Coniunctio/04_crop2.jpg',4,'detail 2 / 2'],
- ['Coniunctio/05.jpg',5,''],
- ['Coniunctio/05_crop1.jpg',5,'detail 1 / 2'],
- ['Coniunctio/05_crop2.jpg',5,'detail 2 / 2'],
- ['Coniunctio/06.jpg',6,''],
- ['Coniunctio/06_crop1.jpg',6,'detail'],
- ['Coniunctio/07.jpg',7,''],
- ['Coniunctio/07_crop1.jpg',7,'detail']
+const coniunctioWorks=[
+ {src:"Coniunctio/01.jpg",title:"coniunctio I",details:["Coniunctio/01_crop1.jpg"]},
+ {src:"Coniunctio/02.jpg",title:"coniunctio II",details:["Coniunctio/02_crop1.jpg","Coniunctio/02_crop2.jpg"]},
+ {src:"Coniunctio/03.jpg",title:"coniunctio III",details:["Coniunctio/03_crop1.jpg","Coniunctio/03_crop2.jpg"]},
+ {src:"Coniunctio/04.jpg",title:"coniunctio IV",details:["Coniunctio/04_crop1.jpg","Coniunctio/04_crop2.jpg"]},
+ {src:"Coniunctio/05.jpg",title:"coniunctio V",details:["Coniunctio/05_crop1.jpg","Coniunctio/05_crop2.jpg"]},
+ {src:"Coniunctio/06.jpg",title:"coniunctio VI",details:["Coniunctio/06_crop1.jpg"]},
+ {src:"Coniunctio/07.jpg",title:"coniunctio VII",details:["Coniunctio/07_crop1.jpg"]}
 ];
-const artworkCount=7;
-let i=0;
-const art=document.getElementById('art'), counter=document.getElementById('counter');
-const pressToggle=document.getElementById('press-toggle'), pressMenu=document.getElementById('press-menu');
-works.forEach(work=>{const image=new Image();image.src=work[0]});
-function show(n){
- i=(n+works.length)%works.length;
- const work=works[i];
- art.src=work[0];
- art.alt=`coniunctio, artwork ${work[1]}${work[2]?', '+work[2]:''}`;
- counter.textContent=work[1]+' / '+artworkCount+(work[2]?' · '+work[2]:'');
-}
-document.getElementById('next').onclick=()=>show(i+1);
-document.getElementById('prev').onclick=()=>show(i-1);
-function setPress(open){
- pressMenu.hidden=!open;
- pressToggle.textContent=open?'press −':'press +';
- pressToggle.setAttribute('aria-expanded',String(open));
-}
-pressToggle.addEventListener('click',e=>{
- e.stopPropagation();
- setPress(pressMenu.hidden);
-});
-document.addEventListener('click',e=>{
- if(!e.target.closest('.press'))setPress(false);
-});
-document.addEventListener('keydown',e=>{
- if(e.key==='ArrowRight')show(i+1);
- if(e.key==='ArrowLeft')show(i-1);
- if(e.key==='Escape')setPress(false);
-});
+const series=document.getElementById("coniunctio-series");let activeFigure=null;
+series.innerHTML=coniunctioWorks.map((work,index)=>`<figure class="coniunctio-work"><button class="coniunctio-image-button" type="button" data-work="${index}" aria-label="view details of ${work.title}"><img class="coniunctio-image" src="${work.src}" alt="${work.title}"></button><figcaption class="coniunctio-caption"><span>${work.title}</span><span>ink + charcoal on paper, 36 × 24 in.</span></figcaption><div class="coniunctio-detail-controls" hidden><button class="coniunctio-full-return" type="button">full image</button><span class="coniunctio-detail-count"></span></div></figure>`).join("");
+function showFull(figure,keepActive=false){const index=Number(figure.querySelector(".coniunctio-image-button").dataset.work);const work=coniunctioWorks[index];const image=figure.querySelector(".coniunctio-image");figure.dataset.detailIndex="-1";image.src=work.src;image.alt=work.title;figure.querySelector(".coniunctio-detail-controls").hidden=true;activeFigure=keepActive?figure:null}
+function showDetail(figure,detailIndex){const index=Number(figure.querySelector(".coniunctio-image-button").dataset.work);const work=coniunctioWorks[index];const next=(detailIndex+work.details.length)%work.details.length;const image=figure.querySelector(".coniunctio-image");figure.dataset.detailIndex=String(next);image.src=work.details[next];image.alt=`${work.title}, detail ${next+1}`;figure.querySelector(".coniunctio-detail-controls").hidden=false;figure.querySelector(".coniunctio-detail-count").textContent=`detail ${next+1} / ${work.details.length}`;activeFigure=figure}
+function moveSlide(figure,delta){const index=Number(figure.querySelector(".coniunctio-image-button").dataset.work);const total=coniunctioWorks[index].details.length;const current=Number(figure.dataset.detailIndex??-1);if(delta>0){if(current===total-1)showFull(figure,true);else showDetail(figure,current+1)}else{if(current===-1)showDetail(figure,total-1);else if(current===0)showFull(figure,true);else showDetail(figure,current-1)}}
+series.addEventListener("click",event=>{const returnButton=event.target.closest(".coniunctio-full-return");if(returnButton){showFull(returnButton.closest(".coniunctio-work"));return}const imageButton=event.target.closest(".coniunctio-image-button");if(imageButton)moveSlide(imageButton.closest(".coniunctio-work"),1)});
+document.addEventListener("keydown",event=>{if(!activeFigure)return;if(event.key==="ArrowRight"||event.key===" "){event.preventDefault();moveSlide(activeFigure,1)}if(event.key==="ArrowLeft"){event.preventDefault();moveSlide(activeFigure,-1)}if(event.key==="Escape")showFull(activeFigure)});
 </script>
 </body>
 </html>

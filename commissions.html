@@ -94,38 +94,58 @@
       padding-top:14px;
     }
   }
+
+  *{box-sizing:border-box}
+  .site{display:block!important;min-height:100vh}
+  .sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px!important;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+  .name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important}
+  .name a,.stamp{display:block;width:100%;height:auto}
+  .projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+  .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+  .project-year{color:#999;font-size:10px!important;line-height:1.5!important}
+  .projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+  .menu-secondary{display:flex!important;flex-direction:row!important;align-items:center!important;gap:12px!important;margin-top:auto!important;padding-top:42px!important}
+  .menu-secondary a{color:#999!important;text-decoration:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+  .menu-secondary a:hover{text-decoration:underline!important;text-underline-offset:3px}
+  .side-top{margin:0 0 22px!important}
+  .studio-note{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;align-items:baseline!important;margin:0!important;max-width:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:#111!important;letter-spacing:0!important;text-transform:none!important}
+  .studio-now{color:#999!important;font-size:10px!important;line-height:1.5!important}
+  .studio-note a{color:inherit!important;text-decoration:none!important;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}
+  .studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
+  .commissions-page{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
+
+  @media(max-width:700px){
+    .sidebar{width:148px!important;padding:16px 13px 22px!important}
+    .name{width:58px!important;margin-bottom:24px!important}
+    .projects{gap:10px!important}
+    .projects a{display:block!important;font-size:12px!important}
+    .project-year{display:block!important;font-size:10px!important;margin-bottom:1px!important}
+    .menu-secondary{gap:9px!important;margin-top:auto!important;padding-top:32px!important}
+    .menu-secondary a{font-size:9px!important}
+    .side-top{margin-bottom:20px!important}
+    .commissions-page{width:calc(100% - 148px)!important;margin-left:148px!important}
+  }
 </style>
 </head>
 <body>
   <div class="site">
     <aside class="sidebar">
-      <h1 class="name"><a href="/" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp" /></a></h1>
-      <section>
-        <nav class="years" aria-label="work by chapter">
-          <a href="sunflower"><span class="year-label">2026</span><span class="chapter-label">i, sunflower</span></a>
-        
-          <a href="more-ink-drawings"><span class="year-label">2024</span><span class="chapter-label">more ink drawings</span></a>
-          <a href="house-in-the-trees"><span class="year-label">2023</span><span class="chapter-label">the house in the trees</span></a>
-          <a href="sister"><span class="year-label">2022</span><span class="chapter-label">sister</span></a>
-          <a href="#"><span class="year-label">2021</span><span class="chapter-label">ink drawings</span></a>
-          <a href="coniunctio"><span class="year-label">2019</span><span class="chapter-label">coniunctio</span></a>
-          <a href="half-mourning"><span class="year-label">2018</span><span class="chapter-label">half mourning</span></a>
-          <a href="copy-kitty"><span class="year-label">2017</span><span class="chapter-label">copy kitty</span></a>
-          <a href="labyrinths"><span class="year-label">2015</span><span class="chapter-label">labyrinths</span></a>
-          <a href="bad-korean"><span class="year-label">2014</span><span class="chapter-label">bad korean</span></a>
-          <a href="commissions" aria-current="page" style="margin-top:18px"><span class="year-label"></span><span class="chapter-label">commissions</span></a>
-        </nav>
-      </section>
-    </aside>
-
-    <header class="topbar">
-      <nav class="topnav" aria-label="main navigation">
-        <a href="https://paintingsforpkan.com/" target="_blank" rel="noopener">paintings for pkan</a>
-        <a href="teaching">teaching</a>
-        <a href="cv">cv</a>
-        <a href="about">about</a>
+      <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+      <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+      <nav class="projects" aria-label="projects">
+        <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+        <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+        <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+        <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+        <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+        <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+        <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+        <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+        <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+        <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
       </nav>
-    </header>
+      <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+    </aside>
 
     <main class="main commissions-page">
       <article class="commission commission-ejae">
