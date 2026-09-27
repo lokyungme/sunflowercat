@@ -7,20 +7,22 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .hero-main{
-    justify-content:center;
+    justify-content:flex-start;
+    padding:12px 12px 12px 4px!important;
   }
   .hero-link{
     display:block;
     width:100%;
-    max-width:1500px;
-    transform:translateX(-36px);
+    max-width:none;
+    transform:none;
   }
   .hero-image{
     display:block;
     width:100%;
-    height:auto;
-    max-height:calc(100vh - 90px);
+    height:calc(100vh - 24px);
+    max-height:none;
     object-fit:contain;
+    object-position:left center;
   }
   @media(max-width:720px){
     .topbar{
@@ -42,9 +44,9 @@
       white-space:normal;
       line-height:1.35;
     }
-    .hero-main{padding:24px 16px 36px;}
+    .hero-main{padding:10px 6px 24px!important;}
     .hero-link{transform:none;}
-    .hero-image{max-height:none;}
+    .hero-image{width:100%;height:auto;max-height:none;object-position:center;}
   }
   @media(max-width:420px){
     .topnav{gap:6px 10px;}
