@@ -20,37 +20,11 @@
 .studio-now{color:#999!important;font-size:10px!important;line-height:1.5!important}.studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
 .buds-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
 @media(max-width:700px){.sidebar{width:148px!important;padding:16px 13px 22px!important}.name{width:58px!important;margin-bottom:24px!important}.projects{gap:10px!important}.projects a{display:block!important;font-size:12px!important}.project-year{display:block!important;font-size:10px!important;margin-bottom:1px!important}.menu-secondary{gap:9px!important;margin-top:auto!important;padding-top:32px!important}.menu-secondary a{font-size:9px!important}.side-top{margin-bottom:20px!important}.buds-main{width:calc(100% - 148px)!important;margin-left:148px!important}}
-.mobile-menu-button{display:none}
-@media(max-width:980px){
-  html,body{width:100%;overflow-x:hidden}
-  .site{display:block!important;width:100%;min-height:100vh}
-  .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
-  .name{width:58px!important;margin-bottom:18px!important}
-  .side-top{margin-bottom:14px!important}
-  .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
-  .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
-  .projects,.menu-secondary{display:none!important}
-  .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
-  .sidebar.menu-open .menu-secondary{display:flex!important}
-  .projects{gap:10px!important}
-  .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
-  .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
-  .menu-secondary{gap:12px!important;margin-top:0!important;padding-top:34px!important}
-  .menu-secondary a{font-size:10px!important}
-  .buds-main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 18px 70px!important;overflow:visible!important}
-  .buds-page{padding-top:12px!important}
-  .buds-field{height:auto;min-height:0;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:34px 22px;margin:0 0 70px}
-  .bud:nth-child(n){position:static;width:auto}
-  .bud:nth-child(3),.bud:nth-child(6){transform:translateY(28px)}
-  .bud:hover{transform:none}
-  .lb-img{max-width:100%;max-height:calc(100svh - 100px)}
-}
 </style></head><body><div class="site">
 <aside class="sidebar">
   <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
   <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-  <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-  <nav class="projects" id="project-links" aria-label="projects">
+  <nav class="projects" aria-label="projects">
     <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
     <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
     <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
@@ -62,10 +36,10 @@
     <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
     <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
   </nav>
-  <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
 </aside>
 <main class="main buds-main"><div class="buds-page"><div class="buds-field">
 <a class="bud" data-src="i-sunflower/01.jpg"><img src="i-sunflower/01.jpg" alt=""></a><a class="bud" data-src="i-sunflower/02.jpg"><img src="i-sunflower/02.jpg" alt=""></a><a class="bud" data-src="i-sunflower/03.jpg"><img src="i-sunflower/03.jpg" alt=""></a><a class="bud" data-src="i-sunflower/04.jpg"><img src="i-sunflower/04.jpg" alt=""></a><a class="bud" data-src="i-sunflower/05.jpg"><img src="i-sunflower/05.jpg" alt=""></a><a class="bud" data-src="i-sunflower/06.jpg"><img src="i-sunflower/06.jpg" alt=""></a><a class="bud" data-src="i-sunflower/07.jpg"><img src="i-sunflower/07.jpg" alt=""></a>
 </div></div></main></div>
 <div class="lightbox" id="lightbox"><button class="lb-close" aria-label="close">×</button><div class="lb-zone lb-prev"></div><img class="lb-img" alt=""><div class="lb-zone lb-next"></div><div class="lb-count"></div></div>
-<script>(()=>{const menuButton=document.querySelector('.mobile-menu-button'),sidebar=document.querySelector('.sidebar');menuButton.addEventListener('click',()=>{const isOpen=sidebar.classList.toggle('menu-open');menuButton.setAttribute('aria-expanded',String(isOpen));menuButton.textContent=isOpen?'works −':'works +'});const works=[...document.querySelectorAll('.bud')],box=document.getElementById('lightbox'),img=box.querySelector('.lb-img'),count=box.querySelector('.lb-count');let i=0;function show(n){i=(n+works.length)%works.length;img.src=works[i].dataset.src;count.textContent=(i+1)+' / '+works.length}works.forEach((w,n)=>w.addEventListener('click',e=>{e.preventDefault();show(n);box.classList.add('open');document.body.style.overflow='hidden'}));function close(){box.classList.remove('open');document.body.style.overflow=''}box.querySelector('.lb-close').onclick=close;box.querySelector('.lb-prev').onclick=()=>show(i-1);box.querySelector('.lb-next').onclick=()=>show(i+1);document.addEventListener('keydown',e=>{if(!box.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)})})();</script></body></html>
+<script>(()=>{const works=[...document.querySelectorAll('.bud')],box=document.getElementById('lightbox'),img=box.querySelector('.lb-img'),count=box.querySelector('.lb-count');let i=0;function show(n){i=(n+works.length)%works.length;img.src=works[i].dataset.src;count.textContent=(i+1)+' / '+works.length}works.forEach((w,n)=>w.addEventListener('click',e=>{e.preventDefault();show(n);box.classList.add('open');document.body.style.overflow='hidden'}));function close(){box.classList.remove('open');document.body.style.overflow=''}box.querySelector('.lb-close').onclick=close;box.querySelector('.lb-prev').onclick=()=>show(i-1);box.querySelector('.lb-next').onclick=()=>show(i+1);document.addEventListener('keydown',e=>{if(!box.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)})})();</script></body></html>
