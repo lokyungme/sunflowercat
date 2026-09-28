@@ -17,40 +17,20 @@ a{color:inherit;text-decoration:none}
 .arrow.left{left:283px}.arrow.right{right:13px}
 .caption{position:fixed;z-index:30;left:calc(50% + 135px);bottom:40px;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 302px);font-size:11px;line-height:1.2;text-align:center;white-space:normal}.counter{position:fixed;z-index:30;left:calc(50% + 135px);bottom:14px;transform:translateX(-50%);font-size:9px;opacity:.28;letter-spacing:.04em}
 .about{position:fixed;z-index:30;right:16px;bottom:13px;font-size:9px;opacity:.32}
-.sidebar{position:fixed;z-index:110;inset:0 auto 0 0;width:270px;padding:22px 22px 28px;background:#fff;display:flex;flex-direction:column;overflow-y:auto}.name{margin:0 0 30px;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}.projects{display:flex;flex-direction:column;align-items:stretch;gap:11px}.projects a{display:grid;grid-template-columns:43px minmax(0,1fr);width:auto;font-size:12px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.project-year{color:#999;font-size:10px;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}.menu-secondary a{color:#999;font-size:10px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}.side-top{margin:0 0 22px}.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-size:12px;font-weight:400;line-height:1.25;color:#111;letter-spacing:0;text-transform:none}.studio-now{color:#999;font-size:10px;line-height:1.5}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
-.mobile-menu-button{display:none}
-@media(max-width:980px){
- html,body{width:100%;height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
- body{display:flex;flex-direction:column;min-height:100vh;min-height:100svh}
- .sidebar{position:relative;inset:auto;width:100%;min-height:0;padding:18px 18px 16px;overflow:visible;flex:none}
- .name{width:58px;margin-bottom:18px}
- .side-top{margin-bottom:14px}
- .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
- .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
- .projects,.menu-secondary{display:none}
- .sidebar.menu-open .projects{display:flex;margin-top:18px}
- .sidebar.menu-open .menu-secondary{display:flex}
- .projects{gap:10px}
- .projects a{display:grid;grid-template-columns:43px minmax(0,1fr);font-size:12px}
- .project-year{display:inline;font-size:10px;margin-bottom:0}
- .menu-secondary{gap:12px;margin-top:0;padding-top:34px}.menu-secondary a{font-size:10px}
- .top{position:relative;top:auto;left:auto;right:auto;width:100%;height:20px;min-height:20px;padding:0 12px;flex:none}
- .viewer{position:relative;inset:auto;width:100%;flex:1;min-height:calc(100svh - 190px)}
- .art-wrap{padding:8px 12px 54px;align-items:center}
- #art{max-width:100%;max-height:calc(100svh - 244px);object-fit:contain}
- .zone{position:absolute;top:0;bottom:0;width:50%}.prev{left:0}.next{right:0}
- .arrow{position:absolute;top:50%}.arrow.left{left:12px}.arrow.right{right:12px}
- .caption{position:absolute;left:12px;right:12px;bottom:27px;transform:none;width:auto;max-width:none}
- .counter{position:absolute;left:50%;bottom:11px;transform:translateX(-50%)}
+@media(max-width:700px){
+ .top{left:148px;height:40px;padding:0 11px}.viewer{inset:40px 0 0 148px}.art-wrap{padding-top:8px}.zone{top:40px;width:calc((100% - 148px)/2)}.prev{left:148px}
+ #art{max-height:80vh;max-width:calc(100vw - 164px)}
+ .arrow.left{left:156px}.caption,.counter{left:calc(50% + 74px);max-width:calc(100vw - 164px)}
 }
+.sidebar{position:fixed;z-index:110;inset:0 auto 0 0;width:270px;padding:22px 22px 28px;background:#fff;display:flex;flex-direction:column;overflow-y:auto}.name{margin:0 0 30px;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}.projects{display:flex;flex-direction:column;align-items:stretch;gap:11px}.projects a{display:grid;grid-template-columns:43px minmax(0,1fr);width:auto;font-size:12px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.project-year{color:#999;font-size:10px;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}.menu-secondary a{color:#999;font-size:10px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}.side-top{margin:0 0 22px}.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-size:12px;font-weight:400;line-height:1.25;color:#111;letter-spacing:0;text-transform:none}.studio-now{color:#999;font-size:10px;line-height:1.5}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.sidebar{width:148px;padding:16px 13px 22px}.name{width:58px;margin-bottom:24px}.projects{gap:10px}.projects a{display:block;font-size:12px}.project-year{display:block;font-size:10px;margin-bottom:1px}.menu-secondary{gap:9px;margin-top:auto;padding-top:32px}.menu-secondary a{font-size:9px}.side-top{margin-bottom:20px}}
 </style>
 </head>
 <body>
 <aside class="sidebar">
   <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
   <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-  <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-  <nav class="projects" id="project-links" aria-label="projects">
+  <nav class="projects" aria-label="projects">
     <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
     <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
     <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
@@ -62,22 +42,15 @@ a{color:inherit;text-decoration:none}
     <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
     <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
   </nav>
-  <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
 </aside>
 <header class="top"><span>bad korean</span></header>
-<main class="viewer"><div class="art-wrap"><img id="art" src="bad-korean/00_front-cover.jpg" alt=""><div class="caption" id="caption"></div></div>
+<main class="viewer"><div class="art-wrap"><img id="art" src="bad-korean/00_front-cover.jpg" alt=""><div class="caption" id="caption"></div></div></main>
 <button class="zone prev" id="prev" aria-label="previous"></button>
 <button class="zone next" id="next" aria-label="next"></button>
 <div class="arrow left">←</div><div class="arrow right">→</div>
-<div class="counter" id="counter">1 / 52</div></main>
+<div class="counter" id="counter">1 / 52</div>
 <script>
-const menuButton=document.querySelector('.mobile-menu-button');
-const sidebar=document.querySelector('.sidebar');
-menuButton.addEventListener('click',()=>{
- const isOpen=sidebar.classList.toggle('menu-open');
- menuButton.setAttribute('aria-expanded',String(isOpen));
- menuButton.textContent=isOpen?'works −':'works +';
-});
 const works=[
 ["bad-korean/00_front-cover.jpg", ""],
 ["bad-korean/02_idontthink.jpg", "i don't think that i like you anymore"],
