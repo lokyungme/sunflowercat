@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>labyrinths — kyung-me</title>
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;overflow-x:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}.site{display:block!important;min-height:100vh}
+.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+.name{margin:0 0 30px!important;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
+.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+.project-year{color:#999;font-size:10px!important;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}
+.menu-secondary a{color:#999;text-decoration:none;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
+.side-top{margin:0 0 22px}
+.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:#111;letter-spacing:0!important;text-transform:none!important}
+.studio-now{color:#999;font-size:10px!important;line-height:1.5}.studio-note a{color:inherit;text-decoration:none;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+.mobile-menu-button{display:none}
+.labyrinth-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important;padding:20px 16px 80px!important}
+.labyrinth-header{position:fixed;z-index:101;top:0;right:10px;height:20px;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
+.labyrinth-series{width:min(calc(100vw - 302px),1400px);margin:0 auto;display:flex;flex-direction:column;gap:110px}
+.labyrinth-work{margin:0}
+.labyrinth-image-button{display:block;width:100%;margin:0;padding:0;border:0;background:none;cursor:pointer;text-align:left}
+.labyrinth-image-button:focus,.labyrinth-image-button:focus-visible{outline:none}
+.labyrinth-image{display:block;width:100%;height:auto}
+.labyrinth-caption{display:flex;justify-content:space-between;gap:18px;margin-top:8px;font-size:11px;line-height:1.35}
+.labyrinth-caption span:last-child{color:#999;text-align:right}
+.labyrinth-detail-controls{display:flex;gap:14px;margin-top:5px;font-size:10px;color:#999}
+.labyrinth-detail-controls[hidden]{display:none}
+.labyrinth-full-return{padding:0;border:0;background:none;color:#111;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media(max-width:980px){
+ html,body{width:100%;overflow-x:hidden}
+ .site{display:block!important;width:100%;min-height:0}
+ .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
+ .name{width:58px!important;margin-bottom:18px!important}
+ .side-top{margin-bottom:14px!important}
+ .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
+ .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
+ .projects,.menu-secondary{display:none!important}
+ .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
+ .sidebar.menu-open .menu-secondary{display:flex!important}
+ .projects{gap:10px!important}
+ .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
+ .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
+ .menu-secondary{gap:12px!important;margin-top:0!important;padding-top:34px!important}.menu-secondary a{font-size:10px!important}
+ .labyrinth-main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 12px 50px!important}
+ .labyrinth-header{position:relative;top:auto;right:auto;width:100%;height:20px;justify-content:flex-end;margin:0 0 8px}
+ .labyrinth-series{width:100%!important;max-width:1400px;gap:58px}
+}
+@media(max-width:700px){
+ .labyrinth-caption{display:block;font-size:9px}.labyrinth-caption span{display:block}.labyrinth-caption span:last-child{text-align:left;margin-top:2px}
+}
+</style>
+</head>
+<body>
+<div class="site">
+  <aside class="sidebar">
+    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
+    <nav class="projects" id="project-links" aria-label="projects">
+      <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
+      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+    </nav>
+    <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  </aside>
+
+  <main class="labyrinth-main">
+    <div class="labyrinth-header">labyrinths</div>
+    <div class="labyrinth-series" id="labyrinth-series"></div>
+  </main>
+</div>
+<script>
+const menuButton=document.querySelector('.mobile-menu-button');
+const sidebar=document.querySelector('.sidebar');
+menuButton.addEventListener('click',()=>{
+ const isOpen=sidebar.classList.toggle('menu-open');
+ menuButton.setAttribute('aria-expanded',String(isOpen));
+ menuButton.textContent=isOpen?'works −':'works +';
+});
+
+const labyrinthWorks=[
+ {src:"Labyrinths/rc_fullsize.jpg",title:"rabbit canal",details:["Labyrinths/rc_01.jpg","Labyrinths/rc_02.jpg","Labyrinths/rc_03.jpg","Labyrinths/rc_04.jpg"]},
+ {src:"Labyrinths/sf_01.jpg",title:"sen's fortress",details:["Labyrinths/sf_fullsize.jpg"]},
+ {src:"Labyrinths/sada.jpg",title:"sada",details:[]},
+ {src:"Labyrinths/a%20long%20divorce.jpg",title:"a long divorce",details:["Labyrinths/ald_01.jpg","Labyrinths/ald_02.jpg","Labyrinths/ald_03.jpg","Labyrinths/ald_04.jpg","Labyrinths/ald_05.jpg","Labyrinths/ald_06.jpg","Labyrinths/ald_07.jpg","Labyrinths/ald_08.jpg","Labyrinths/ald_09.jpg"]}
+];
+const series=document.getElementById("labyrinth-series");let activeFigure=null;
+series.innerHTML=labyrinthWorks.map((work,index)=>`<figure class="labyrinth-work"><button class="labyrinth-image-button" type="button" data-work="${index}" aria-label="view details of ${work.title}"><img class="labyrinth-image" src="${work.src}" alt="${work.title}"></button><figcaption class="labyrinth-caption"><span>${work.title}</span></figcaption><div class="labyrinth-detail-controls" hidden><button class="labyrinth-full-return" type="button">full image</button><span class="labyrinth-detail-count"></span></div></figure>`).join("");
+function showFull(figure,keepActive=false){const index=Number(figure.querySelector(".labyrinth-image-button").dataset.work);const work=labyrinthWorks[index];const image=figure.querySelector(".labyrinth-image");figure.dataset.detailIndex="-1";image.src=work.src;image.alt=work.title;figure.querySelector(".labyrinth-detail-controls").hidden=true;activeFigure=keepActive?figure:null}
+function showDetail(figure,detailIndex){const index=Number(figure.querySelector(".labyrinth-image-button").dataset.work);const work=labyrinthWorks[index];if(!work.details.length){showFull(figure);return}const next=(detailIndex+work.details.length)%work.details.length;const image=figure.querySelector(".labyrinth-image");figure.dataset.detailIndex=String(next);image.src=work.details[next];image.alt=`${work.title}, detail ${next+1}`;figure.querySelector(".labyrinth-detail-controls").hidden=false;figure.querySelector(".labyrinth-detail-count").textContent=`detail ${next+1} / ${work.details.length}`;activeFigure=figure}
+function moveSlide(figure,delta){const index=Number(figure.querySelector(".labyrinth-image-button").dataset.work);const total=labyrinthWorks[index].details.length;if(!total){showFull(figure);return}const current=Number(figure.dataset.detailIndex??-1);if(delta>0){if(current===total-1)showFull(figure,true);else showDetail(figure,current+1)}else{if(current===-1)showDetail(figure,total-1);else if(current===0)showFull(figure,true);else showDetail(figure,current-1)}}
+series.addEventListener("click",event=>{const returnButton=event.target.closest(".labyrinth-full-return");if(returnButton){showFull(returnButton.closest(".labyrinth-work"));return}const imageButton=event.target.closest(".labyrinth-image-button");if(imageButton)moveSlide(imageButton.closest(".labyrinth-work"),1)});
+document.addEventListener("keydown",event=>{if(!activeFigure)return;if(event.key==="ArrowRight"||event.key===" "){event.preventDefault();moveSlide(activeFigure,1)}if(event.key==="ArrowLeft"){event.preventDefault();moveSlide(activeFigure,-1)}if(event.key==="Escape")showFull(activeFigure)});
+</script>
+</body>
+</html>
