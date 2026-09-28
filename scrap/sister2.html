@@ -19,7 +19,6 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
 .side-top{margin:0 0 22px}
 .studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:#111;letter-spacing:0!important;text-transform:none!important}
 .studio-now{color:#999;font-size:10px!important;line-height:1.5}.studio-note a{color:inherit;text-decoration:none;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
-.mobile-menu-button{display:none}
 .sister-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important;padding:20px 16px 48px!important}
 .sister-header{position:fixed;z-index:101;top:0;right:10px;width:auto;height:20px;margin:0;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
 .sister-title{margin:0;font-size:11px;font-weight:400;line-height:1}
@@ -37,29 +36,18 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
 .sister-detail-controls[hidden]{display:none}
 .sister-full-return{padding:0;border:0;background:none;color:#111;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .sister-archive{width:min(calc(100vw - 302px),760px);margin:80px auto 0}
-@media(max-width:980px){
- html,body{width:100%;overflow-x:hidden}
- .site{display:block!important;width:100%;min-height:0}
- .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
- .name{width:58px!important;margin-bottom:18px!important}
- .side-top{margin-bottom:14px!important}
- .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
- .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
- .projects,.menu-secondary{display:none!important}
- .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
- .sidebar.menu-open .menu-secondary{display:flex!important}
- .projects{gap:10px!important}
- .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
- .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
- .menu-secondary{gap:12px!important;margin-top:0!important;padding-top:34px!important}.menu-secondary a{font-size:10px!important}
- .sister-main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 12px 48px!important}
- .sister-header{position:relative;top:auto;right:auto;width:100%;height:20px;justify-content:flex-end;margin:0 0 8px}
- .sister-series{width:100%!important;max-width:1400px}
- .sister-archive{width:100%!important;max-width:760px}
- .sister-series{gap:58px}
-}
 @media(max-width:700px){
+ .sidebar{width:148px!important;padding:16px 13px 22px}
+ .name{width:58px;margin-bottom:24px!important}
+ .projects{gap:10px!important}
+ .projects a{display:block!important;font-size:12px!important}
+ .project-year{display:block;font-size:10px!important;margin-bottom:1px}
+ .menu-secondary{gap:9px;margin-top:auto;padding-top:32px}.menu-secondary a{font-size:9px!important}.side-top{margin-bottom:20px}
+ .sister-main{width:calc(100% - 148px)!important;margin-left:148px!important;padding:20px 8px 38px!important}
+ .sister-header{right:8px;height:20px}
  .sister-meta-corner{right:10px;bottom:8px;font-size:8px}
+ .sister-series,.sister-archive{width:100%!important}
+ .sister-series{gap:58px}
  .sister-work-caption{display:block;font-size:9px}
  .sister-work-caption span{display:block}
  .sister-work-caption span:last-child{text-align:left;margin-top:2px}
@@ -71,8 +59,7 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
     <aside class="sidebar">
       <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
       <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-      <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-      <nav class="projects" id="project-links" aria-label="projects">
+      <nav class="projects" aria-label="projects">
         <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
         <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">more ink drawings</span></a>
         <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
@@ -84,7 +71,7 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
         <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
         <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
       </nav>
-      <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+      <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
     </aside>
 
     <main class="main sister-main">
@@ -117,14 +104,6 @@ html,body{height:auto!important;min-height:100%;overflow-x:hidden!important;over
   </div>
 
 <script>
-const menuButton = document.querySelector('.mobile-menu-button');
-const sidebar = document.querySelector('.sidebar');
-menuButton.addEventListener('click', () => {
-  const isOpen = sidebar.classList.toggle('menu-open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.textContent = isOpen ? 'works −' : 'works +';
-});
-
 const sisterSlides = [
   {
     src:"sister/the-marriage.jpg", title:"the marriage", pair:["the marriage","the mother"], collection:"baltimore museum of art",
