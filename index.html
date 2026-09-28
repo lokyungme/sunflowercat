@@ -72,7 +72,8 @@
   .studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
   .hero-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
 
-  @media(max-width:700px){
+  /* Tablet-sized previews and landscape phones need the stacked layout too. */
+  @media(max-width:980px){
     html,body{width:100%;overflow-x:hidden}
     .site{display:block!important;width:100%;min-height:0}
     .sidebar{
