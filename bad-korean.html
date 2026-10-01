@@ -135,15 +135,51 @@ const works=[
 ["bad-korean/54.jpg", "it doesn't always have to be bad"],
 ["bad-korean/99_back-cover.jpg", ""]
 ];
-let i=0;
-const art=document.getElementById('art'), counter=document.getElementById('counter'), caption=document.getElementById('caption');
-function show(n){
- i=(n+works.length)%works.length;
- art.src=works[i][0];
- art.alt=works[i][1];
- caption.textContent=works[i][1]||'';
- counter.textContent=(i+1)+' / '+works.length;
+let i=0, displayedIndex=0, requestToken=0;
+let art=document.getElementById('art');
+const counter=document.getElementById('counter'), caption=document.getElementById('caption');
+const imageCache=new Map();
+const wrap=n=>(n+works.length)%works.length;
+function prepareImage(index){
+ if(imageCache.has(index))return imageCache.get(index);
+ const image=new Image();
+ image.decoding='async';
+ const ready=new Promise((resolve,reject)=>{
+  image.onload=async()=>{
+   try{await image.decode();}catch(error){}
+   resolve(image);
+  };
+  image.onerror=()=>reject(new Error('Could not load artwork'));
+  image.src=works[index][0];
+ });
+ imageCache.set(index,ready);
+ ready.catch(()=>{if(imageCache.get(index)===ready)imageCache.delete(index);});
+ return ready;
 }
+function preloadNearby(index){
+ const nearby=new Set([index,wrap(index+1),wrap(index+2),wrap(index-1)]);
+ for(const key of imageCache.keys())if(!nearby.has(key))imageCache.delete(key);
+ for(const key of nearby)prepareImage(key).catch(()=>{});
+}
+async function show(n){
+ i=wrap(n);
+ const index=i, token=++requestToken;
+ try{
+  const nextArt=await prepareImage(index);
+  if(token!==requestToken)return;
+  nextArt.id='art';
+  nextArt.alt=works[index][1]||'';
+  art.replaceWith(nextArt);
+  art=nextArt;
+  caption.textContent=works[index][1]||'';
+  counter.textContent=(index+1)+' / '+works.length;
+  displayedIndex=index;
+  preloadNearby(index);
+ }catch(error){
+  if(token===requestToken)i=displayedIndex;
+ }
+}
+preloadNearby(0);
 show(0);
 document.getElementById('next').onclick=()=>show(i+1);
 document.getElementById('prev').onclick=()=>show(i-1);
