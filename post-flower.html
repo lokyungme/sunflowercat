@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>post flower — kyung-me</title><link rel="stylesheet" href="style.css"><style>
+*{box-sizing:border-box}
+.site{display:block!important;min-height:100vh}
+.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px!important;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+.name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important}.name a,.stamp{display:block;width:100%;height:auto}
+.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+.project-year{color:#999;font-size:10px!important;line-height:1.5!important}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+.menu-secondary{display:flex!important;flex-direction:row!important;align-items:center!important;gap:12px!important;margin-top:auto!important;padding-top:42px!important}
+.menu-secondary a{color:#999!important;text-decoration:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.menu-secondary a:hover{text-decoration:underline!important;text-underline-offset:3px}
+.side-top{margin:0 0 22px!important}
+.studio-note{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;align-items:baseline!important;margin:0!important;max-width:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:#111!important;letter-spacing:0!important;text-transform:none!important}
+.studio-now{color:#999!important;font-size:10px!important;line-height:1.5!important}.studio-note a{color:inherit!important;text-decoration:none!important;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
+.post-flower-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
+.mobile-menu-button{display:none}
+@media(max-width:980px){
+ html,body{width:100%;overflow-x:hidden}
+ .site{display:block!important;width:100%;min-height:0}
+ .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
+ .name{width:58px!important;margin-bottom:18px!important}
+ .side-top{margin-bottom:14px!important}
+ .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
+ .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
+ .projects{display:none!important;gap:10px!important}
+ .menu-secondary{display:none!important;gap:12px!important;margin-top:0!important;padding-top:34px!important}
+ .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
+ .sidebar.menu-open .menu-secondary{display:flex!important}
+ .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
+ .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
+ .menu-secondary a{font-size:10px!important}
+ .post-flower-main{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0 12px 70px!important}
+ .sunflower-chapter{padding-top:28px!important}
+ .sf-head.sf-head-compact{margin:0 0 34px!important}
+ .sf-item,.sf-item.left,.sf-item.right,.sf-item.number10,.sf-item.number11,.sf-play .sf-12{max-width:100%!important;margin-left:auto!important;margin-right:auto!important}
+ .sf-item img,.sf-item.hero img,.sf-item.growing img,.sf-item.tall-final img{width:auto!important;max-width:100%!important;max-height:85svh!important;margin-left:auto;margin-right:auto}
+ .sf-pair{display:block!important;margin:0}
+ .sf-pair .sf-item{margin-bottom:85px}
+}
+
+html,body{margin:0;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
+.post-flower-main{padding:8px 12px 90px 12px;overflow:hidden}
+.flower-field{max-width:1500px;margin:0 auto}
+.page-title{margin:0 0 38px 3vw;font-size:18px;font-weight:400;line-height:1.4}
+.flower-item{display:block;width:max-content;max-width:100%;padding:0;border:0;background:none;margin:0 auto 150px;cursor:zoom-in}
+.flower-item img{display:block;width:auto;height:auto;max-width:100%;max-height:98vh;max-height:98svh}
+.flower-item.left{margin-left:auto;margin-right:auto}
+.flower-item.right{margin-left:auto;margin-right:auto}
+.flower-item.quiet img{max-height:98vh;max-height:98svh}
+.flower-item:last-child{margin-bottom:0}
+.flower-item:focus-visible{outline:1px solid #999;outline-offset:6px}
+.viewer{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#fff;padding:40px 48px 48px}
+.viewer[hidden]{display:none}
+.viewer img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100svh - 88px)}
+.viewer button{border:0;background:transparent;color:#777;font:12px Arial,Helvetica,sans-serif;cursor:pointer;min-width:32px;min-height:32px}
+.viewer-close{position:absolute;top:10px;right:12px;font-size:22px!important}
+.viewer-prev{position:absolute;left:8px;top:calc(50% - 16px)}
+.viewer-next{position:absolute;right:8px;top:calc(50% - 16px)}
+.viewer-count{position:absolute;bottom:17px;right:20px;font-size:10px;color:#999}
+@media(max-width:980px){
+ .page-title{margin:0 0 28px;font-size:16px}
+ .flower-item,.flower-item.left,.flower-item.right{margin:0 auto 85px;max-width:100%}
+ .flower-item img,.flower-item.quiet img{max-width:100%;max-height:95svh;width:auto;height:auto}
+ .viewer{padding:48px 32px}
+ .viewer img{max-height:calc(100svh - 96px)}
+}
+
+
+
+</style></head><body><div class="site"><aside class="sidebar">
+  <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+  <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+  <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
+  <nav class="projects" id="project-links" aria-label="projects">
+    <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
+    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+    <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
+    <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
+    <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
+    <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+    <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+    <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+    <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+    <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+    <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+    <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+    <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+  </nav>
+  <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+</aside><main class="main post-flower-main"><div class="flower-field"><button class="flower-item" type="button" aria-label="enlarge painting 1"><img src="post%20flower/01.png" alt="Post flower, painting 1" fetchpriority="high" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 2"><img src="post%20flower/02.png" alt="Post flower, painting 2" loading="eager" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 3"><img src="post%20flower/03.png" alt="Post flower, painting 3" loading="eager" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 4"><img src="post%20flower/04.png" alt="Post flower, painting 4" loading="eager" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 5"><img src="post%20flower/05.png" alt="Post flower, painting 5" loading="eager" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 6"><img src="post%20flower/06.png" alt="Post flower, painting 6" loading="eager" decoding="async"></button>
+<button class="flower-item" type="button" aria-label="enlarge painting 7"><img src="post%20flower/07.png" alt="Post flower, painting 7" loading="eager" decoding="async"></button></div></main></div><div class="viewer" hidden role="dialog" aria-modal="true" aria-label="post flower paintings"><button class="viewer-close" type="button" aria-label="close">×</button><button class="viewer-prev" type="button" aria-label="previous painting">←</button><img alt=""><button class="viewer-next" type="button" aria-label="next painting">→</button><span class="viewer-count" aria-live="polite"></span></div><script>
+(()=>{
+ const menu=document.querySelector('.mobile-menu-button'),sidebar=document.querySelector('.sidebar');
+ menu.addEventListener('click',()=>{const open=sidebar.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'works −':'works +';});
+ const works=[...document.querySelectorAll('.flower-item')],viewer=document.querySelector('.viewer'),image=viewer.querySelector('img'),count=viewer.querySelector('.viewer-count'),close=viewer.querySelector('.viewer-close');
+ let index=0,previousFocus,previousOverflow='',request=0;
+ function show(n){index=(n+works.length)%works.length;const src=works[index].querySelector('img');const ticket=++request;const next=new Image();next.onload=()=>{if(ticket!==request)return;image.src=next.src;image.alt=src.alt;count.textContent=(index+1)+' / '+works.length;};next.src=src.src;}
+ function open(n){previousFocus=document.activeElement;previousOverflow=document.body.style.overflow;viewer.hidden=false;document.body.style.overflow='hidden';image.removeAttribute('src');count.textContent='';show(n);close.focus();}
+ function dismiss(){request++;viewer.hidden=true;document.body.style.overflow=previousOverflow;previousFocus?.focus();}
+ works.forEach((work,n)=>work.addEventListener('click',()=>open(n)));
+ close.addEventListener('click',dismiss);
+ viewer.querySelector('.viewer-prev').addEventListener('click',()=>show(index-1));
+ viewer.querySelector('.viewer-next').addEventListener('click',()=>show(index+1));
+ image.addEventListener('click',()=>show(index+1));
+ document.addEventListener('keydown',event=>{if(viewer.hidden)return;if(event.key==='Escape')dismiss();if(event.key==='ArrowRight'){event.preventDefault();show(index+1);}if(event.key==='ArrowLeft'){event.preventDefault();show(index-1);}if(event.key==='Tab'){const buttons=[...viewer.querySelectorAll('button')];const first=buttons[0],last=buttons[buttons.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}});
+})();
+</script></body></html>
