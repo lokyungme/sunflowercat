@@ -155,6 +155,42 @@
 }
 </style>
 
+
+<style>
+/* Enlarge paintings 2–11 while preserving their original placement. */
+.sf-field .sf-item.sf-enlarged{max-width:100%}
+.sf-field .sf-item.sf-enlarged img{height:98svh;width:auto;max-height:98svh;max-width:100%;object-fit:contain}
+.sf-field .sf-pair .sf-item.sf-enlarged img{width:100%;height:auto;max-height:none}
+@media(max-width:980px){
+ .sf-field .sf-item.sf-enlarged img{height:auto!important;width:auto!important;max-height:90svh!important;max-width:100%!important}
+}
+</style>
+
+
+<style>
+/* Image 11 fills the screen height with a small breathing margin. */
+.sf-field .sf-item.number11.sf-enlarged{max-width:calc(100% - 4vw)}
+.sf-field .sf-item.number11.sf-enlarged img{
+ height:calc(100svh - 12px);max-height:calc(100svh - 12px);
+ width:auto;max-width:100%;object-fit:contain;
+}
+@media(max-width:980px){
+ .sf-field .sf-item.number11.sf-enlarged{max-width:100%!important}
+ .sf-field .sf-item.number11.sf-enlarged img{
+  height:calc(100svh - 24px)!important;max-height:calc(100svh - 24px)!important;
+ }
+}
+</style>
+
+
+<style>
+.lightbox{padding:8px;overflow:hidden;touch-action:none}
+.lightbox .lb-img{max-width:calc(100vw - 16px);max-height:calc(100svh - 16px);transform-origin:center;user-select:none;-webkit-user-drag:none;touch-action:none;cursor:grab!important}
+.lightbox .lb-zone{width:38px;z-index:5}
+.lightbox .lb-close{z-index:6;background:#fff;padding:4px}
+.lightbox .lb-meta,.lightbox .lb-count{background:rgba(255,255,255,.92);padding:4px 6px;z-index:6;pointer-events:none}
+</style>
+
 </head><body><div class="site">
 <aside class="sidebar">
   <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
@@ -188,16 +224,16 @@
 </div>
 <div class="sf-field">
 <a class="sf-item hero" data-src="i-sunflower/01.png" data-views="i-sunflower/1-details/1a.jpg|i-sunflower/1-details/1b.jpg|i-sunflower/1-details/1c.jpg" data-title="Birth of a Sunflower, 2024" data-medium="Ink and watercolor on rice paper" data-dims="21 × 15 × 1½ in."><img src="i-sunflower/01.png"></a>
-<a class="sf-item medium left" data-src="i-sunflower/02.png" data-views="i-sunflower/2-details/2a.jpg|i-sunflower/2-details/2b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¾ × 15¼ × 1½ in."><img src="i-sunflower/02.png"></a>
-<a class="sf-item hero" data-src="i-sunflower/03.png" data-views="i-sunflower/3-details/3a.jpg|i-sunflower/3-details/3b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¾ × 15¼ × 1½ in."><img src="i-sunflower/03.png"></a>
-<a class="sf-item small right" data-src="i-sunflower/04.png" data-views="i-sunflower/4-details/4a.jpg|i-sunflower/4-details/4b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¼ × 15¼ × 1½ in."><img src="i-sunflower/04.png"></a>
+<a class="sf-item medium left sf-enlarged" data-src="i-sunflower/02.png" data-views="i-sunflower/2-details/2a.jpg|i-sunflower/2-details/2b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¾ × 15¼ × 1½ in."><img src="i-sunflower/02.png"></a>
+<a class="sf-item hero sf-enlarged" data-src="i-sunflower/03.png" data-views="i-sunflower/3-details/3a.jpg|i-sunflower/3-details/3b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¾ × 15¼ × 1½ in."><img src="i-sunflower/03.png"></a>
+<a class="sf-item small right sf-enlarged" data-src="i-sunflower/04.png" data-views="i-sunflower/4-details/4a.jpg|i-sunflower/4-details/4b.jpg" data-title="Untitled, 2024" data-medium="Ink and watercolor on mulberry paper" data-dims="19¼ × 15¼ × 1½ in."><img src="i-sunflower/04.png"></a>
 <div class="sf-branch"><a href="baby-buds" aria-label="related works">+</a></div>
-<a class="sf-item hero" data-src="i-sunflower/05.png" data-views="i-sunflower/5-details/5a.jpg|i-sunflower/5-details/5b.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="28 × 21¼ × 1½ in."><img src="i-sunflower/05.png"></a>
-<a class="sf-item medium left" data-src="i-sunflower/06.png" data-views="i-sunflower/6-details/6a.jpg|i-sunflower/6-details/6b.jpg" data-title="The Kiss, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="28 × 21¼ × 1½ in."><img src="i-sunflower/06.png"></a>
-<a class="sf-item hero" data-src="i-sunflower/07.png" data-title="Sunflower 2, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 24 × 1½ in."><img src="i-sunflower/07.png"></a>
-<div class="sf-pair"><a class="sf-item" data-src="i-sunflower/08.png" data-title="Sunflower 1, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 25 × 1½ in."><img src="i-sunflower/08.png"></a><a class="sf-item" data-src="i-sunflower/09.png" data-title="Sunflower 3, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 26 × 1½ in."><img src="i-sunflower/09.png"></a></div>
-<a class="sf-item medium number10" data-src="i-sunflower/10.png" data-views="i-sunflower/10-details/10a.jpg|i-sunflower/10-details/10b.jpg|i-sunflower/10-details/10c.jpg|i-sunflower/10-details/10d.jpg" data-title="Untitled" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 26 × 1½ in."><img src="i-sunflower/10.png"></a>
-<a class="sf-item hero number11" data-src="i-sunflower/11.png" data-views="i-sunflower/11-details/11a.jpg|i-sunflower/11-details/11b.jpg|i-sunflower/11-details/11c.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="40 × 28½ × 1½ in."><img src="i-sunflower/11.png"></a>
+<a class="sf-item hero sf-enlarged" data-src="i-sunflower/05.png" data-views="i-sunflower/5-details/5a.jpg|i-sunflower/5-details/5b.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="28 × 21¼ × 1½ in."><img src="i-sunflower/05.png"></a>
+<a class="sf-item medium left sf-enlarged" data-src="i-sunflower/06.png" data-views="i-sunflower/6-details/6a.jpg|i-sunflower/6-details/6b.jpg" data-title="The Kiss, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="28 × 21¼ × 1½ in."><img src="i-sunflower/06.png"></a>
+<a class="sf-item hero sf-enlarged" data-src="i-sunflower/07.png" data-title="Sunflower 2, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 24 × 1½ in."><img src="i-sunflower/07.png"></a>
+<div class="sf-pair"><a class="sf-item sf-enlarged" data-src="i-sunflower/08.png" data-title="Sunflower 1, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 25 × 1½ in."><img src="i-sunflower/08.png"></a><a class="sf-item sf-enlarged" data-src="i-sunflower/09.png" data-title="Sunflower 3, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 26 × 1½ in."><img src="i-sunflower/09.png"></a></div>
+<a class="sf-item medium number10 sf-enlarged" data-src="i-sunflower/10.png" data-views="i-sunflower/10-details/10a.jpg|i-sunflower/10-details/10b.jpg|i-sunflower/10-details/10c.jpg|i-sunflower/10-details/10d.jpg" data-title="Untitled" data-medium="Ink and watercolor on mulberry paper" data-dims="43 × 26 × 1½ in."><img src="i-sunflower/10.png"></a>
+<a class="sf-item hero number11 sf-enlarged" data-src="i-sunflower/11.png" data-views="i-sunflower/11-details/11a.jpg|i-sunflower/11-details/11b.jpg|i-sunflower/11-details/11c.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="40 × 28½ × 1½ in."><img src="i-sunflower/11.png"></a>
 <div class="sf-play">
 <a class="sf-item sf-12" data-src="i-sunflower/12.png" data-views="i-sunflower/12-details/12a.jpg|i-sunflower/12-details/12b.jpg" data-title="Untitled, 2026" data-medium="Ink on rice paper" data-dims="16 × 12½ × 2 in."><img src="i-sunflower/12.png"></a>
 </div>
@@ -206,7 +242,7 @@
 <a class="sf-item hero tall-final" data-src="i-sunflower/15.png" data-views="i-sunflower/15-details/15a.jpg|i-sunflower/15-details/15b.jpg|i-sunflower/15-details/15c.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="87½ × 44 × 2 in."><img src="i-sunflower/15.png"></a>
 <a class="sf-item hero tall-final" data-src="i-sunflower/16.png" data-views="i-sunflower/16-details/16a.jpg|i-sunflower/16-details/16b.jpg|i-sunflower/16-details/16c.jpg|i-sunflower/16-details/16d.jpg" data-title="Untitled, 2025" data-medium="Ink and watercolor on mulberry paper" data-dims="87½ × 44 × 2 in."><img src="i-sunflower/16.png"></a>
 <a class="sf-item hero tall-final" data-src="i-sunflower/17.png" data-views="i-sunflower/17-details/17a.jpg|i-sunflower/17-details/17b.jpg|i-sunflower/17-details/17c.jpg|i-sunflower/17-details/17d.jpg" data-title="Untitled, 2026" data-medium="Ink and watercolor on mulberry paper" data-dims="87½ × 44 × 2 in."><img src="i-sunflower/17.png"></a>
-<div class="sf-branch"><a href="big-sunflower-paintings" aria-label="view the large sunflower paintings">+</a></div>
+<div class="sf-branch"><a href="post-flower" aria-label="view post flower">+</a></div>
 <div class="sf-install">
 <a class="sf-item hero" data-src="i-sunflower-install/01.jpg"><img src="i-sunflower-install/01.jpg"></a>
 <a class="sf-item hero" data-src="i-sunflower-install/02.jpg"><img src="i-sunflower-install/02.jpg"></a>
@@ -239,6 +275,57 @@ const works=[...document.querySelectorAll('.sf-item')],
 
 let ix=0;
 let viewIx=0;
+let zoom=1, panX=0, panY=0, openingHeight=0;
+const pointers=new Map();
+let gesture=null, dragged=false;
+function applyZoom(){
+ const maxX=Math.max(0,(li.offsetWidth*zoom-lb.clientWidth)/2);
+ const maxY=Math.max(0,(li.offsetHeight*zoom-lb.clientHeight)/2);
+ panX=Math.max(-maxX,Math.min(maxX,panX));
+ panY=Math.max(-maxY,Math.min(maxY,panY));
+ li.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;
+}
+function resetZoom(){zoom=1;panX=0;panY=0;applyZoom();}
+li.addEventListener('load',()=>{
+ if(openingHeight){zoom=Math.min(4,Math.max(1,openingHeight/li.offsetHeight)*1.08);openingHeight=0;}
+ applyZoom();
+});
+lb.addEventListener('wheel',e=>{
+ if(e.target.closest('button'))return;
+ e.preventDefault();
+ zoom=Math.max(1,Math.min(5,zoom*Math.exp(-e.deltaY*.002)));
+ applyZoom();
+},{passive:false});
+function startGesture(){
+ const pts=[...pointers.values()];
+ gesture={zoom,x:panX,y:panY,pts};
+}
+li.addEventListener('pointerdown',e=>{
+ if(e.button!==0)return;
+ pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ li.setPointerCapture(e.pointerId);
+ if(pointers.size===1)dragged=false;
+ startGesture();
+});
+li.addEventListener('pointermove',e=>{
+ if(!pointers.has(e.pointerId)||!gesture)return;
+ pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ const pts=[...pointers.values()];
+ if(pts.length===2&&gesture.pts.length===2){
+  const distance=p=>Math.hypot(p[1].x-p[0].x,p[1].y-p[0].y);
+  zoom=Math.max(1,Math.min(5,gesture.zoom*distance(pts)/Math.max(1,distance(gesture.pts))));
+  dragged=true;
+ }else if(pts.length===1){
+  const dx=pts[0].x-gesture.pts[0].x,dy=pts[0].y-gesture.pts[0].y;
+  if(Math.hypot(dx,dy)>4)dragged=true;
+  panX=gesture.x+dx;panY=gesture.y+dy;
+ }
+ applyZoom();
+});
+function endPointer(e){pointers.delete(e.pointerId);if(pointers.size)startGesture();else gesture=null;}
+li.addEventListener('pointerup',endPointer);
+li.addEventListener('pointercancel',endPointer);
+window.addEventListener('resize',applyZoom);
 
 function viewsFor(w){
   const extras=(w.dataset.views||'').split('|').filter(Boolean);
@@ -246,6 +333,7 @@ function viewsFor(w){
 }
 
 function render(){
+  resetZoom();
   const w=works[ix];
   const views=viewsFor(w);
   viewIx=Math.max(0,Math.min(viewIx,views.length-1));
@@ -295,9 +383,11 @@ function prevView(){
 works.forEach((w,n)=>w.addEventListener('click',e=>{
   e.preventDefault();
   ix=n;
+  openingHeight=w.querySelector("img").getBoundingClientRect().height;
   viewIx=0;
   render();
   lb.classList.add('open');
+  if(li.complete&&li.naturalWidth&&openingHeight){zoom=Math.min(4,Math.max(1,openingHeight/li.offsetHeight)*1.08);openingHeight=0;applyZoom();}
   document.body.style.overflow='hidden';
 }));
 
@@ -312,7 +402,7 @@ lb.querySelector('.lb-next').onclick=nextView;
 
 // Clicking directly on the image advances through its views too.
 li.style.cursor='e-resize';
-li.addEventListener('click',nextView);
+li.addEventListener('click',e=>{if(dragged){e.preventDefault();dragged=false;return;}nextView();});
 
 document.addEventListener('keydown',e=>{
   if(!lb.classList.contains('open')) return;
