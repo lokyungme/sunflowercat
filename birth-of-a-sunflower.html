@@ -9,18 +9,16 @@
 html,body{margin:0;min-height:100%;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
 body{overflow-x:hidden}
 .site{min-height:100vh}
-.sidebar{position:fixed;z-index:110;inset:0 auto 0 0;width:270px;padding:22px 22px 28px;background:#fff;display:flex;flex-direction:column;overflow-y:auto}
-.name{margin:0 0 30px;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
-.side-top{margin:0 0 22px}.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;font-size:12px;line-height:1.25}.studio-now,.project-year{color:#999;font-size:10px;line-height:1.5}.studio-note a,.projects a,.menu-secondary a{color:inherit;text-decoration:none}
-.projects{display:flex;flex-direction:column;gap:11px}.projects a{display:grid;grid-template-columns:43px minmax(0,1fr);font-size:12px;line-height:1.25}.projects a:hover .project-name,.studio-note a:hover,.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
-.menu-secondary{display:flex;gap:12px;margin-top:auto;padding-top:42px}.menu-secondary a{color:#999;font-size:10px;line-height:1.25}
-
 .page{display:block!important;max-width:none!important;width:calc(100% - 270px)!important;margin:0 0 0 270px!important;padding:20px 10px 80px!important}
 .page-title{position:fixed;z-index:100;top:0;right:10px;height:20px;display:flex;align-items:center;margin:0;background:#fff;font-size:11px;font-weight:400;line-height:1}
 .intro{padding:34px 4vw 38px}
 .intro-copy{width:min(470px,90%)}
-.intro h2,.chapter h2{margin:0 0 14px;font-size:12px;font-weight:400}.intro p,.chapter-text p{margin:0;font-size:12px;line-height:1.55}
-.chapter{margin:0 auto 190px;max-width:1500px}.chapter-heading{display:grid;grid-template-columns:70px minmax(250px,520px);gap:28px;align-items:start;margin:0 4vw 22px;padding-top:22px;border-top:1px solid #ddd}.chapter-number{color:#aaa;font-size:10px}.chapter-text{max-width:520px}
+.intro h2,.chapter h2{margin:0 0 14px;font-size:12px;font-weight:400}
+.intro p,.chapter-text p{margin:0;font-size:12px;line-height:1.55}
+.chapter{margin:0 auto 190px;max-width:1500px}
+.chapter-heading{display:grid;grid-template-columns:70px minmax(250px,520px);gap:28px;align-items:start;margin:0 4vw 22px;padding-top:22px;border-top:1px solid #ddd}
+.chapter-number{color:#aaa;font-size:10px}
+.chapter-text{max-width:520px}
 .slideshow{position:relative;width:100%;min-height:calc(92vh + 26px);display:flex;align-items:flex-start;justify-content:center;padding:0 0 26px}
 .slide-button{display:flex;width:100%;height:92vh;margin:0;padding:0;border:0;background:none;align-items:center;justify-content:center;cursor:pointer}
 .slide-image{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
@@ -28,15 +26,24 @@ body{overflow-x:hidden}
 .slide-hint{opacity:.7}
 .chapter-vertical .slideshow{min-height:calc(94vh + 26px)}
 .chapter-vertical .slide-button{height:94vh}
-.end{display:flex;justify-content:center;padding:3vh 0 10vh;font-size:12px}.end a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.end{display:flex;justify-content:center;padding:3vh 0 10vh;font-size:12px}
+.end a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 
 @media(max-width:700px){
- .sidebar{width:148px;padding:16px 13px 22px}.name{width:58px;margin-bottom:24px}.projects{gap:10px}.projects a{display:block;font-size:12px}.project-year{display:block;margin-bottom:1px}.side-top{margin-bottom:20px}.menu-secondary{gap:9px;padding-top:32px}.menu-secondary a{font-size:9px}
- .page{width:calc(100% - 148px);margin-left:148px;padding:20px 4px 50px}.page-title{right:8px}
- .intro{padding:25px 2px 30px}.intro-copy{width:100%}.intro p,.chapter-text p{font-size:11px}
- .chapter{margin-bottom:115px}.chapter-heading{display:block;margin:0 2px 18px;padding-top:16px}.chapter-number{display:block;margin-bottom:8px}.chapter h2{margin-bottom:8px}
- .slideshow{min-height:auto;padding:0 0 23px}.slide-button{height:86vh}.slide-footer{left:0;right:0}
- .chapter-vertical .slideshow{min-height:auto}.chapter-vertical .slide-button{height:90vh}
+.page{width:calc(100% - 148px);margin-left:148px;padding:20px 4px 50px}
+.page-title{right:8px}
+.intro{padding:25px 2px 30px}
+.intro-copy{width:100%}
+.intro p,.chapter-text p{font-size:11px}
+.chapter{margin-bottom:115px}
+.chapter-heading{display:block;margin:0 2px 18px;padding-top:16px}
+.chapter-number{display:block;margin-bottom:8px}
+.chapter h2{margin-bottom:8px}
+.slideshow{min-height:auto;padding:0 0 23px}
+.slide-button{height:86vh}
+.slide-footer{left:0;right:0}
+.chapter-vertical .slideshow{min-height:auto}
+.chapter-vertical .slide-button{height:90vh}
 }
 </style>
 
@@ -53,31 +60,17 @@ body{overflow-x:hidden}
 .story-image .story-opening{width:93%}
 .story-opening p{max-width:none;white-space:nowrap}
 .story-image .story-opening p+p{margin:6px 0 0 clamp(24px,5vw,72px)}
-
-.mobile-menu-button{display:none}
 @media(max-width:980px){
- .sidebar{position:relative;width:100%;padding:18px 18px 16px;overflow:visible}
- .name{width:58px;margin-bottom:18px}
- .side-top{margin-bottom:14px}
- .studio-note{grid-template-columns:43px minmax(0,1fr)}
- .mobile-menu-button{display:block;min-height:32px;border:0;background:none;padding:0;font:12px Arial,Helvetica,sans-serif;color:#111;cursor:pointer}
- .projects,.menu-secondary{display:none}
- .sidebar.menu-open .projects{display:flex;margin-top:18px;gap:10px}
- .sidebar.menu-open .menu-secondary{display:flex;margin-top:0;padding-top:34px}
- .projects a{display:grid;grid-template-columns:43px minmax(0,1fr);font-size:12px}
- .project-year{display:inline;margin:0;font-size:10px}
- .menu-secondary a{font-size:10px}
- .page{width:100%!important;margin:0!important;padding:12px 12px 55px!important}
- .page-title{position:static;height:auto;margin:0 0 24px;font-size:11px}
- .story-image{margin-bottom:85px;padding:0}
- .story-image img{max-width:100%;max-height:85svh}
- .story-image figcaption,.story-image:nth-child(2) figcaption,.story-image:nth-child(3) figcaption{align-self:flex-start;width:100%;max-width:460px;margin:0 0 30px;padding:0 6px;font-size:12px;line-height:1.65}
- .story-image .story-opening{width:100%}
- .story-opening p{white-space:normal}
- .story-image .story-opening p+p{margin:6px 0 0 20px}
-
- .story-image:nth-child(2){width:100%}
- .story-image:nth-child(2) figcaption{align-self:flex-end;width:max-content;max-width:100%;margin:0 0 45px;padding:0 6px}
+.page{width:100%!important;margin:0!important;padding:12px 12px 55px!important}
+.page-title{position:static;height:auto;margin:0 0 24px;font-size:11px}
+.story-image{margin-bottom:85px;padding:0}
+.story-image img{max-width:100%;max-height:85svh}
+.story-image figcaption,.story-image:nth-child(2) figcaption,.story-image:nth-child(3) figcaption{align-self:flex-start;width:100%;max-width:460px;margin:0 0 30px;padding:0 6px;font-size:12px;line-height:1.65}
+.story-image .story-opening{width:100%}
+.story-opening p{white-space:normal}
+.story-image .story-opening p+p{margin:6px 0 0 20px}
+.story-image:nth-child(2){width:100%}
+.story-image:nth-child(2) figcaption{align-self:flex-end;width:max-content;max-width:100%;margin:0 0 45px;padding:0 6px}
 }
 </style>
 
@@ -91,33 +84,13 @@ body{overflow-x:hidden}
 .painting-close{position:absolute;top:2px;right:6px}
 .painting-controls{position:absolute;bottom:0;left:0;right:0;height:40px;display:flex;align-items:center;justify-content:center;gap:18px}
 </style>
+<link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
 <div class="site">
-  <aside class="sidebar">
-    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
-    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-    <nav class="projects" id="project-links" aria-label="projects">
-      <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
-    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
-      <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
-      <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
-      <a href="birth-of-a-sunflower"><span class="project-year">2025</span><span class="project-name">birth of a sunflower</span></a>
-      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
-      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
-      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
-      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
-      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
-      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
-      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
-      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
-      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
-    </nav>
-    <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
-  </aside>
+  <script src="sidebar.js"></script>
 
-  <main class="page">
+  <main class="page" data-sidebar-layout="flow">
     <h1 class="page-title">birth of a sunflower</h1>
     <div class="story-field">
       <figure class="story-image">
@@ -141,11 +114,7 @@ body{overflow-x:hidden}
 
 <script>
 const menuButton=document.querySelector('.mobile-menu-button');
-menuButton.addEventListener('click',()=>{
- const open=document.querySelector('.sidebar').classList.toggle('menu-open');
- menuButton.setAttribute('aria-expanded',String(open));
- menuButton.textContent=open?'works −':'works +';
-});
+
 </script>
 <dialog class="painting-viewer" aria-label="Sunflower paintings slideshow">
 <button class="painting-close" type="button" aria-label="Close slideshow">close ×</button>

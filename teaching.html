@@ -6,85 +6,69 @@
 <title>teaching — kyung-me</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  .teaching-page{
+.teaching-page{
     padding-top:clamp(34px,5vw,72px);
     padding-bottom:90px;
   }
-
-  .teaching-content{
+.teaching-content{
     width:min(1080px,calc(100% - 64px));
     margin:0 auto;
     color:#111;
     font-size:14px;
     line-height:1.55;
   }
-
-  .teaching-content h1,
-  .teaching-content h2,
-  .teaching-content h3{
+.teaching-content h1,.teaching-content h2,.teaching-content h3{
     margin:0;
     font:inherit;
     font-weight:600;
   }
-
-  .teaching-content p{
+.teaching-content p{
     margin:0 0 1.15em;
   }
-
-  .teaching-content a{
+.teaching-content a{
     color:inherit;
     text-decoration:underline;
     text-decoration-thickness:1px;
     text-underline-offset:2px;
   }
-
-  .teaching-content a:hover{opacity:.55}
-
-  .about-section{
+.teaching-content a:hover{opacity:.55}
+.about-section{
     display:block;
   }
-
-  .about-copy{
+.about-copy{
     max-width:660px;
     font-size:clamp(15px,1.25vw,18px);
     line-height:1.5;
   }
-
-  .mentorship-intro{
+.mentorship-intro{
     width:78%;
     margin:clamp(90px,13vw,170px) 0 clamp(90px,11vw,150px) 12%;
   }
-
-  .mentorship-intro h2{
+.mentorship-intro h2{
     margin-bottom:22px;
     font-size:clamp(22px,2.6vw,36px);
     font-weight:400;
     letter-spacing:-.025em;
   }
-
-  .mentorship-intro p{
+.mentorship-intro p{
     max-width:760px;
     font-size:clamp(15px,1.25vw,18px);
     line-height:1.5;
   }
-
-  .text-section h3{
+.text-section h3{
     margin-bottom:24px;
     font-size:16px;
   }
-
-  .session-section{
+.session-section{
     width:64%;
     max-width:690px;
   }
-
-  .audience-section{
+.audience-section{
     width:52%;
     max-width:580px;
     margin:clamp(90px,12vw,160px) 0 0 auto;
   }
-
-  .practical-row{
+.practical-row{
     display:grid;
     grid-template-columns:1fr 1.4fr;
     gap:clamp(40px,8vw,120px);
@@ -93,43 +77,34 @@
     border-top:1px solid #111;
     border-bottom:1px solid #111;
   }
-
-  .practical-row h3{margin-bottom:14px}
-
-  .reflections > h2{
+.practical-row h3{margin-bottom:14px}
+.reflections > h2{
     margin-bottom:clamp(60px,8vw,110px);
     font-size:clamp(25px,3vw,42px);
     font-weight:400;
     letter-spacing:-.02em;
   }
-
-  .reflection{
+.reflection{
     margin-bottom:clamp(85px,11vw,150px);
   }
-
-  .reflection blockquote{
+.reflection blockquote{
     margin:0;
   }
-
-  .reflection-one{
+.reflection-one{
     width:68%;
   }
-
-  .reflection-two{
+.reflection-two{
     width:75%;
     margin-left:auto;
   }
-
-  .reflection-three{
+.reflection-three{
     width:58%;
     margin-left:10%;
   }
-
-  .reflection-credit{
+.reflection-credit{
     margin-top:24px;
   }
-
-  .therapy-note{
+.therapy-note{
     width:56%;
     margin-left:auto;
     padding-top:20px;
@@ -139,27 +114,21 @@
   }
 
   @media (max-width:800px){
-    .teaching-page{padding-top:28px}
-    .teaching-content{width:calc(100% - 36px)}
-    .about-section{display:block}
-    .about-copy{font-size:15px}
-    .mentorship-intro,
-    .session-section,
-    .audience-section,
-    .reflection-one,
-    .reflection-two,
-    .reflection-three,
-    .therapy-note{
+.teaching-page{padding-top:28px}
+.teaching-content{width:calc(100% - 36px)}
+.about-section{display:block}
+.about-copy{font-size:15px}
+.mentorship-intro,.session-section,.audience-section,.reflection-one,.reflection-two,.reflection-three,.therapy-note{
       width:100%;
       margin-left:0;
     }
-    .mentorship-intro{margin-top:90px;margin-bottom:90px}
-    .audience-section{margin-top:90px}
-    .practical-row{grid-template-columns:1fr;margin:100px 0}
-    .reflection{margin-bottom:80px}
+.mentorship-intro{margin-top:90px;margin-bottom:90px}
+.audience-section{margin-top:90px}
+.practical-row{grid-template-columns:1fr;margin:100px 0}
+.reflection{margin-bottom:80px}
   }
   @media (max-width:720px){
-    .topbar{
+.topbar{
       position:absolute;
       top:20px;
       left:96px;
@@ -172,7 +141,7 @@
       justify-content:flex-end;
       z-index:4;
     }
-    .topnav{
+.topnav{
       justify-content:flex-end;
       gap:7px 14px;
       white-space:normal;
@@ -180,89 +149,32 @@
     }
   }
   @media (max-width:420px){
-    .topnav{gap:6px 10px;}
-    .topnav a{font-size:9px;}
+.topnav{gap:6px 10px;}
+.topnav a{font-size:9px;}
   }
-
-  *{box-sizing:border-box}
-  .site{display:block!important;min-height:100vh}
-  .sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px!important;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
-  .name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important}
-  .name a,.stamp{display:block;width:100%;height:auto}
-  .projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
-  .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
-  .project-year{color:#999;font-size:10px!important;line-height:1.5!important}
-  .projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
-  .menu-secondary{display:flex!important;flex-direction:row!important;align-items:center!important;gap:12px!important;margin-top:auto!important;padding-top:42px!important}
-  .menu-secondary a{color:#999!important;text-decoration:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
-  .menu-secondary a:hover{text-decoration:underline!important;text-underline-offset:3px}
-  .side-top{margin:0 0 22px!important}
-  .studio-note{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;align-items:baseline!important;margin:0!important;max-width:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:#111!important;letter-spacing:0!important;text-transform:none!important}
-  .studio-now{color:#999!important;font-size:10px!important;line-height:1.5!important}
-  .studio-note a{color:inherit!important;text-decoration:none!important;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}
-  .studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
-  .teaching-page{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
+*{box-sizing:border-box}
+.site{display:block!important;min-height:100vh}
+.teaching-page{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
 
   @media(max-width:700px){
-    .sidebar{width:148px!important;padding:16px 13px 22px!important}
-    .name{width:58px!important;margin-bottom:24px!important}
-    .projects{gap:10px!important}
-    .projects a{display:block!important;font-size:12px!important}
-    .project-year{display:block!important;font-size:10px!important;margin-bottom:1px!important}
-    .menu-secondary{gap:9px!important;margin-top:auto!important;padding-top:32px!important}
-    .menu-secondary a{font-size:9px!important}
-    .side-top{margin-bottom:20px!important}
-    .teaching-page{width:calc(100% - 148px)!important;margin-left:148px!important}
+.teaching-page{width:calc(100% - 148px)!important;margin-left:148px!important}
   }
-  .mobile-menu-button{display:none}
   @media(max-width:980px){
-    html,body{width:100%;overflow-x:hidden}
-    .site{display:block!important;width:100%;min-height:100vh}
-    .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
-    .name{width:58px!important;margin-bottom:18px!important}
-    .side-top{margin-bottom:14px!important}
-    .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
-    .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
-    .projects,.menu-secondary{display:none!important}
-    .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
-    .sidebar.menu-open .menu-secondary{display:flex!important}
-    .projects{gap:10px!important}
-    .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
-    .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
-    .menu-secondary{gap:12px!important;margin-top:0!important;padding-top:34px!important}
-    .menu-secondary a{font-size:10px!important}
-    .teaching-page{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:22px 18px 70px!important}
-    .teaching-content{width:100%!important;max-width:1080px;margin:0 auto}
-    .mentorship-intro,.session-section,.audience-section,.reflection-one,.reflection-two,.reflection-three,.therapy-note{width:100%;margin-left:0}
-    .practical-row{grid-template-columns:1fr}
+html,body{width:100%;overflow-x:hidden}
+.site{display:block!important;width:100%;min-height:100vh}
+.teaching-page{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:22px 18px 70px!important}
+.teaching-content{width:100%!important;max-width:1080px;margin:0 auto}
+.mentorship-intro,.session-section,.audience-section,.reflection-one,.reflection-two,.reflection-three,.therapy-note{width:100%;margin-left:0}
+.practical-row{grid-template-columns:1fr}
   }
 </style>
+<link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
   <div class="site">
-    <aside class="sidebar">
-      <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
-      <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-      <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-      <nav class="projects" id="project-links" aria-label="projects">
-        <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
-    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
-        <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
-        <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
-        <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
-        <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
-        <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
-        <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
-        <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
-        <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
-        <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
-        <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
-        <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
-      </nav>
-      <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching" aria-current="page">teaching</a><a href="cv">cv</a></nav>
-    </aside>
+    <script src="sidebar.js"></script>
 
-    <main class="main teaching-page">
+    <main class="main teaching-page" data-sidebar-layout="flow">
       <div class="teaching-content">
         <section class="about-section">
           <div class="about-copy">
@@ -336,11 +248,7 @@
   <script>
     const menuButton=document.querySelector('.mobile-menu-button');
     const sidebar=document.querySelector('.sidebar');
-    menuButton.addEventListener('click',()=>{
-      const isOpen=sidebar.classList.toggle('menu-open');
-      menuButton.setAttribute('aria-expanded',String(isOpen));
-      menuButton.textContent=isOpen?'works −':'works +';
-    });
+    
   </script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+SHARED SIDEBAR — SUNFLOWERCAT2
+
+SETUP
+1. Make a backup of your current master folder.
+2. Copy the CONTENTS of this ZIP into the master folder, beside your existing image folders. Replace the matching HTML files and style.css.
+3. Keep sidebar.js and sidebar.css in that same master folder. Do not put these files inside a new html folder.
+4. Commit and push the changed files in GitHub Desktop. Refresh the website after GitHub Pages finishes updating.
+
+ADD A PROJECT
+Open sidebar.js in a plain-text/code editor. Near the top, find the projects list.
+Duplicate a project entry and change its year, title, and href. For example:
+    {"year": "2026", "title": "watercolor experiments", "href": "watercolor-experiments"},
+The href is the HTML filename without .html. Put the entry where you want it in the menu. Keep commas between entries.
+Save and publish sidebar.js. Every converted page uses the updated list.
+
+CREATE A PAGE
+Duplicate new-page-template.html, rename it, and add your content. Keep the sidebar script and stylesheet links. Add its project entry to sidebar.js.
+
+CHANGE THE APPEARANCE
+Edit sidebar.css for sidebar fonts, spacing, width, or mobile behavior. Pages no longer keep their own copied sidebar styles or mobile-menu click handlers.
+
+PREVIEW
+The shared sidebar also works when opening an HTML file directly. Its navigation automatically uses .html destinations for local previews and clean URLs online.
+The red stamp still uses your existing external image URL.
+
+CONTENTS
+28 converted HTML files, style.css, sidebar.js, sidebar.css, a new-page template, and this guide.
+Your image folders are not included or moved. All artwork paths and artwork text are retained from the ZIP you provided, including draft pages. The shared menu matches the supplied index; no experimental projects were automatically added.

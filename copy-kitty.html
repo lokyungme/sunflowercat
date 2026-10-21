@@ -20,8 +20,8 @@ a{color:inherit;text-decoration:none}
  padding:22px 15px;cursor:pointer;opacity:.22;transition:opacity .15s ease
 }
 .page-nav:hover{opacity:.9}
-.page-prev{left:275px}.page-next{right:5px}
-
+.page-prev{left:275px}
+.page-next{right:5px}
 .page-image{
   transition:transform .28s ease, opacity .28s ease;
 }
@@ -64,60 +64,25 @@ a{color:inherit;text-decoration:none}
   text-decoration:underline;
   text-underline-offset:3px;
 }
-.sidebar{position:fixed;z-index:110;inset:0 auto 0 0;width:270px;padding:22px 22px 28px;background:#fff;display:flex;flex-direction:column;overflow-y:auto}
-.name{margin:0 0 30px;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
-.projects{display:flex;flex-direction:column;align-items:stretch;gap:11px}.projects a{display:grid;grid-template-columns:43px minmax(0,1fr);width:auto;font-size:12px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.project-year{color:#999;font-size:10px;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
-.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}.menu-secondary a{color:#999;font-size:10px;font-weight:400;line-height:1.25;letter-spacing:0;text-transform:none}.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
-.side-top{margin:0 0 22px}.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-size:12px;font-weight:400;line-height:1.25;color:#111;letter-spacing:0;text-transform:none}.studio-now{color:#999;font-size:10px;line-height:1.5}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
-.mobile-menu-button{display:none}
 @media(max-width:980px){
- html,body{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
- body{display:flex;flex-direction:column}
- .sidebar{position:relative;inset:auto;width:100%;min-height:0;padding:18px 18px 16px;overflow:visible;flex:none}
- .name{width:58px;margin-bottom:18px}
- .side-top{margin-bottom:14px}
- .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
- .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
- .projects,.menu-secondary{display:none}
- .sidebar.menu-open .projects{display:flex;margin-top:18px}
- .sidebar.menu-open .menu-secondary{display:flex}
- .projects{gap:10px}
- .projects a{display:grid;grid-template-columns:43px minmax(0,1fr);font-size:12px}
- .project-year{display:inline;font-size:10px;margin-bottom:0}
- .menu-secondary{gap:12px;margin-top:0;padding-top:34px}.menu-secondary a{font-size:10px}
- .topbar{position:relative;top:auto;left:auto;right:auto;width:100%;height:22px;padding:0 12px;flex:none}
- .stage{position:relative;inset:auto;width:100%;height:calc(100svh - 192px);min-height:300px;flex:1 0 auto;padding:0 12px 18px}
- .page-image{max-width:100%;max-height:calc(100svh - 210px)}
- .page-nav{position:absolute;top:50%;font-size:16px;padding:18px 8px}.page-prev{left:0}.page-next{right:0}
- .buy-book-link{right:12px;bottom:12px;font-size:9px}
+html,body{width:100%;height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto}
+body{display:flex;flex-direction:column}
+.topbar{position:relative;top:auto;left:auto;right:auto;width:100%;height:22px;padding:0 12px;flex:none}
+.stage{position:relative;inset:auto;width:100%;height:calc(100svh - 192px);min-height:300px;flex:1 0 auto;padding:0 12px 18px}
+.page-image{max-width:100%;max-height:calc(100svh - 210px)}
+.page-nav{position:absolute;top:50%;font-size:16px;padding:18px 8px}
+.page-prev{left:0}
+.page-next{right:0}
+.buy-book-link{right:12px;bottom:12px;font-size:9px}
 }
 </style>
+<link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-<aside class="sidebar">
-  <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
-  <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-  <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-  <nav class="projects" id="project-links" aria-label="projects">
-    <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
-    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
-    <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
-    <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
-    <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
-    <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
-    <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
-    <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
-    <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
-    <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
-    <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
-    <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
-    <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
-  </nav>
-  <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
-</aside>
+<script src="sidebar.js"></script>
 <a class="buy-book-link" href="https://2dcloud.com/products/copy-kitty" target="_blank" rel="noopener">buy book</a>
 <header class="topbar"><div class="meta"><span>copy kitty</span></div></header>
-<main class="stage">
+<main class="stage" data-sidebar-layout="fixed">
   <button class="page-button" id="page-button" aria-label="next page"><img class="page-image" id="page-image" src="copy%20kitty/copy-kitty-cover-front.png" alt="Copy Kitty front cover"></button>
   <button class="page-nav page-prev" id="page-prev" type="button" aria-label="previous page">←</button>
   <button class="page-nav page-next" id="page-next" type="button" aria-label="next page">→</button>
@@ -125,11 +90,7 @@ a{color:inherit;text-decoration:none}
 <script>
 const menuButton=document.querySelector('.mobile-menu-button');
 const sidebar=document.querySelector('.sidebar');
-menuButton.addEventListener('click',()=>{
- const isOpen=sidebar.classList.toggle('menu-open');
- menuButton.setAttribute('aria-expanded',String(isOpen));
- menuButton.textContent=isOpen?'works −':'works +';
-});
+
 
 const pages=[
   {src:'copy%20kitty/copy-kitty-cover-front.png',alt:'Copy Kitty front cover'},

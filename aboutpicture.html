@@ -35,108 +35,76 @@
 }
 </script>
 <style>
-  .about-page{
+.about-page{
     min-height:100vh;
     padding:clamp(42px,7vw,100px) clamp(28px,6vw,90px) 70px;
     box-sizing:border-box;
   }
-
-  .about-layout{
+.about-layout{
     width:min(980px,100%);
     display:grid;
     grid-template-columns:minmax(220px,330px) minmax(280px,470px);
     gap:clamp(60px,10vw,150px);
     align-items:start;
   }
-
-  .about-text{
+.about-text{
     color:#111;
     font-size:14px;
     line-height:1.55;
   }
-
-  .about-text h1{
+.about-text h1{
     margin:0 0 26px;
     font:inherit;
     font-weight:400;
   }
-
-  .about-text p{
+.about-text p{
     margin:0 0 24px;
   }
-
-  .about-text a{
+.about-text a{
     color:inherit;
     text-decoration:underline;
     text-decoration-thickness:1px;
     text-underline-offset:2px;
   }
-
-  .about-text a:hover,
-  .instagram-link:hover{opacity:.55}
-
-  .about-portrait{
+.about-text a:hover,.instagram-link:hover{opacity:.55}
+.about-portrait{
     display:block;
     width:100%;
     height:auto;
   }
-
-  .instagram-link{
+.instagram-link{
     display:inline-flex;
     width:16px;
     height:16px;
     color:#111;
   }
-
-  .instagram-link svg{
+.instagram-link svg{
     display:block;
     width:100%;
     height:100%;
   }
 
   @media (max-width:760px){
-    .about-page{
+.about-page{
       padding:34px 18px 60px;
     }
-
-    .about-layout{
+.about-layout{
       grid-template-columns:1fr;
       gap:48px;
     }
-
-    .about-text{
+.about-text{
       max-width:330px;
     }
-
-    .about-portrait{
+.about-portrait{
       width:min(100%,470px);
     }
   }
 </style>
+<link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
   <div class="site">
-    <aside class="sidebar">
-      <h1 class="name"><a href="/" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp" /></a></h1>
-      <section>
-        <nav class="years" aria-label="work by chapter">
-          <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
-    <a href="sunflower"><span class="year-label">2026</span><span class="chapter-label">i, sunflower</span></a>
-          <a href="blossoms"><span class="year-label">2025</span><span class="chapter-label">blossoms</span></a>
-          <a href="ink-paintings"><span class="year-label">2025</span><span class="chapter-label">ink paintings</span></a>
-        
-          <a href="more-ink-drawings"><span class="year-label">2024</span><span class="chapter-label">ink drawings</span></a>
-          <a href="house-in-the-trees"><span class="year-label">2023</span><span class="chapter-label">the house in the trees</span></a>
-          <a href="sister"><span class="year-label">2022</span><span class="chapter-label">sister</span></a>
-          <a href="coniunctio"><span class="year-label">2019</span><span class="chapter-label">coniunctio</span></a>
-          <a href="half-mourning"><span class="year-label">2018</span><span class="chapter-label">half mourning</span></a>
-          <a href="copy-kitty"><span class="year-label">2017</span><span class="chapter-label">copy kitty</span></a>
-          <a href="labyrinths"><span class="year-label">2015</span><span class="chapter-label">labyrinths</span></a>
-          <a href="bad-korean"><span class="year-label">2014</span><span class="chapter-label">bad korean</span></a>
-          <a href="commissions" style="margin-top:18px"><span class="year-label"></span><span class="chapter-label">commissions</span></a>
-        </nav>
-      </section>
-    </aside>
+    <script src="sidebar.js"></script>
 
     <header class="topbar">
       <nav class="topnav" aria-label="main navigation">
@@ -147,7 +115,7 @@
       </nav>
     </header>
 
-    <main class="main about-page">
+    <main class="main about-page" data-sidebar-layout="flow">
       <div class="about-layout">
         <section class="about-text">
           <h1><strong>Kyung-Me</strong></h1>

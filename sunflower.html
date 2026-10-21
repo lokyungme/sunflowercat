@@ -4,25 +4,67 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>i, sunflower — kyung-me</title><link rel="stylesheet" href="style.css">
 <style>
-.sunflower-main{padding:0 28px 120px 38px;overflow:hidden}.sunflower-chapter{max-width:1500px;margin:0 auto;padding-top:120px}.sf-head{margin:0 0 120px 3vw;font-size:11px;line-height:1.55;letter-spacing:.025em}.sf-head h1{font-size:18px;font-weight:400;margin:0 0 8px}.sf-field{position:relative}.sf-item{display:block;width:max-content;max-width:100%;margin:0 auto 150px;cursor:zoom-in}.sf-item img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto}.sf-item.hero img{max-height:94vh}.sf-item.growing img{max-height:108vh}.sf-item.tall-final img{max-height:106vh}.sf-item.number10{width:100%;max-width:100%;margin-left:auto!important;margin-right:auto!important}.sf-item.number10 img{margin-left:auto;margin-right:auto}.sf-item.number11{margin-left:4vw!important;margin-right:auto!important}
-
-
+.sunflower-main{padding:0 28px 120px 38px;overflow:hidden}
+.sunflower-chapter{max-width:1500px;margin:0 auto;padding-top:120px}
+.sf-head{margin:0 0 120px 3vw;font-size:11px;line-height:1.55;letter-spacing:.025em}
+.sf-head h1{font-size:18px;font-weight:400;margin:0 0 8px}
+.sf-field{position:relative}
+.sf-item{display:block;width:max-content;max-width:100%;margin:0 auto 150px;cursor:zoom-in}
+.sf-item img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto}
+.sf-item.hero img{max-height:94vh}
+.sf-item.growing img{max-height:108vh}
+.sf-item.tall-final img{max-height:106vh}
+.sf-item.number10{width:100%;max-width:100%;margin-left:auto!important;margin-right:auto!important}
+.sf-item.number10 img{margin-left:auto;margin-right:auto}
+.sf-item.number11{margin-left:4vw!important;margin-right:auto!important}
 .sf-play{margin:0 0 175px}
 .sf-play .sf-item{position:relative;display:block;transform:none}
-
 .sf-play .sf-12{max-width:540px;margin:0 7vw 0 auto}
-@media(max-width:820px){.sf-play{margin:0}.sf-play .sf-12{max-width:100%;margin:0 auto 85px}}.sf-item.small{max-width:620px}.sf-item.medium{max-width:850px}.sf-item.left{margin-left:4vw;margin-right:auto}.sf-item.right{margin-left:auto;margin-right:5vw}.sf-item .cap{font-size:10px;line-height:1.4;margin-top:8px;opacity:.58}.sf-word{font-size:12px;font-weight:400;letter-spacing:.04em;margin:185px 0 100px 13vw}.sf-word.right{text-align:right;margin-right:15vw}.sf-pair{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:start;margin:0 4vw 175px}.sf-pair .sf-item{margin:0;width:100%}.sf-pair img{width:100%;height:auto;max-height:none}.sf-end{font-size:10px;opacity:.45;margin:180px 0 0 3vw}
-.lightbox{position:fixed;inset:0;background:#fff;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px 60px 42px}.lightbox.open{display:flex}.lb-img{display:block;max-width:calc(100vw - 120px);max-height:calc(100vh - 80px);width:auto;height:auto}.lb-cap{position:fixed;left:24px;bottom:18px;font-size:10px}.lb-count{position:fixed;right:24px;bottom:18px;font-size:10px;opacity:.5}.lb-close{position:fixed;right:20px;top:14px;border:0;background:none;font-size:22px;font-weight:300;cursor:pointer}.lb-zone{position:fixed;top:45px;bottom:45px;width:35%;z-index:2}.lb-prev{left:0;cursor:w-resize}.lb-next{right:0;cursor:e-resize}
-@media(max-width:820px){.sunflower-main{padding:0 18px 70px}.sunflower-chapter{padding-top:75px}.sf-head{margin:0 0 70px}.sf-item,.sf-item.left,.sf-item.right{margin:0 auto 85px;max-width:100%}.sf-item img{max-height:none;width:100%}.sf-word,.sf-word.right{text-align:left;margin:110px 0 60px}.sf-pair{display:block;margin:0}.sf-pair .sf-item{margin-bottom:85px}.lightbox{padding:48px 12px}.lb-img{max-width:100%;max-height:calc(100vh - 100px)}}
-
-
-.sf-branch{margin:-112px 0 132px;text-align:center}.sf-branch a{display:inline-block;font-size:16px;font-weight:300;line-height:1;text-decoration:none;opacity:.38;padding:10px 14px;transition:opacity .2s ease}.sf-branch a:hover{opacity:1}@media(max-width:820px){.sf-branch{margin:-54px 0 76px}}
+@media(max-width:820px){
+.sf-play{margin:0}
+.sf-play .sf-12{max-width:100%;margin:0 auto 85px}}
+.sf-item.small{max-width:620px}
+.sf-item.medium{max-width:850px}
+.sf-item.left{margin-left:4vw;margin-right:auto}
+.sf-item.right{margin-left:auto;margin-right:5vw}
+.sf-item .cap{font-size:10px;line-height:1.4;margin-top:8px;opacity:.58}
+.sf-word{font-size:12px;font-weight:400;letter-spacing:.04em;margin:185px 0 100px 13vw}
+.sf-word.right{text-align:right;margin-right:15vw}
+.sf-pair{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:start;margin:0 4vw 175px}
+.sf-pair .sf-item{margin:0;width:100%}
+.sf-pair img{width:100%;height:auto;max-height:none}
+.sf-end{font-size:10px;opacity:.45;margin:180px 0 0 3vw}
+.lightbox{position:fixed;inset:0;background:#fff;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px 60px 42px}
+.lightbox.open{display:flex}
+.lb-img{display:block;max-width:calc(100vw - 120px);max-height:calc(100vh - 80px);width:auto;height:auto}
+.lb-cap{position:fixed;left:24px;bottom:18px;font-size:10px}
+.lb-count{position:fixed;right:24px;bottom:18px;font-size:10px;opacity:.5}
+.lb-close{position:fixed;right:20px;top:14px;border:0;background:none;font-size:22px;font-weight:300;cursor:pointer}
+.lb-zone{position:fixed;top:45px;bottom:45px;width:35%;z-index:2}
+.lb-prev{left:0;cursor:w-resize}
+.lb-next{right:0;cursor:e-resize}
+@media(max-width:820px){
+.sunflower-main{padding:0 18px 70px}
+.sunflower-chapter{padding-top:75px}
+.sf-head{margin:0 0 70px}
+.sf-item,.sf-item.left,.sf-item.right{margin:0 auto 85px;max-width:100%}
+.sf-item img{max-height:none;width:100%}
+.sf-word,.sf-word.right{text-align:left;margin:110px 0 60px}
+.sf-pair{display:block;margin:0}
+.sf-pair .sf-item{margin-bottom:85px}
+.lightbox{padding:48px 12px}
+.lb-img{max-width:100%;max-height:calc(100vh - 100px)}}
+.sf-branch{margin:-112px 0 132px;text-align:center}
+.sf-branch a{display:inline-block;font-size:16px;font-weight:300;line-height:1;text-decoration:none;opacity:.38;padding:10px 14px;transition:opacity .2s ease}
+.sf-branch a:hover{opacity:1}@media(max-width:820px){
+.sf-branch{margin:-54px 0 76px}}
 .sf-info-nav button{font-size:12px}
 .sf-info-overlay{align-items:center;justify-content:center;padding:32px}
 .sf-info-panel{width:min(680px,calc(100vw - 64px));max-height:calc(100svh - 64px);margin-top:0;padding:48px 58px 52px;overflow-y:auto;font-size:12px;line-height:1.75}
 .sf-info-panel h2{font-size:12px}
-@media(max-width:820px){.sf-info-overlay{padding:14px}.sf-info-panel{width:100%;max-height:calc(100svh - 28px);margin-top:0;padding:38px 26px 34px;font-size:12px;line-height:1.7}}
-
+@media(max-width:820px){
+.sf-info-overlay{padding:14px}
+.sf-info-panel{width:100%;max-height:calc(100svh - 28px);margin-top:0;padding:38px 26px 34px;font-size:12px;line-height:1.7}}
 .lb-meta{
   position:fixed;
   left:24px;
@@ -34,7 +76,7 @@
 }
 .lb-meta-title{margin-bottom:2px}
 @media(max-width:820px){
-  .lb-meta{left:14px;right:55px;bottom:12px;font-size:9px}
+.lb-meta{left:14px;right:55px;bottom:12px;font-size:9px}
 }
 </style>
 
@@ -102,81 +144,55 @@
   cursor:pointer;
 }
 @media(max-width:720px){
-  .sf-statement-end{padding-bottom:70px}
-  .sf-statement-overlay{padding:58px 18px 70px}
-  .sf-statement-page{
+.sf-statement-end{padding-bottom:70px}
+.sf-statement-overlay{padding:58px 18px 70px}
+.sf-statement-page{
     width:100%;
     padding:10px 4px 30px;
     font-size:12px;
     line-height:1.68;
   }
-  .sf-statement-close{top:17px;right:19px}
+.sf-statement-close{top:17px;right:19px}
 }
 </style>
 
 <style>
 *{box-sizing:border-box}
 .site{display:block!important;min-height:100vh}
-.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px!important;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
-.name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important}.name a,.stamp{display:block;width:100%;height:auto}
-.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
-.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
-.project-year{color:#999;font-size:10px!important;line-height:1.5!important}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
-.menu-secondary{display:flex!important;flex-direction:row!important;align-items:center!important;gap:12px!important;margin-top:auto!important;padding-top:42px!important}
-.menu-secondary a{color:#999!important;text-decoration:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
-.menu-secondary a:hover{text-decoration:underline!important;text-underline-offset:3px}
-.side-top{margin:0 0 22px!important}
-.studio-note{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;align-items:baseline!important;margin:0!important;max-width:none!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25!important;color:#111!important;letter-spacing:0!important;text-transform:none!important}
-.studio-now{color:#999!important;font-size:10px!important;line-height:1.5!important}.studio-note a{color:inherit!important;text-decoration:none!important;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline!important;text-underline-offset:3px}
 .sunflower-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important}
-.mobile-menu-button{display:none}
 @media(max-width:980px){
- html,body{width:100%;overflow-x:hidden}
- .site{display:block!important;width:100%;min-height:0}
- .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
- .name{width:58px!important;margin-bottom:18px!important}
- .side-top{margin-bottom:14px!important}
- .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
- .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
- .projects{display:none!important;gap:10px!important}
- .menu-secondary{display:none!important;gap:12px!important;margin-top:0!important;padding-top:34px!important}
- .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
- .sidebar.menu-open .menu-secondary{display:flex!important}
- .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
- .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
- .menu-secondary a{font-size:10px!important}
- .sunflower-main{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0 12px 70px!important}
- .sunflower-chapter{padding-top:28px!important}
- .sf-head.sf-head-compact{margin:0 0 34px!important}
- .sf-item,.sf-item.left,.sf-item.right,.sf-item.number10,.sf-item.number11,.sf-play .sf-12{max-width:100%!important;margin-left:auto!important;margin-right:auto!important}
- .sf-item img,.sf-item.hero img,.sf-item.growing img,.sf-item.tall-final img{width:auto!important;max-width:100%!important;max-height:85svh!important;margin-left:auto;margin-right:auto}
- .sf-pair{display:block!important;margin:0}
- .sf-pair .sf-item{margin-bottom:85px}
+html,body{width:100%;overflow-x:hidden}
+.site{display:block!important;width:100%;min-height:0}
+.sunflower-main{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0 12px 70px!important}
+.sunflower-chapter{padding-top:28px!important}
+.sf-head.sf-head-compact{margin:0 0 34px!important}
+.sf-item,.sf-item.left,.sf-item.right,.sf-item.number10,.sf-item.number11,.sf-play .sf-12{max-width:100%!important;margin-left:auto!important;margin-right:auto!important}
+.sf-item img,.sf-item.hero img,.sf-item.growing img,.sf-item.tall-final img{width:auto!important;max-width:100%!important;max-height:85svh!important;margin-left:auto;margin-right:auto}
+.sf-pair{display:block!important;margin:0}
+.sf-pair .sf-item{margin-bottom:85px}
 }
 </style>
 
 
 <style>
-/* Enlarge paintings 2–11 while preserving their original placement. */
 .sf-field .sf-item.sf-enlarged{max-width:100%}
 .sf-field .sf-item.sf-enlarged img{height:98svh;width:auto;max-height:98svh;max-width:100%;object-fit:contain}
 .sf-field .sf-pair .sf-item.sf-enlarged img{width:100%;height:auto;max-height:none}
 @media(max-width:980px){
- .sf-field .sf-item.sf-enlarged img{height:auto!important;width:auto!important;max-height:90svh!important;max-width:100%!important}
+.sf-field .sf-item.sf-enlarged img{height:auto!important;width:auto!important;max-height:90svh!important;max-width:100%!important}
 }
 </style>
 
 
 <style>
-/* Image 11 fills the screen height with a small breathing margin. */
 .sf-field .sf-item.number11.sf-enlarged{max-width:calc(100% - 4vw)}
 .sf-field .sf-item.number11.sf-enlarged img{
  height:calc(100svh - 12px);max-height:calc(100svh - 12px);
  width:auto;max-width:100%;object-fit:contain;
 }
 @media(max-width:980px){
- .sf-field .sf-item.number11.sf-enlarged{max-width:100%!important}
- .sf-field .sf-item.number11.sf-enlarged img{
+.sf-field .sf-item.number11.sf-enlarged{max-width:100%!important}
+.sf-field .sf-item.number11.sf-enlarged img{
   height:calc(100svh - 24px)!important;max-height:calc(100svh - 24px)!important;
  }
 }
@@ -191,29 +207,10 @@
 .lightbox .lb-meta,.lightbox .lb-count{background:rgba(255,255,255,.92);padding:4px 6px;z-index:6;pointer-events:none}
 </style>
 
+<link rel="stylesheet" href="sidebar.css">
 </head><body><div class="site">
-<aside class="sidebar">
-  <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
-  <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-  <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
-  <nav class="projects" id="project-links" aria-label="projects">
-    <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
-    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
-    <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
-    <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
-    <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
-    <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
-    <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
-    <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
-    <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
-    <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
-    <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
-    <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
-    <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
-  </nav>
-  <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
-</aside>
-<main class="main sunflower-main"><div class="sunflower-chapter">
+<script src="sidebar.js"></script>
+<main class="main sunflower-main" data-sidebar-layout="flow"><div class="sunflower-chapter">
 <div class="sf-head sf-head-compact">
   <h1>i, sunflower</h1>
   <nav class="sf-info-nav" aria-label="i, sunflower information">
@@ -261,11 +258,7 @@
 <script>
 const menuButton = document.querySelector('.mobile-menu-button');
 const sidebar = document.querySelector('.sidebar');
-menuButton.addEventListener('click', () => {
-  const isOpen = sidebar.classList.toggle('menu-open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-  menuButton.textContent = isOpen ? 'works −' : 'works +';
-});
+
 
 const works=[...document.querySelectorAll('.sf-item')],
       lb=document.getElementById('lightbox'),

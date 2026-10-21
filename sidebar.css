@@ -1,0 +1,35 @@
+/* Shared sidebar: change navigation in sidebar.js; change its appearance here. */
+:root{--sidebar:270px!important;--shared-sidebar-width:270px;--sidebar-background:#fff;--sidebar-foreground:#111;--sidebar-muted:#999;--stamp-blend:normal}
+.site{display:block!important}
+#shared-sidebar{box-sizing:border-box;position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:var(--shared-sidebar-width)!important;height:100vh;height:100svh;min-height:0!important;padding:22px 22px 28px!important;background:var(--sidebar-background)!important;color:var(--sidebar-foreground);display:flex!important;flex-direction:column;flex-shrink:0;overflow-y:auto;overflow-x:hidden;border:0!important;font-family:Arial,Helvetica,sans-serif;letter-spacing:0;text-align:left}
+#shared-sidebar .name{margin:0 0 30px!important;width:72px!important;font-size:0!important;line-height:0!important;flex:none}
+#shared-sidebar .name a,#shared-sidebar .stamp{display:block;width:100%;height:auto}
+#shared-sidebar .stamp{mix-blend-mode:var(--stamp-blend)}
+#shared-sidebar .name a:hover{opacity:1}
+#shared-sidebar .side-top{margin:0 0 22px!important;flex:none}
+#shared-sidebar .studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;font:400 12px/1.25 Arial,Helvetica,sans-serif;letter-spacing:0}
+#shared-sidebar .studio-now,#shared-sidebar .project-year{color:var(--sidebar-muted);font-size:10px;line-height:1.5}
+#shared-sidebar .projects{display:flex;flex-direction:column;align-items:stretch;gap:11px;margin:0;padding:0;flex:none}
+#shared-sidebar .projects a{display:grid;grid-template-columns:43px minmax(0,1fr);width:auto;font:400 12px/1.25 Arial,Helvetica,sans-serif;color:inherit;text-decoration:none;letter-spacing:0;text-transform:none}
+#shared-sidebar a{color:inherit;text-decoration:none;opacity:1}
+#shared-sidebar .studio-note a:hover,#shared-sidebar .projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+#shared-sidebar .menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px;flex:none}
+#shared-sidebar .menu-secondary a{color:var(--sidebar-muted);text-decoration:none;font:400 10px/1.25 Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none}
+#shared-sidebar .menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
+#shared-sidebar .mobile-menu-button{display:none}
+#shared-sidebar a:focus-visible,#shared-sidebar button:focus-visible{outline:1px solid currentColor;outline-offset:4px}
+body main[data-sidebar-layout="flow"]{width:calc(100% - var(--shared-sidebar-width))!important;max-width:none!important;margin-left:var(--shared-sidebar-width)!important;margin-right:0!important;min-width:0}
+body main[data-sidebar-layout="fixed"]{left:var(--shared-sidebar-width)!important;margin-left:0!important}
+@media(max-width:980px){
+ html,body{max-width:100%;overflow-x:hidden}
+ #shared-sidebar{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
+ #shared-sidebar .name{width:58px!important;margin-bottom:18px!important}
+ #shared-sidebar .side-top{margin-bottom:14px!important}
+ #shared-sidebar .mobile-menu-button{display:block;width:max-content;min-height:32px;margin:0;padding:0;border:0;background:none;color:inherit;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
+ #shared-sidebar .projects,#shared-sidebar .menu-secondary{display:none}
+ #shared-sidebar.menu-open .projects{display:flex;margin-top:18px}
+ #shared-sidebar.menu-open .menu-secondary{display:flex;margin-top:0;padding-top:34px}
+ #shared-sidebar .projects{gap:10px}
+ body main[data-sidebar-layout="flow"],body main[data-sidebar-layout="fixed"]{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;min-width:0}
+ body main[data-sidebar-layout="fixed"]{position:relative!important;inset:auto!important}
+}
