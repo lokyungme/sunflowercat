@@ -39,13 +39,66 @@ body{overflow-x:hidden}
  .chapter-vertical .slideshow{min-height:auto}.chapter-vertical .slide-button{height:90vh}
 }
 </style>
+
+<style>
+.page{padding:34px 24px 90px!important}
+.story-field{max-width:1500px;margin:0 auto}
+.story-image{display:flex;flex-direction:column;align-items:center;margin:0 0 clamp(110px,18vh,180px);padding:0;width:100%}
+.story-image img{display:block;width:auto;height:auto;max-width:100%;max-height:88svh;object-fit:contain}
+.story-image figcaption{align-self:flex-start;width:min(460px,80%);margin:0 0 48px 7%;font-size:12px;line-height:1.7;text-align:left}
+.story-image:nth-child(2){width:100%}
+.story-image:nth-child(2) figcaption{align-self:flex-end;width:max-content;max-width:91%;margin:0 9% 70px 0}
+.story-image:nth-child(3) figcaption{margin-left:19%}
+.story-image figcaption p{margin:0}
+.story-image .story-opening{width:93%}
+.story-opening p{max-width:none;white-space:nowrap}
+.story-image .story-opening p+p{margin:6px 0 0 clamp(24px,5vw,72px)}
+
+.mobile-menu-button{display:none}
+@media(max-width:980px){
+ .sidebar{position:relative;width:100%;padding:18px 18px 16px;overflow:visible}
+ .name{width:58px;margin-bottom:18px}
+ .side-top{margin-bottom:14px}
+ .studio-note{grid-template-columns:43px minmax(0,1fr)}
+ .mobile-menu-button{display:block;min-height:32px;border:0;background:none;padding:0;font:12px Arial,Helvetica,sans-serif;color:#111;cursor:pointer}
+ .projects,.menu-secondary{display:none}
+ .sidebar.menu-open .projects{display:flex;margin-top:18px;gap:10px}
+ .sidebar.menu-open .menu-secondary{display:flex;margin-top:0;padding-top:34px}
+ .projects a{display:grid;grid-template-columns:43px minmax(0,1fr);font-size:12px}
+ .project-year{display:inline;margin:0;font-size:10px}
+ .menu-secondary a{font-size:10px}
+ .page{width:100%!important;margin:0!important;padding:12px 12px 55px!important}
+ .page-title{position:static;height:auto;margin:0 0 24px;font-size:11px}
+ .story-image{margin-bottom:85px;padding:0}
+ .story-image img{max-width:100%;max-height:85svh}
+ .story-image figcaption,.story-image:nth-child(2) figcaption,.story-image:nth-child(3) figcaption{align-self:flex-start;width:100%;max-width:460px;margin:0 0 30px;padding:0 6px;font-size:12px;line-height:1.65}
+ .story-image .story-opening{width:100%}
+ .story-opening p{white-space:normal}
+ .story-image .story-opening p+p{margin:6px 0 0 20px}
+
+ .story-image:nth-child(2){width:100%}
+ .story-image:nth-child(2) figcaption{align-self:flex-end;width:max-content;max-width:100%;margin:0 0 45px;padding:0 6px}
+}
+</style>
+
+<style>
+.sunflower-preview{display:flex;justify-content:center;width:100%;padding:0;border:0;background:none;cursor:pointer}
+.painting-viewer{position:fixed;inset:0;width:100vw;height:100svh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#fff;color:#111;font:12px Arial,Helvetica,sans-serif;overflow:hidden}
+.painting-viewer::backdrop{background:#fff}
+.painting-stage{position:absolute;inset:38px 12px 42px;display:flex;align-items:center;justify-content:center}
+.painting-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:pointer}
+.painting-viewer button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:12px}
+.painting-close{position:absolute;top:2px;right:6px}
+.painting-controls{position:absolute;bottom:0;left:0;right:0;height:40px;display:flex;align-items:center;justify-content:center;gap:18px}
+</style>
 </head>
 <body>
 <div class="site">
   <aside class="sidebar">
     <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
     <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
-    <nav class="projects" aria-label="projects">
+    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
+    <nav class="projects" id="project-links" aria-label="projects">
       <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
     <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
       <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
@@ -61,68 +114,75 @@ body{overflow-x:hidden}
       <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
       <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
     </nav>
-    <nav class="menu-secondary" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+    <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
   </aside>
 
   <main class="page">
     <h1 class="page-title">birth of a sunflower</h1>
-    <section class="intro">
-      <div class="intro-copy">
-        <h2>birth of a sunflower, 2025</h2>
-        <p>Studies, experiments, and paintings made on the way toward <em>i, sunflower</em>.</p>
-      </div>
-    </section>
-
-    <section class="chapter">
-      <header class="chapter-heading"><span class="chapter-number">01</span><div class="chapter-text"><h2>in black ink</h2><p>The sunflower began as a drawing: a structure to observe, repeat, and slowly loosen.</p></div></header>
-      <div class="slideshow" data-gallery="bw"></div>
-    </section>
-
-    <section class="chapter">
-      <header class="chapter-heading"><span class="chapter-number">02</span><div class="chapter-text"><h2>color enters</h2><p>Color changed the flower from a subject into an atmosphere. Yellow, orange, and red began to carry the image.</p></div></header>
-      <div class="slideshow" data-gallery="color"></div>
-    </section>
-
-    <section class="chapter chapter-vertical">
-      <header class="chapter-heading"><span class="chapter-number">03</span><div class="chapter-text"><h2>baby buds</h2><p>Small paintings became a place to try variations quickly—each one a beginning rather than a conclusion.</p></div></header>
-      <div class="slideshow" data-gallery="buds"></div>
-    </section>
-
-    <section class="chapter chapter-vertical">
-      <header class="chapter-heading"><span class="chapter-number">04</span><div class="chapter-text"><h2>the flower grows</h2><p>The image became larger and more direct, approaching the scale and physical presence of <em>i, sunflower</em>.</p></div></header>
-      <div class="slideshow" data-gallery="medium"></div>
-    </section>
+    <div class="story-field">
+      <figure class="story-image">
+        <figcaption class="story-opening"><p>After a decade of drawing with a pen and ruler, I picked up a brush in search of new movement.</p><p>For the first few months, I acquainted myself with the brush, making black marks on paper.</p></figcaption>
+        <img src="birth%20of%20a%20sunflower/story/01.jpg" width="3927" height="2823" alt="Black ink marks circling a dark center">
+      </figure>
+      <figure class="story-image">
+        <figcaption><p>One day, I added yellow to the black.</p></figcaption>
+        <img src="birth%20of%20a%20sunflower/story/02.jpg" width="4963" height="3363" alt="Yellow and black marks scattered across the paper" loading="lazy">
+      </figure>
+      <figure class="story-image">
+        <figcaption><p>Soon, a sunflower was born.</p></figcaption>
+        <button class="sunflower-preview" aria-label="Open sunflower paintings slideshow"><img src="birth%20of%20a%20sunflower/story/04.jpg" width="5086" height="3352" alt="A sunflower with a green stem and a bowed bud" loading="lazy"></button>
+      </figure>
+    </div>
 
     <div class="end"><a href="sunflower">continue to i, sunflower →</a></div>
   </main>
 </div>
 
-<script>
-const root = "birth of a sunflower/";
-const groups = {
-  bw: ["02.jpg","03.png","04.png","05.png","06.jpg","07.jpg","07.png","010.png","p0002.png"].map(name => `1 BW ink paintings /${name}`),
-  color: Array.from({length:16},(_,i)=>`2 Color Paintings/${String(i+1).padStart(2,"0")}.jpg`),
-  buds: Array.from({length:6},(_,i)=>`3 baby buds /${String(i+1).padStart(2,"0")}.jpg`),
-  medium: Array.from({length:11},(_,i)=>`4 SF Medium/${String(i+1).padStart(2,"0")}.jpg`)
-};
 
-Object.entries(groups).forEach(([key,images]) => {
-  const slideshow = document.querySelector(`[data-gallery="${key}"]`);
-  let index = 0;
-  slideshow.innerHTML = `<button class="slide-button" type="button" aria-label="next image"><img class="slide-image" alt=""></button><div class="slide-footer"><span class="slide-count"></span><span class="slide-hint">click image for next</span></div>`;
-  const image = slideshow.querySelector(".slide-image");
-  const count = slideshow.querySelector(".slide-count");
-  const show = () => {
-    image.src = encodeURI(root + images[index]);
-    image.alt = `birth of a sunflower, ${key} study ${index + 1}`;
-    count.textContent = `${String(index + 1).padStart(2,"0")} / ${String(images.length).padStart(2,"0")}`;
-  };
-  slideshow.querySelector(".slide-button").addEventListener("click", () => {
-    index = (index + 1) % images.length;
-    show();
-  });
-  show();
+<script>
+const menuButton=document.querySelector('.mobile-menu-button');
+menuButton.addEventListener('click',()=>{
+ const open=document.querySelector('.sidebar').classList.toggle('menu-open');
+ menuButton.setAttribute('aria-expanded',String(open));
+ menuButton.textContent=open?'works −':'works +';
 });
+</script>
+<dialog class="painting-viewer" aria-label="Sunflower paintings slideshow">
+<button class="painting-close" type="button" aria-label="Close slideshow">close ×</button>
+<div class="painting-stage"><img alt="Sunflower painting"></div>
+<div class="painting-controls"><button class="painting-prev" aria-label="Previous painting">←</button><span class="painting-count" aria-live="polite"></span><button class="painting-next" aria-label="Next painting">→</button></div>
+</dialog>
+<script>
+(()=>{
+ const paths=["birth%20of%20a%20sunflower/2%20Color%20Paintings/05.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/055.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/06.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/07.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/08.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/09.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/10.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/11.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/12.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/13.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/14.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/15.jpg", "birth%20of%20a%20sunflower/2%20Color%20Paintings/16.jpg"];
+ const viewer=document.querySelector('.painting-viewer');
+ const trigger=document.querySelector('.sunflower-preview');
+ const image=viewer.querySelector('.painting-stage img');
+ const count=viewer.querySelector('.painting-count');
+ const cache=new Map();let index=0,request=0,previousOverflow='';
+ function load(i){
+  if(!cache.has(i))cache.set(i,new Promise((resolve,reject)=>{
+   const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>{cache.delete(i);reject(new Error('Image unavailable'));};img.src=paths[i];
+  }));return cache.get(i);
+ }
+ async function show(i){
+  index=(i+paths.length)%paths.length;const target=index,token=++request;
+  try{const loaded=await load(target);if(token!==request||!viewer.open)return;
+   image.src=loaded.src;image.alt='Sunflower painting '+(target+1);
+   count.textContent=(target+1)+' / '+paths.length;
+   load((target+1)%paths.length).catch(()=>{});load((target+paths.length-1)%paths.length).catch(()=>{});
+  }catch(e){if(token===request)count.textContent='Image unavailable';}
+ }
+ trigger.addEventListener('click',()=>{previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';viewer.showModal();show(0);});
+ viewer.querySelector('.painting-close').addEventListener('click',()=>viewer.close());
+ viewer.querySelector('.painting-next').addEventListener('click',()=>show(index+1));
+ viewer.querySelector('.painting-prev').addEventListener('click',()=>show(index-1));
+ image.addEventListener('click',()=>show(index+1));
+ viewer.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();show(index+1);}if(e.key==='ArrowLeft'){e.preventDefault();show(index-1);}});
+ viewer.addEventListener('close',()=>{request++;document.body.style.overflow=previousOverflow;trigger.focus({preventScroll:true});});
+ const warm=()=>load(0).catch(()=>{});
+ trigger.addEventListener('pointerenter',warm,{once:true});trigger.addEventListener('focus',warm,{once:true});
+})();
 </script>
 </body>
 </html>
