@@ -480,7 +480,7 @@ document.addEventListener('keydown',e=>{
     overlay.setAttribute('aria-hidden', 'true');
   }
 
-  document.querySelectorAll('.sf-info-nav [data-info]').forEach(button => {
+  document.querySelectorAll('.sf-info-nav [data-info]:not([data-info="about"])').forEach(button => {
     button.addEventListener('click', () => openInfo(button.dataset.info));
   });
 
@@ -513,6 +513,7 @@ document.addEventListener('keydown',e=>{
   }
 
   open?.addEventListener('click', openStatement);
+  document.querySelector('.sf-info-nav [data-info="about"]')?.addEventListener('click', openStatement);
   close?.addEventListener('click', closeStatement);
   overlay?.addEventListener('click', e => {
     if (e.target === overlay) closeStatement();
