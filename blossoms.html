@@ -50,9 +50,9 @@ main.is-dragging{scroll-snap-type:none;user-select:none;}
 <script src="sidebar.js"></script>
 <main aria-label="blossoms" data-sidebar-layout="flow">
 <figure class="painting"><img src="blossoms/01.png" alt="Blossom painting 1" fetchpriority="high" decoding="async"></figure>
-<figure class="painting"><img src="blossoms/02.png" alt="Blossom painting 2" loading="lazy" decoding="async"></figure>
-<figure class="painting"><img src="blossoms/03.png" alt="Blossom painting 3" loading="lazy" decoding="async"></figure>
-<figure class="painting"><img src="blossoms/04.png" alt="Blossom painting 4" loading="lazy" decoding="async"></figure>
+<figure class="painting"><img src="blossoms/02.png" alt="Blossom painting 2" loading="eager" decoding="async"></figure>
+<figure class="painting"><img src="blossoms/03.png" alt="Blossom painting 3" loading="eager" decoding="async"></figure>
+<figure class="painting"><img src="blossoms/04.png" alt="Blossom painting 4" loading="eager" decoding="async"></figure>
 </main><script>const button=document.querySelector('.mobile-menu-button');const sidebar=document.querySelector('.sidebar');
 function measureOpening(){const strip=document.querySelector('main');document.documentElement.style.setProperty('--opening-height',strip.getBoundingClientRect().top+window.scrollY+'px');}
 new ResizeObserver(measureOpening).observe(sidebar);
