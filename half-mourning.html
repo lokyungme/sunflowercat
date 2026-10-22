@@ -8,38 +8,74 @@
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;overflow-x:hidden;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif}
-a{color:inherit;text-decoration:none}
-.site{display:block!important;min-height:100vh}
+a{color:inherit;text-decoration:none}.site{display:block!important;min-height:100vh}
+.sidebar{position:fixed!important;z-index:110;inset:0 auto 0 0!important;width:270px!important;padding:22px 22px 28px;background:#fff;display:flex!important;flex-direction:column;overflow-y:auto}
+.name{margin:0 0 30px!important;width:72px;font-size:0;line-height:0}.name a,.stamp{display:block;width:100%;height:auto}
+.projects{display:flex!important;flex-direction:column;align-items:stretch!important;gap:11px!important}
+.projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;width:auto!important;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:inherit;text-decoration:none;letter-spacing:0!important;text-transform:none!important}
+.project-year{color:#999;font-size:10px!important;line-height:1.5}.projects a:hover .project-name{text-decoration:underline;text-underline-offset:3px}
+.menu-secondary{display:flex;flex-direction:row;align-items:center;gap:12px;margin-top:auto;padding-top:42px}
+.menu-secondary a{color:#999;text-decoration:none;font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;font-weight:400!important;line-height:1.25!important;letter-spacing:0!important;text-transform:none!important}
+.menu-secondary a:hover{text-decoration:underline;text-underline-offset:3px}
+.side-top{margin:0 0 22px}
+.studio-note{display:grid;grid-template-columns:43px minmax(0,1fr);align-items:baseline;margin:0;max-width:none;font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;font-weight:400!important;line-height:1.25;color:#111;letter-spacing:0!important;text-transform:none!important}
+.studio-now{color:#999;font-size:10px!important;line-height:1.5}.studio-note a{color:inherit;text-decoration:none;letter-spacing:0!important;font-weight:400!important;text-transform:none!important}.studio-note a:hover{text-decoration:underline;text-underline-offset:3px}
+.mobile-menu-button{display:none}
 .half-main{width:calc(100% - 270px)!important;max-width:none!important;margin:0 0 0 270px!important;padding:20px 16px 80px!important}
 .half-header{position:fixed;z-index:101;top:0;right:10px;height:20px;display:flex;align-items:center;background:#fff;font-size:11px;white-space:nowrap}
-.half-series{width:min(calc(100vw - 302px),1400px);margin:0 auto;display:flex;flex-direction:column;gap:110px}
-.half-work{margin:0}
-.half-image-button{display:block;width:100%;margin:0;padding:0;border:0;background:none;cursor:pointer;text-align:left}
-.half-image{display:block;width:100%;height:auto}
-.half-caption{display:flex;justify-content:space-between;gap:18px;margin-top:8px;font-size:11px;line-height:1.35}
-.half-caption span:last-child{color:#999;text-align:right}
-.half-detail-controls{display:flex;gap:14px;margin-top:5px;font-size:10px;color:#999}
-.half-detail-controls[hidden]{display:none}
+.half-series{width:min(calc(100vw - 302px),1400px);margin:0 auto;display:flex;flex-direction:column;gap:110px}.half-work{margin:0}
+.half-image-button{display:block;width:100%;margin:0;padding:0;border:0;background:none;cursor:pointer;text-align:left}.half-image{display:block;width:100%;height:auto}
+.half-caption{display:flex;justify-content:space-between;gap:18px;margin-top:8px;font-size:11px;line-height:1.35}.half-caption span:last-child{color:#999;text-align:right}
+.half-detail-controls{display:flex;gap:14px;margin-top:5px;font-size:10px;color:#999}.half-detail-controls[hidden]{display:none}
 .half-full-return{padding:0;border:0;background:none;color:#111;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(max-width:980px){
-html,body{width:100%;overflow-x:hidden}
-.site{display:block!important;width:100%;min-height:0}
-.half-main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 12px 50px!important}
-.half-header{position:relative;top:auto;right:auto;width:100%;height:20px;justify-content:flex-end;margin:0 0 8px}
-.half-series{width:100%!important;max-width:1400px;gap:58px}
+ html,body{width:100%;overflow-x:hidden}
+ .site{display:block!important;width:100%;min-height:0}
+ .sidebar{position:relative!important;inset:auto!important;width:100%!important;min-height:0!important;padding:18px 18px 16px!important;overflow:visible!important}
+ .name{width:58px!important;margin-bottom:18px!important}
+ .side-top{margin-bottom:14px!important}
+ .mobile-menu-button{display:block;width:max-content;min-height:32px;padding:0;border:0;background:none;color:#111;font:12px Arial,Helvetica,sans-serif;text-align:left;cursor:pointer}
+ .mobile-menu-button:focus-visible{outline:1px solid #111;outline-offset:4px}
+ .projects,.menu-secondary{display:none!important}
+ .sidebar.menu-open .projects{display:flex!important;margin-top:18px!important}
+ .sidebar.menu-open .menu-secondary{display:flex!important}
+ .projects{gap:10px!important}
+ .projects a{display:grid!important;grid-template-columns:43px minmax(0,1fr)!important;font-size:12px!important}
+ .project-year{display:inline!important;font-size:10px!important;margin-bottom:0!important}
+ .menu-secondary{gap:12px!important;margin-top:0!important;padding-top:34px!important}.menu-secondary a{font-size:10px!important}
+ .half-main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 12px 50px!important}
+ .half-header{position:relative;top:auto;right:auto;width:100%;height:20px;justify-content:flex-end;margin:0 0 8px}
+ .half-series{width:100%!important;max-width:1400px;gap:58px}
 }
 @media(max-width:700px){
-.half-caption{display:block;font-size:9px}
-.half-caption span{display:block}
-.half-caption span:last-child{text-align:left;margin-top:2px}
+ .half-caption{display:block;font-size:9px}.half-caption span{display:block}.half-caption span:last-child{text-align:left;margin-top:2px}
 }
 </style>
-<link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
 <div class="site">
-  <script src="sidebar.js"></script>
-  <main class="half-main" data-sidebar-layout="flow">
+  <aside class="sidebar">
+    <h1 class="name"><a href="index" aria-label="home"><img class="stamp" src="https://media.cargocollective.com/1/10/322251/headerimg/light-stamp-180-copy.png" alt="kyung-me stamp"></a></h1>
+    <div class="side-top"><p class="studio-note"><span class="studio-now">now</span><a href="pkan">paintings for pkan</a></p></div>
+    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
+    <nav class="projects" id="project-links" aria-label="projects">
+      <a href="post-flower"><span class="project-year">2026</span><span class="project-name">post flower</span></a>
+    <a href="sunflower"><span class="project-year">2026</span><span class="project-name">i, sunflower</span></a>
+      <a href="blossoms"><span class="project-year">2025</span><span class="project-name">blossoms</span></a>
+      <a href="ink-paintings"><span class="project-year">2025</span><span class="project-name">ink paintings</span></a>
+      <a href="more-ink-drawings"><span class="project-year">2024</span><span class="project-name">ink drawings</span></a>
+      <a href="house-in-the-trees"><span class="project-year">2023</span><span class="project-name">the house in the trees</span></a>
+      <a href="sister"><span class="project-year">2022</span><span class="project-name">sister</span></a>
+      <a href="coniunctio"><span class="project-year">2019</span><span class="project-name">coniunctio</span></a>
+      <a href="half-mourning"><span class="project-year">2018</span><span class="project-name">half mourning</span></a>
+      <a href="copy-kitty"><span class="project-year">2017</span><span class="project-name">copy kitty</span></a>
+      <a href="ghost"><span class="project-year">2016</span><span class="project-name">ghost</span></a>
+      <a href="labyrinths"><span class="project-year">2015</span><span class="project-name">labyrinths</span></a>
+      <a href="bad-korean"><span class="project-year">2014</span><span class="project-name">bad korean</span></a>
+    </nav>
+    <nav class="menu-secondary" id="information-links" aria-label="information pages"><a href="about">about</a><a href="teaching">teaching</a><a href="cv">cv</a></nav>
+  </aside>
+  <main class="half-main">
     <div class="half-header">half mourning</div>
     <div class="half-series" id="half-series"></div>
   </main>
@@ -47,7 +83,11 @@ html,body{width:100%;overflow-x:hidden}
 <script>
 const menuButton=document.querySelector('.mobile-menu-button');
 const sidebar=document.querySelector('.sidebar');
-
+menuButton.addEventListener('click',()=>{
+ const isOpen=sidebar.classList.toggle('menu-open');
+ menuButton.setAttribute('aria-expanded',String(isOpen));
+ menuButton.textContent=isOpen?'works −':'works +';
+});
 
 const halfWorks=[
  {src:"Half%20Mourning/hm1.jpg",title:"half mourning I",details:["Half%20Mourning/hm1_detail1.jpg","Half%20Mourning/hm1_detail2.jpg","Half%20Mourning/hm1_detail3.jpg"]},
