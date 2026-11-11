@@ -33,3 +33,9 @@ body main[data-sidebar-layout="fixed"]{left:var(--shared-sidebar-width)!importan
  body main[data-sidebar-layout="flow"],body main[data-sidebar-layout="fixed"]{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;min-width:0}
  body main[data-sidebar-layout="fixed"]{position:relative!important;inset:auto!important}
 }
+
+/* Journal sits on its own line above about / teaching / cv. */
+#shared-sidebar .menu-secondary{flex-wrap:wrap;row-gap:14px}
+#shared-sidebar .menu-secondary .watercolor-journal-link{flex:0 0 100%;width:100%;font-size:12px;line-height:1.5;white-space:nowrap}
+#shared-sidebar .menu-secondary .watercolor-journal-link:hover{text-decoration:none}
+#shared-sidebar .watercolor-journal-link:hover span{text-decoration:underline;text-underline-offset:3px}

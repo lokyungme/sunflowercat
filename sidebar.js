@@ -101,6 +101,10 @@
     return url.href;
   }
   const link = (href, content) => `<a href="${escape(destination(href))}">${content}</a>`;
+  const journalColors = ['#b85f83','#688d78','#b28546','#7e78b4','#bc7963','#538f99','#ad718f','#849452','#788fb6','#b96d77','#6b9b91','#a879a8','#bb9150','#7886ab','#a57468','#6e9474','#b26b92'];
+  let journalLetter = 0;
+  const journalLetters = [...'watercolor journal'].map(character => character === ' ' ? ' ' : `<span aria-hidden="true" style="color:${journalColors[journalLetter++]}">${character}</span>`).join('');
+  const journalLink = `<a class="watercolor-journal-link" href="${escape(destination('watercolor-journal'))}" aria-label="watercolor journal">${journalLetters}</a>`;
   const sidebar = document.createElement('aside');
   sidebar.id = 'shared-sidebar';
   sidebar.className = 'sidebar';
@@ -110,7 +114,7 @@
     <div class="side-top"><p class="studio-note"><span class="studio-now">now</span>${link(navigation.now.href, escape(navigation.now.label))}</p></div>
     <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="project-links information-links">works +</button>
     <nav class="projects" id="project-links" aria-label="projects">${navigation.projects.map(project => link(project.href, `<span class="project-year">${escape(project.year)}</span><span class="project-name">${escape(project.title)}</span>`)).join('')}</nav>
-    <nav class="menu-secondary" id="information-links" aria-label="information pages">${navigation.information.map(item => link(item.href, escape(item.title))).join('')}</nav>`;
+    <nav class="menu-secondary" id="information-links" aria-label="information pages">${journalLink}${navigation.information.map(item => link(item.href, escape(item.title))).join('')}</nav>`;
   script.replaceWith(sidebar);
   const menu = sidebar.querySelector('.mobile-menu-button');
   const setOpen = open => {
