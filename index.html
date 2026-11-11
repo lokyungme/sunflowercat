@@ -79,6 +79,14 @@ html,body{width:100%;overflow-x:hidden}
   }
 </style>
 <link rel="stylesheet" href="sidebar.css">
+
+<style>
+/* A separate line for the watercolor journal above the information links. */
+#shared-sidebar .menu-secondary{flex-wrap:wrap;row-gap:14px}
+#shared-sidebar .menu-secondary .watercolor-journal-link{flex:0 0 100%;width:100%;font-size:12px;line-height:1.5;white-space:nowrap}
+#shared-sidebar .watercolor-journal-link:hover{text-decoration:none}
+#shared-sidebar .watercolor-journal-link:hover span{ text-decoration:underline;text-underline-offset:3px }
+</style>
 </head>
 <body>
   <div class="site">
@@ -93,6 +101,26 @@ html,body{width:100%;overflow-x:hidden}
   <script>
     const menuButton = document.querySelector('.mobile-menu-button');
     const sidebar = document.querySelector('.sidebar');
+    // Keep the journal above about / teaching / cv in the homepage sidebar.
+    const informationLinks = sidebar?.querySelector('.menu-secondary');
+    if (informationLinks) {
+      const journal = document.createElement('a');
+      journal.className = 'watercolor-journal-link';
+      journal.href = location.protocol === 'file:' ? 'watercolor-journal.html' : 'watercolor-journal';
+      journal.setAttribute('aria-label', 'watercolor journal');
+      const colors = ['#b85f83','#688d78','#b28546','#7e78b4','#bc7963','#538f99','#ad718f','#849452','#788fb6','#b96d77','#6b9b91','#a879a8','#bb9150','#7886ab','#a57468','#6e9474','#b26b92'];
+      let letter = 0;
+      for (const character of 'watercolor journal') {
+        if (character === ' ') { journal.append(document.createTextNode(' ')); continue; }
+        const span = document.createElement('span');
+        span.textContent = character;
+        span.style.color = colors[letter++];
+        span.setAttribute('aria-hidden', 'true');
+        journal.append(span);
+      }
+      informationLinks.prepend(journal);
+    }
+
     
   </script>
 </body>
